@@ -122,5 +122,6 @@ for route in routeList:
 with open( 'routeFareList.json', 'w' ) as f:
     f.write(json.dumps({
         'routeList': {('%s+%s+%s+%s'%(v['route'], v['serviceType'], v['orig']['en'], v['dest']['en'])): v for v in routeList},
-        'stopList': stopList
+        'stopList': stopList,
+        'stopMap': stopMap
     }, ensure_ascii=False))

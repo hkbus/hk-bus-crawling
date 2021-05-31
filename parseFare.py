@@ -50,10 +50,9 @@ for fare in root.iter('FARE'):
     if onSeq not in routeFareList[routeId]['fares'][routeSeq]:
         routeFareList[routeId]['fares'][routeSeq][onSeq] = price
 
-import collections
 for routeId in routeFareList:
     for fare in routeFareList[routeId]['fares']:
-        routeFareList[routeId]['fares'][fare] = [ p for seq, p in collections.OrderedDict(routeFareList[routeId]['fares'][fare].items()).items() ]
+        routeFareList[routeId]['fares'][fare] = [ p for seq, p in sorted(routeFareList[routeId]['fares'][fare].items()) ]
 
 import json
 with open('routeFare.json', 'w') as f:

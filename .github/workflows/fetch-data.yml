@@ -2,7 +2,7 @@ name: Fetch and Update routeFareList.json
 on: 
   push:
   schedule:
-    - cron: "* 3 * * *"
+    - cron: "5 19 * * *"
 jobs:
   Fetch-Route-Data:
     runs-on: ubuntu-latest

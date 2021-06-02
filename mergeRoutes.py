@@ -119,9 +119,12 @@ routeList = smartUnique()
 for route in routeList:
     route['stops'] = {co: stops for co, stops in route['stops']}
 
+def standardizeDict(d):
+    return {key: value if not isinstance(value, dict) else standardizeDict(value) for key, value in sorted(d.items())}
+
 with open( 'routeFareList.json', 'w' ) as f:
-    f.write(json.dumps({
+    f.write(json.dumps(standardizeDict({
         'routeList': {('%s+%s+%s+%s'%(v['route'], v['serviceType'], v['orig']['en'], v['dest']['en'])): v for v in routeList},
         'stopList': stopList,
         'stopMap': stopMap
-    }, ensure_ascii=False))
+    }), ensure_ascii=False))

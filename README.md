@@ -7,7 +7,7 @@ Daily fetched JSON is in gh-pages or [https://hkbus.github.io/hk-bus-crawling/ro
 
 ## Command
 
-`python ctb-nwfb.py && python kmb.py && python parseFare.py && python matchRoutes.py && python mergeRoutes.py`
+`python ctb-nwfb.py && python kmb.py && python nlb.py && python parseFare.py && python matchRoutes.py && python mergeRoutes.py`
 
 ## Citing 
 

@@ -5,7 +5,7 @@ routeList = []
 stopList = {}
 stopMap = {}
 
-def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, serviceType = 1):
+def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, faresHoliday, nlbId, serviceType = 1):
     return {
         'route': route,
         'co': co,
@@ -15,6 +15,8 @@ def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, serviceType =
         'orig': orig,
         'dest': dest,
         'fares': fares,
+        'faresHoliday': faresHoliday,
+        'nlbId': nlbId,
         'seq': seq
     }
     
@@ -79,6 +81,8 @@ def importRouteListJson( co ):
                     orig = orig,
                     dest = dest,
                     fares = _route.get('fares', None),
+                    faresHoliday = _route.get('faresHoliday', None),
+                    nlbId = _route.get('id', None),
                     seq = len(_route['stops'])
                 )
             )
@@ -115,6 +119,7 @@ def smartUnique():
 importRouteListJson('kmb')
 importRouteListJson('nwfb')
 importRouteListJson('ctb')
+importRouteListJson('nlb')
 routeList = smartUnique()
 for route in routeList:
     route['stops'] = {co: stops for co, stops in route['stops']}

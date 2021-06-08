@@ -1,4 +1,4 @@
-name: Fetch and Update routeFareList.json
+name: Data Fetching
 on: 
   push:
   schedule:
@@ -28,12 +28,13 @@ jobs:
           python matchRoutes.py
           python mergeRoutes.py
       - name: Update MD5
-        run: md5sum routeFareList.json | cut -f1 -d ' ' > routeFareList.md5
+        run: md5sum routeFareList.min.json | cut -f1 -d ' ' > routeFareList.md5
       - name: Update resources
         uses: test-room-7/action-update-file@v1
         with:
             file-path: |
               routeFareList.json
+              routeFareList.min.json
               routeFareList.md5
             commit-msg: Update resources
             github-token: ${{ secrets.GITHUB_TOKEN }}

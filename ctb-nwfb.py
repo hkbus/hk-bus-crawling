@@ -11,8 +11,7 @@ def getRouteStop(co):
     # load route list and stop list if exist
     routeList = {}
     if path.isfile(ROUTE_LIST):
-        with open(ROUTE_LIST) as f:
-            routeList = json.load(f)
+        return
     else:
         # load routes
         r = requests.get('https://rt.data.gov.hk/v1/transport/citybus-nwfb/route/'+co)

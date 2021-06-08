@@ -12,8 +12,7 @@ def getRouteStop(co = 'kmb'):
     # load route list and stop list if exist
     routeList = {}
     if path.isfile(ROUTE_LIST):
-        with open(ROUTE_LIST) as f:
-            routeList = json.load(f)
+        return
     else:
         # load routes
         r = requests.get('https://data.etabus.gov.hk/v1/transport/'+co+'/route/')

@@ -139,4 +139,4 @@ with open( 'routeFareList.min.json', 'w' ) as f:
         'routeList': {('%s+%s+%s+%s'%(v['route'], v['serviceType'], v['orig']['en'], v['dest']['en'])): v for v in routeList},
         'stopList': stopList,
         'stopMap': stopMap
-    }), ensure_ascii=False))
+    }), ensure_ascii=False, separators=(',', ':')))

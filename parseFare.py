@@ -46,13 +46,14 @@ for fare in root.iter('FARE'):
     if routeSeq not in routeFareList[routeId]['fares']:
         routeFareList[routeId]['fares'][routeSeq] = {}
     onSeq = int(fare.find('ON_SEQ').text)
+    offSeq = int(fare.find('OFF_SEQ').text)
     price = fare.find('PRICE').text
-    if onSeq not in routeFareList[routeId]['fares'][routeSeq]:
-        routeFareList[routeId]['fares'][routeSeq][onSeq] = price
+    if onSeq not in routeFareList[routeId]['fares'][routeSeq] or routeFareList[routeId]['fares'][routeSeq][onSeq][1] < offSeq:
+        routeFareList[routeId]['fares'][routeSeq][onSeq] = (price, int(offSeq))
 
 for routeId in routeFareList:
-    for fare in routeFareList[routeId]['fares']:
-        routeFareList[routeId]['fares'][fare] = [ p for seq, p in sorted(routeFareList[routeId]['fares'][fare].items()) ]
+    for routeSeq in routeFareList[routeId]['fares']:
+        routeFareList[routeId]['fares'][routeSeq] = [ p[0] for seq, p in sorted(routeFareList[routeId]['fares'][routeSeq].items()) ]
 
 import json
 with open('routeFare.json', 'w') as f:

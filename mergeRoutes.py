@@ -88,6 +88,8 @@ def importRouteListJson( co ):
             )
 
 def isMatchStops(stops_a, stops_b, debug = False):
+    if len(stops_a) != len(stops_b):
+        return False
     for v in stops_a:
         if stopMap.get(v, [[None,None]])[0][1] in stops_b:
             return True
@@ -106,6 +108,7 @@ def smartUnique():
                 len([co for co in routeList[i]['co'] if co in routeList[j]['co']]) == 0 and \
                 isMatchStops(routeList[i]['stops'][0][1], routeList[j]['stops'][0][1]):
                 founds.append( j )
+
         # update obj
         for found in founds:
             routeList[i]['co'].extend(routeList[found]['co'])

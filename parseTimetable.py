@@ -31,7 +31,7 @@ with open('gtfs/trips.txt') as csvfile:
     if calendar not in routeFare[route_id]['freq'][bound]:
       routeFare[route_id]['freq'][bound][calendar] = {}
     if start_time not in routeFare[route_id]['freq'][bound][calendar]:
-      routeFare[route_id]['freq'][bound][calendar][start_time] = {}
+      routeFare[route_id]['freq'][bound][calendar][start_time] = None
 
 with open('gtfs/frequencies.txt') as csvfile:
   reader = csv.reader(csvfile)
@@ -40,7 +40,7 @@ with open('gtfs/frequencies.txt') as csvfile:
     [route_id, bound, calendar, start_time] = trip_id.split('-')
     if route_id not in routeFare:
       continue
-    routeFare[route_id]['freq'][bound][calendar][start_time] = (_start_time[0:5].replace(':', ''), end_time[0:5].replace(':', ''), headway_secs)
+    routeFare[route_id]['freq'][bound][calendar][start_time] = (end_time[0:5].replace(':', ''), headway_secs)
 
 with open('routeTimetable.json', 'w') as f:
     f.write(json.dumps(routeFare, ensure_ascii=False))

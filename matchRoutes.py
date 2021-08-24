@@ -1,10 +1,12 @@
 import json
 
-with open('routeFare.json') as f:
+with open('routeTimetable.json') as f:
     routeFare = json.load(f)
 
 def addFound(route, routeObj, fareId):
     route['fares'] = routeObj['fares'][fareId]
+    # print(routeObj)
+    route['freq'] = routeObj['freq'][fareId]
     route['co'] = routeObj['co']
 
 def isNameMatch(name_a, name_b):
@@ -21,6 +23,7 @@ def matchRoutes(co):
         for routeId, routeObj in routeFare.items():
             if found:
                 break
+            #print (routeObj)
             if route['route'] == routeObj['route'] and co in routeObj['co']:
                 if len(route['stops']) - 1 == len(routeObj['fares']['1']) and len(route['stops']) - 1 != len(routeObj['fares'].get('2', [])):
                     addFound(route, routeObj, '1')

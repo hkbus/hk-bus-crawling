@@ -22,6 +22,7 @@ python ctb-nwfb.py
 python kmb.py
 python nlb.py
 python parseFare.py
+python parseTimetable.py
 python matchRoutes.py
 python mergeRoutes.py
 ```

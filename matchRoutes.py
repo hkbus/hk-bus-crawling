@@ -23,7 +23,6 @@ def matchRoutes(co):
         for routeId, routeObj in routeFare.items():
             if found:
                 break
-            #print (routeObj)
             if route['route'] == routeObj['route'] and co in routeObj['co']:
                 if len(route['stops']) - 1 == len(routeObj['fares']['1']) and len(route['stops']) - 1 != len(routeObj['fares'].get('2', [])):
                     addFound(route, routeObj, '1')

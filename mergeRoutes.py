@@ -22,7 +22,7 @@ def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, faresHoliday,
   }
   
 def importRouteListJson( co ):
-  _routeList = json.load(open('routeFareList.%s.json'%co))
+  _routeList = json.load(open('routeFareList.%s.cleansed.json'%co))
   _stopList = json.load(open('stopList.%s.json'%co))
   for stopId, stop in _stopList.items():
     if stopId not in stopList:

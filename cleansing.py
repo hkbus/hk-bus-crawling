@@ -1,5 +1,10 @@
 import json
 
+def isNameMatch(name_a, name_b):
+  tmp_a = name_a.lower()
+  tmp_b = name_b.lower()
+  return tmp_a.find(tmp_b) >= 0 or tmp_b.find(tmp_a) >= 0
+
 def countBus(freq):
   if freq is None: return 0
   sum = 0
@@ -25,7 +30,7 @@ def cleansing(co):
       if i == j: continue
       _route = routeList[j]
       if route['route'] == _route['route'] and sorted(route['co']) == sorted(_route['co']) and \
-        route['orig_en'] == _route['orig_en'] and route['dest_en'] == _route['dest_en']:
+        isNameMatch(route['orig_en'], _route['orig_en']) and isNameMatch(route['dest_en'], _route['dest_en']):
         if 'freq' not in _route: continue
         bus = countBus(_route['freq'])
         if bus > maxBus:
@@ -44,7 +49,7 @@ def cleansing(co):
     f.write(json.dumps(_routeList, ensure_ascii=False))
   
 
-#cleansing ('kmb')
-#cleansing ('nwfb')
+cleansing ('kmb')
+cleansing ('nwfb')
 cleansing ('ctb')
-#cleansing ('nlb')
+cleansing ('nlb')

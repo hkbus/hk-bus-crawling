@@ -129,19 +129,20 @@ routeList = smartUnique()
 for route in routeList:
   route['stops'] = {co: stops for co, stops in route['stops']}
 
+holidays = json.load(open('holiday.json'))
+
 def standardizeDict(d):
   return {key: value if not isinstance(value, dict) else standardizeDict(value) for key, value in sorted(d.items())}
 
+db = standardizeDict({
+  'routeList': {('%s+%s+%s+%s'%(v['route'], v['serviceType'], v['orig']['en'], v['dest']['en'])): v for v in routeList},
+  'stopList': stopList,
+  'stopMap': stopMap,
+  'holidays': holidays
+})
+
 with open( 'routeFareList.json', 'w' ) as f:
-  f.write(json.dumps(standardizeDict({
-    'routeList': {('%s+%s+%s+%s'%(v['route'], v['serviceType'], v['orig']['en'], v['dest']['en'])): v for v in routeList},
-    'stopList': stopList,
-    'stopMap': stopMap
-  }), ensure_ascii=False, indent=4))
+  f.write(json.dumps(db, ensure_ascii=False, indent=4))
 
 with open( 'routeFareList.min.json', 'w' ) as f:
-  f.write(json.dumps(standardizeDict({
-    'routeList': {('%s+%s+%s+%s'%(v['route'], v['serviceType'], v['orig']['en'], v['dest']['en'])): v for v in routeList},
-    'stopList': stopList,
-    'stopMap': stopMap
-  }), ensure_ascii=False, separators=(',', ':')))
+  f.write(json.dumps(db, ensure_ascii=False, separators=(',', ':')))

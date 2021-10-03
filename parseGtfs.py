@@ -13,6 +13,7 @@ with zipfile.ZipFile("gtfs.zip","r") as zip_ref:
 
 routeList = {}
 stopList = {}
+routeJourneyTime = json.load(open('routeTime.json'))
 
 with open('gtfs/routes.txt') as csvfile:
   reader = csv.reader(csvfile)
@@ -31,7 +32,8 @@ with open('gtfs/routes.txt') as csvfile:
       'dest': {
         'zh': '',
         'en': route_long_name.split(' - ')[1].replace(' (CIRCULAR)', '')
-      }
+      },
+      'jt': routeJourneyTime[route_id]["journeyTime"] if route_id in routeJourneyTime else None
     }
   
 def takeFirst(elem):

@@ -89,6 +89,7 @@ def matchRoutes(co):
           else:
             route['fares'] = [routeObj['fares'][bound][i] for i, j in ret[:-1]]
             route['freq'] = routeObj['freq'][bound]
+            route['jt'] = routeObj['jt']
             route['co'] = routeObj['co']
             route['gtfs'] = [routeId]
         else:
@@ -96,6 +97,7 @@ def matchRoutes(co):
           extra['stops'] = [route['stops'][j] for i, j in ret]
           extra['fares'] = [routeObj['fares'][bound][i] for i, j in ret[:-1]]
           extra['freq'] = routeObj['freq'][bound]
+          extra['jt'] = routeObj['jt']
           extra['co'] = routeObj['co']
           extra['orig_tc'] = stopList[extra['stops'][0]]['name_tc']
           extra['orig_en'] = stopList[extra['stops'][0]]['name_en']

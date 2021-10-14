@@ -1,7 +1,6 @@
 import requests
 import json
 from os import path
-import asyncio
 import copy
 
 def getRouteStop(co = 'kmb'):

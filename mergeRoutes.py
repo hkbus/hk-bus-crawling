@@ -127,6 +127,7 @@ importRouteListJson('kmb')
 importRouteListJson('nwfb')
 importRouteListJson('ctb')
 importRouteListJson('nlb')
+importRouteListJson('lrtfeeder')
 routeList = smartUnique()
 for route in routeList:
   route['stops'] = {co: stops for co, stops in route['stops']}

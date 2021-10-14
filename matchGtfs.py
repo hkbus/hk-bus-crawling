@@ -118,7 +118,7 @@ def matchRoutes(co):
       route['co'] = [co]
       
   print (co, len([route for route in routeList if 'gtfs' not in route]), 'out of',len(routeList), 'not match')
-  routeList.extend(extraRoutes)
+  if co != 'mtr': routeList.extend(extraRoutes)
   routeList = [route for route in routeList if 'found' not in route or 'fares' in route] # skipping routes that just partially mapped to GTFS
     
   with open( 'routeFareList.%s.json' % co, 'w' ) as f:
@@ -128,6 +128,7 @@ matchRoutes('kmb')
 matchRoutes('nwfb')
 matchRoutes('ctb')
 matchRoutes('nlb')
+matchRoutes('lrtfeeder')
 
 '''
 for routeId, route in gtfsRoutes.items():

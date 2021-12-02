@@ -10,8 +10,8 @@ stopList = {}
 r = requests.get('https://opendata.mtr.com.hk/data/mtr_bus_routes.csv')
 reader = csv.reader(r.text.split("\n") )
 headers = next(reader,None)
-routes = [route for route in reader if len(route) == 3]
-for [route, chn, eng] in routes:
+routes = [route for route in reader if len(route) == 4]
+for [route, chn, eng, circular] in routes:
   if route == '':
     continue;
   start = {
@@ -44,7 +44,7 @@ with open('MTR_bus.csv') as csvfile:
     if routeKey in routeList:
       routeList[routeKey]['stops'].append(stationId)
     else:
-      print ("error")
+      print ("error", routeKey)
     stopList[stationId] = {
       "stop": stationId,
       "name_en": name_en,

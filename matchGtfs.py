@@ -129,6 +129,7 @@ matchRoutes('nwfb')
 matchRoutes('ctb')
 matchRoutes('nlb')
 matchRoutes('lrtfeeder')
+matchRoutes('gmb')
 
 '''
 for routeId, route in gtfsRoutes.items():

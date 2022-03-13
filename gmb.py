@@ -5,6 +5,7 @@ import json
 import time
 
 def emitRequest(url):
+  # retry if "Too many request (429)"
   while True:
     r = requests.get(url)
     if r.status_code == 200:
@@ -21,7 +22,6 @@ for region in ['HKI', 'KLN', "NT"]:
   r = emitRequest('https://data.etagmb.gov.hk/route/'+region)
   routes = r.json()['data']['routes']
   for route_no in routes:
-    print(route_no)
     r = emitRequest('https://data.etagmb.gov.hk/route/'+region+'/'+route_no)
     for route in r.json()['data']:
       service_type = 2

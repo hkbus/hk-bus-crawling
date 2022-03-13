@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # MTR Bus fetching
 
 import csv
@@ -34,24 +35,24 @@ for [route, chn, eng, circular] in routes:
       "stops": []
     }
 
-# handy work from https://opendata.mtr.com.hk/doc/MTR_BUS_DataDictionary_v1.0.pdf
-# MTR_bus.csv is prepared by labour work
-with open('MTR_bus.csv') as csvfile:
-  reader = csv.reader(csvfile)
-  headers = next(reader, None)
-  for [route, bound, stationId, lat, lng, name_zh, name_en] in reader:
-    routeKey = route+"_"+bound
-    if routeKey in routeList:
-      routeList[routeKey]['stops'].append(stationId)
-    else:
-      print ("error", routeKey)
-    stopList[stationId] = {
-      "stop": stationId,
-      "name_en": name_en,
-      "name_tc": name_zh,
-      "lat": lat,
-      "long": lng
-    }
+# Parse stops
+r = requests.get('https://opendata.mtr.com.hk/data/mtr_bus_stops.csv')
+reader = csv.reader(r.text.split("\n") )
+headers = next(reader,None)
+stops = [stop for stop in reader if len(stop) == 8]
+for [route, bound, seq, stationId, lat, lng, name_zh, name_en] in stops:
+  routeKey = route+"_"+bound
+  if routeKey in routeList:
+    routeList[routeKey]['stops'].append(stationId)
+  else:
+    print ("error", routeKey)
+  stopList[stationId] = {
+    "stop": stationId,
+    "name_en": name_en,
+    "name_tc": name_zh,
+    "lat": lat,
+    "long": lng
+  }
 
 with open('routeList.lrtfeeder.json', 'w') as f:
   f.write(json.dumps([route for route in routeList.values() if len(route['stops']) > 0], ensure_ascii=False))

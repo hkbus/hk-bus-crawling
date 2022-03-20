@@ -3,6 +3,7 @@
 import requests
 import json
 import time
+import csv
 
 def emitRequest(url):
   # retry if "Too many request (429)"
@@ -15,6 +16,33 @@ def emitRequest(url):
     else:
       raise Exception(r.status_code, url)
 
+# parse gtfs service_id
+serviceIdMap = {}
+with open('gtfs/calendar.txt') as csvfile:
+  reader = csv.reader(csvfile)
+  headers = next(reader, None)
+  for [service_id, mon, tue, wed, thur, fri, sat, sun, *tmp] in reader:
+    serviceIdMap[service_id] = [mon == "1", tue == "1", wed == "1", thur == "1", fri == "1", sat == "1", sun == "1"]
+
+def mapServiceId(weekdays):
+  for service_id in serviceIdMap:
+    if all(i == j for i, j in zip(serviceIdMap[service_id], weekdays)):
+      return service_id
+  print ('None')
+  return None
+
+def getFreq(headways):
+  freq = {}
+  for headway in headways:
+    service_id = mapServiceId( headway['weekdays'] )
+    if service_id not in freq:
+      freq[service_id] = {}
+    freq[service_id][headway['start_time'].replace(':', '')[:4]] = [
+      headway['end_time'].replace(':', '')[:4],
+      headway['frequency']
+    ]
+  return freq
+
 routeList = []
 stops = {}
 
@@ -23,6 +51,7 @@ for region in ['HKI', 'KLN', "NT"]:
   routes = r.json()['data']['routes']
   for route_no in routes:
     r = emitRequest('https://data.etagmb.gov.hk/route/'+region+'/'+route_no)
+    print (route_no)
     for route in r.json()['data']:
       service_type = 2
       for direction in route['directions']:
@@ -44,10 +73,13 @@ for region in ['HKI', 'KLN', "NT"]:
           "dest_en": direction['dest_en'],
           "bound": 'O' if direction['route_seq'] == 1 else 'I',
           "service_type": 1 if route["description_tc"] == '正常班次' else service_type,
-          "stops": [str(stop['stop_id']) for stop in rs.json()['data']['route_stops']]
+          "stops": [str(stop['stop_id']) for stop in rs.json()['data']['route_stops']],
+          "freq": getFreq(direction['headways'])
         })
+        #print(routeList)
         if route["description_tc"] != '正常班次':
           service_type += 1
+    #quit()
 
 print ("Route done")
 

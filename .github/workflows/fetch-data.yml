@@ -26,9 +26,9 @@ jobs:
           python kmb.py
           python nlb.py
           python lrtfeeder.py
-          python gmb.py
           python parseJourneyTime.py
           python parseGtfs.py
+          python gmb.py
           python matchGtfs.py
           python cleansing.py
           python mergeRoutes.py

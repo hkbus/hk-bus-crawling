@@ -134,12 +134,12 @@ def matchRoutes(co):
   with open( 'routeFareList.%s.json' % co, 'w' ) as f:
     f.write(json.dumps(routeList, ensure_ascii=False))
   
-#matchRoutes('kmb')
-#matchRoutes('nwfb')
+matchRoutes('kmb')
+matchRoutes('nwfb')
 matchRoutes('ctb')
-#matchRoutes('nlb')
-#matchRoutes('lrtfeeder')
-#matchRoutes('gmb')
+matchRoutes('nlb')
+matchRoutes('lrtfeeder')
+matchRoutes('gmb')
 
 '''
 for routeId, route in gtfsRoutes.items():

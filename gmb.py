@@ -51,7 +51,6 @@ for region in ['HKI', 'KLN', "NT"]:
   routes = r.json()['data']['routes']
   for route_no in routes:
     r = emitRequest('https://data.etagmb.gov.hk/route/'+region+'/'+route_no)
-    print (route_no)
     for route in r.json()['data']:
       service_type = 2
       for direction in route['directions']:

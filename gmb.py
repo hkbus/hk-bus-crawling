@@ -23,13 +23,13 @@ with open('gtfs/calendar.txt') as csvfile:
   headers = next(reader, None)
   for [service_id, mon, tue, wed, thur, fri, sat, sun, *tmp] in reader:
     serviceIdMap[service_id] = [mon == "1", tue == "1", wed == "1", thur == "1", fri == "1", sat == "1", sun == "1"]
+  serviceIdMap["111"] = [True, True, False, True, True, True, True]
 
 def mapServiceId(weekdays):
   for service_id in serviceIdMap:
     if all(i == j for i, j in zip(serviceIdMap[service_id], weekdays)):
       return service_id
-  print ('None')
-  return None
+  raise Exception("No service ID for weekdays: "+json.dumps(weekdays))
 
 def getFreq(headways):
   freq = {}
@@ -39,8 +39,8 @@ def getFreq(headways):
       freq[service_id] = {}
     freq[service_id][headway['start_time'].replace(':', '')[:4]] = [
       headway['end_time'].replace(':', '')[:4],
-      headway['frequency']
-    ]
+      str(headway['frequency'] * 60)
+    ] if headway['frequency'] is not None else None
   return freq
 
 routeList = []
@@ -78,8 +78,9 @@ for region in ['HKI', 'KLN', "NT"]:
         #print(routeList)
         if route["description_tc"] != '正常班次':
           service_type += 1
-    #quit()
 
+with open('routeList.gmb.json', 'w') as f:
+  f.write(json.dumps(routeList, ensure_ascii=False))
 print ("Route done")
 
 for stop_id in stops.keys():
@@ -87,7 +88,5 @@ for stop_id in stops.keys():
   stops[stop_id]['lat'] = r.json()['data']['coordinates']['wgs84']['latitude']
   stops[stop_id]['long'] = r.json()['data']['coordinates']['wgs84']['longitude']
 
-with open('routeList.gmb.json', 'w') as f:
-  f.write(json.dumps(routeList, ensure_ascii=False))
 with open('stopList.gmb.json', 'w') as f:
   f.write(json.dumps(stops, ensure_ascii=False))

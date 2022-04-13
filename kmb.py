@@ -38,7 +38,7 @@ def getRouteStop(co = 'kmb'):
             routeList[routeKey]['stops'] = stops
 
         # flatten the routeList back to array
-        routeList = [routeList[routeKey] for routeKey in routeList.keys()]
+        routeList = [routeList[routeKey] for routeKey in routeList.keys() if not routeKey.startswith('K')]
 
 
     stopList = {}

@@ -3,6 +3,7 @@ import sys
 from haversine import haversine, Unit
 
 INFINITY_DIST = 1000000
+DIST_DIFF = 600
 
 with open('gtfs.json') as f:
   gtfs = json.load(f)
@@ -42,9 +43,9 @@ def matchStopsByDp ( coStops, gtfsStops, debug=False ):
         sum[i][j] + dist, # from previous stops of both sides
         sum[i+1][j]       # skipping current coStops 
       )
-  
+
   # fast return if no good result
-  if not min(sum[len(gtfsStops)]) / len(gtfsStops) < 100:
+  if not min(sum[len(gtfsStops)]) / len(gtfsStops) < DIST_DIFF:
     return [], INFINITY_DIST
 
   # backtracking
@@ -72,7 +73,7 @@ def matchRoutes(co):
   extraRoutes = []
   # one pass to find matches of co vs gtfs by DP
   for routeId, routeObj in gtfsRoutes.items():
-    debug = False #routeObj['route'] in ['101'] and routeId == '1482'
+    debug = False # routeObj['route'] in ['969'] and routeId == '1000054'
     if co == 'gmb' and co in routeObj['co']: # handle for gmb
       for route in routeList:
         if route['gtfsId'] == routeId:
@@ -82,12 +83,10 @@ def matchRoutes(co):
         bestMatch = (-1, INFINITY_DIST)
         for route in routeList:
           if co in routeObj['co'] and route['route'] == routeObj['route']:
-            if route['route'] == '37B': 
-              debug = True
             ret, avgDist = matchStopsByDp([stopList[stop] for stop in route['stops']], [gtfsStops[stop] for stop in stops], debug)
             if avgDist < bestMatch[1]:
               bestMatch = (routeId, avgDist, ret, bound, stops, route)
-        if bestMatch[1] < 100: # assume matching to be avg stop distance diff is lower than 100
+        if bestMatch[1] < DIST_DIFF: # assume matching to be avg stop distance diff is lower than 100
           routeObj = gtfsRoutes[bestMatch[0]]
           ret, bound, stops, route = bestMatch[2:]
           if len(ret) == len(route['stops']) or len(ret) + 1 == len(route['stops']):

@@ -131,6 +131,7 @@ importRouteListJson('ctb')
 importRouteListJson('nlb')
 importRouteListJson('lrtfeeder')
 importRouteListJson('gmb')
+importRouteListJson('lightRail')
 routeList = smartUnique()
 for route in routeList:
   route['stops'] = {co: stops for co, stops in route['stops']}

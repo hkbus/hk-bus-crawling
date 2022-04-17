@@ -139,6 +139,7 @@ matchRoutes('ctb')
 matchRoutes('nlb')
 matchRoutes('lrtfeeder')
 matchRoutes('gmb')
+matchRoutes('lightRail')
 
 '''
 for routeId, route in gtfsRoutes.items():

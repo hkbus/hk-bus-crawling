@@ -27,6 +27,7 @@ jobs:
           python nlb.py
           python lrtfeeder.py
           python lightRail.py
+          python mtr.py
           python parseJourneyTime.py
           python parseGtfs.py
           python gmb.py

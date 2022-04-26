@@ -25,9 +25,9 @@ def matchStopsByDp ( coStops, gtfsStops, debug=False ):
     gtfsStops = gtfsStops[:-1]
     
   # initialization
-  sum = [[INFINITY_DIST for x in range(len(coStops)+1)  ] for y in range(len(gtfsStops)+1)]
+  distSum = [[INFINITY_DIST for x in range(len(coStops)+1)  ] for y in range(len(gtfsStops)+1)]
   for j in range(len(coStops) - len(gtfsStops) + 1):
-    sum[0][j] = 0
+    distSum[0][j] = 0
 
   # Perform DP
   for i in range(len(gtfsStops)):
@@ -39,13 +39,13 @@ def matchStopsByDp ( coStops, gtfsStops, debug=False ):
         (gtfsStop['lat'], gtfsStop['lng'])
       ) * 1000
 
-      sum[i+1][j+1] = min(
-        sum[i][j] + dist, # from previous stops of both sides
-        sum[i+1][j]       # skipping current coStops 
+      distSum[i+1][j+1] = min(
+        distSum[i][j] + dist, # from previous stops of both sides
+        distSum[i+1][j]       # skipping current coStops 
       )
 
   # fast return if no good result
-  if not min(sum[len(gtfsStops)]) / len(gtfsStops) < DIST_DIFF:
+  if not min(distSum[len(gtfsStops)]) / len(gtfsStops) < DIST_DIFF:
     return [], INFINITY_DIST
 
   # backtracking
@@ -53,15 +53,18 @@ def matchStopsByDp ( coStops, gtfsStops, debug=False ):
   j = len(coStops)
   ret = []
   while i > 0 and j > 0:
-    if sum[i][j] == sum[i][j-1]:
+    if distSum[i][j] == distSum[i][j-1]:
       j -= 1
     else:
       ret.append( ( i-1, j-1 ) )
       i -= 1
       j -= 1
   ret.reverse()
-
-  return ret, min(sum[len(gtfsStops)]) / len(gtfsStops)
+  
+  # penalty distance is given for not exact match route
+  penalty = 0 if sum([abs(a-b) for a, b in ret]) == 0 else 1
+  
+  return ret, min(distSum[len(gtfsStops)]) / len(gtfsStops) + penalty
 
 def matchRoutes(co):
   print (co)
@@ -73,7 +76,7 @@ def matchRoutes(co):
   extraRoutes = []
   # one pass to find matches of co vs gtfs by DP
   for routeId, routeObj in gtfsRoutes.items():
-    debug = False # routeObj['route'] in ['969'] and routeId == '1000054'
+    debug = False # routeObj['route'] in ['115'] and routeId == '1000131'
     if co == 'gmb' and co in routeObj['co']: # handle for gmb
       for route in routeList:
         if route['gtfsId'] == routeId:

@@ -44,7 +44,7 @@ def importRouteListJson( co ):
     orig = {'en': _route['orig_en'].replace('/', '／'), 'zh': _route['orig_tc'].replace('/', '／')}
     dest = {'en': _route['dest_en'].replace('/', '／'), 'zh': _route['dest_tc'].replace('/', '／')}
     for route in routeList:
-      if _route['route'] == route['route'] and co in route['co']:
+      if _route['route'] == route['route'] and co in route['co'] and 'gtfs' not in _route:
         if len(_route['stops']) == route['seq']:
           dist = 0
           merge = True

@@ -62,7 +62,7 @@ def matchStopsByDp ( coStops, gtfsStops, debug=False ):
   ret.reverse()
   
   # penalty distance is given for not exact match route
-  penalty = 0 if sum([abs(a-b) for a, b in ret]) == 0 else 1
+  penalty = sum([abs(a-b) for a, b in ret]) * 0.01
   
   return ret, min(distSum[len(gtfsStops)]) / len(gtfsStops) + penalty
 
@@ -76,7 +76,7 @@ def matchRoutes(co):
   extraRoutes = []
   # one pass to find matches of co vs gtfs by DP
   for routeId, routeObj in gtfsRoutes.items():
-    debug = False # routeObj['route'] in ['115'] and routeId == '1000131'
+    debug = False # routeId in ['1775']
     if co == 'gmb' and co in routeObj['co']: # handle for gmb
       for route in routeList:
         if route['gtfsId'] == routeId:

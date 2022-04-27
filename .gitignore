@@ -1,3 +1,6 @@
 *.json
 *.xml
 *.md5
+gtfs.zip
+gtfs
+*csv

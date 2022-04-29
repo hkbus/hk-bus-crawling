@@ -22,6 +22,12 @@ def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, faresHoliday,
     'gtfsId': gtfsId,
     'seq': seq
   }
+
+def isGtfsMatch(knownRoute, newRoute):
+  if knownRoute['gtfsId'] is None: return True
+  if 'gtfs' not in newRoute: return True 
+
+  return knownRoute['gtfsId'] in newRoute['gtfs']
   
 def importRouteListJson( co ):
   _routeList = json.load(open('routeFareList.%s.cleansed.json'%co))
@@ -44,7 +50,7 @@ def importRouteListJson( co ):
     orig = {'en': _route['orig_en'].replace('/', '／'), 'zh': _route['orig_tc'].replace('/', '／')}
     dest = {'en': _route['dest_en'].replace('/', '／'), 'zh': _route['dest_tc'].replace('/', '／')}
     for route in routeList:
-      if _route['route'] == route['route'] and co in route['co'] and 'gtfs' not in _route:
+      if _route['route'] == route['route'] and co in route['co'] and isGtfsMatch(route, _route):
         if len(_route['stops']) == route['seq']:
           dist = 0
           merge = True
@@ -88,7 +94,7 @@ def importRouteListJson( co ):
           freq = _route.get('freq', None),
           jt = _route.get('jt', None),
           nlbId = _route.get('id', None),
-          gtfsId = _route.get('gtfsId', None),
+          gtfsId = _route.get('gtfsId', _route.get('gtfs', [None])[0]),
           seq = len(_route['stops'])
         )
       )

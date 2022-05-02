@@ -5,7 +5,7 @@ import csv
 import json
 
 if not path.isfile('gtfs.zip'):
-  r = requests.get('https://static.data.gov.hk/td/pt-headway-en/gtfs.zip')
+  r = requests.get('https://static.data.gov.hk/td/pt-headway-tc/gtfs.zip')
   open('gtfs.zip', 'wb').write(r.content)
 
 with zipfile.ZipFile("gtfs.zip","r") as zip_ref:

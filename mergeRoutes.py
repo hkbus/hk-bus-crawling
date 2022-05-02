@@ -49,8 +49,13 @@ def importRouteListJson( co ):
     found = False
     orig = {'en': _route['orig_en'].replace('/', '／'), 'zh': _route['orig_tc'].replace('/', '／')}
     dest = {'en': _route['dest_en'].replace('/', '／'), 'zh': _route['dest_tc'].replace('/', '／')}
+    
     for route in routeList:
       if _route['route'] == route['route'] and co in route['co'] and isGtfsMatch(route, _route):
+        # skip checking if the bound is not the same
+        if co in route["bound"] and route['bound'][co] != _route['bound']:
+          continue
+        
         if len(_route['stops']) == route['seq']:
           dist = 0
           merge = True
@@ -107,6 +112,9 @@ def isMatchStops(stops_a, stops_b, debug = False):
       return True
   return False
 
+def getRouteId(v):
+  return '%s+%s+%s+%s'%(v['route'], v['serviceType'], v['orig']['en'], v['dest']['en'])
+
 def smartUnique():
   _routeList = []
   for i in range(len(routeList)):
@@ -115,11 +123,16 @@ def smartUnique():
     founds = []
     # compare route one-by-one
     for j in range(i+1, len(routeList)):
-      if routeList[i]['route'] == routeList[j]['route'] and \
-        len(routeList[i]['stops']) == len(routeList[j]['stops']) and \
-        len([co for co in routeList[i]['co'] if co in routeList[j]['co']]) == 0 and \
-        isMatchStops(routeList[i]['stops'][0][1], routeList[j]['stops'][0][1]):
+      if routeList[i]['route'] == routeList[j]['route'] \
+        and len(routeList[i]['stops']) == len(routeList[j]['stops']) \
+        and len([co for co in routeList[i]['co'] if co in routeList[j]['co']]) == 0 \
+        and isMatchStops(routeList[i]['stops'][0][1], routeList[j]['stops'][0][1]):
         founds.append( j )
+      elif routeList[i]['route'] == routeList[j]['route'] \
+        and str(routeList[i]['serviceType']) == str(routeList[j]['serviceType']) \
+        and routeList[i]['orig']['en'] == routeList[j]['orig']['en'] \
+        and routeList[i]['dest']['en'] == routeList[j]['dest']['en']:
+        routeList[j]['serviceType'] = str(int(routeList[j]['serviceType'])+1)
 
     # update obj
     for found in founds:
@@ -129,6 +142,7 @@ def smartUnique():
 
     # append return array
     _routeList.append(routeList[i])
+
   return _routeList
       
 importRouteListJson('kmb')
@@ -149,7 +163,7 @@ def standardizeDict(d):
   return {key: value if not isinstance(value, dict) else standardizeDict(value) for key, value in sorted(d.items())}
 
 db = standardizeDict({
-  'routeList': {('%s+%s+%s+%s'%(v['route'], v['serviceType'], v['orig']['en'], v['dest']['en'])): v for v in routeList},
+  'routeList': {getRouteId(v): v for v in routeList},
   'stopList': stopList,
   'stopMap': stopMap,
   'holidays': holidays

@@ -66,6 +66,17 @@ def matchStopsByDp ( coStops, gtfsStops, debug=False ):
   
   return ret, min(distSum[len(gtfsStops)]) / len(gtfsStops) + penalty
 
+def printStopMatches(bestMatch, gtfsStops, stopList, co):
+  stopPair = [(bestMatch[4][gtfsStopIdx], bestMatch[5]["stops"][routeStopIdx]) for gtfsStopIdx, routeStopIdx in bestMatch[2]]
+  print (bestMatch[3], bestMatch[0], bestMatch[1])
+  print ("\t|\t".join(["運輸處", co]))
+  print ("\n".join([
+    str(idx + 1) + "  " + "\t|\t".join(
+      [gtfsStops[gtfsId]["stopName"][co], stopList[stopId]["name_tc"]]) for idx, (gtfsId, stopId) in enumerate(stopPair)]
+    )
+  )
+  print ()
+
 def matchRoutes(co):
   print (co)
   with open( 'routeList.%s.json' % co ) as f:
@@ -76,7 +87,7 @@ def matchRoutes(co):
   extraRoutes = []
   # one pass to find matches of co vs gtfs by DP
   for routeId, routeObj in gtfsRoutes.items():
-    debug = False # routeId in ['1775']
+    debug = False # routeObj['route'] == '788'
     if co == 'gmb' and co in routeObj['co']: # handle for gmb
       for route in routeList:
         if route['gtfsId'] == routeId:
@@ -89,21 +100,19 @@ def matchRoutes(co):
             ret, avgDist = matchStopsByDp([stopList[stop] for stop in route['stops']], [gtfsStops[stop] for stop in stops], debug)
             if avgDist < bestMatch[1]:
               bestMatch = (routeId, avgDist, ret, bound, stops, route)
+        if debug:
+          printStopMatches(bestMatch, gtfsStops, stopList, co)
+
         if bestMatch[1] < DIST_DIFF: # assume matching to be avg stop distance diff is lower than 100
           routeObj = gtfsRoutes[bestMatch[0]]
           ret, bound, stops, route = bestMatch[2:]
-          if len(ret) == len(route['stops']) or len(ret) + 1 == len(route['stops']):
-            if 'gtfs' in route:
-              print(co, route['route'], 'matches multiple GTFS route', file=sys.stderr)
-              route['freq'] = {**routeObj['freq'][bound], **route['freq']}
-              route['co'] = routeObj['co']
-              route['gtfs'].append(routeId)
-            else:
-              route['fares'] = [routeObj['fares'][bound][i] for i, j in ret[:-1]]
-              route['freq'] = routeObj['freq'][bound]
-              route['jt'] = routeObj['jt']
-              route['co'] = routeObj['co']
-              route['gtfs'] = [routeId]
+          
+          if (len(ret) == len(route['stops']) or len(ret) + 1 == len(route['stops'])) and 'gtfs' not in route:
+            route['fares'] = [routeObj['fares'][bound][i] for i, j in ret[:-1]]
+            route['freq'] = routeObj['freq'][bound]
+            route['jt'] = routeObj['jt']
+            route['co'] = routeObj['co']
+            route['gtfs'] = [routeId]
           else:
             extra = route.copy()
             extra['stops'] = [route['stops'][j] for i, j in ret]
@@ -123,7 +132,7 @@ def matchRoutes(co):
             routeObj['_route'] = {}
           routeObj['_route'][co] = route.copy()
         elif co in routeObj['co']:
-          print(co, routeObj['route'], 'cannot match any in GTFS')
+          print(co, routeObj['route'], 'cannot match any in GTFS', file=sys.stderr)
     
   for route in routeList:
     if 'gtfs' not in route:

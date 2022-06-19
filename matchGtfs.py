@@ -1,6 +1,6 @@
 import json
 import sys
-from haversine import haversine, Unit
+from haversine import haversine
 
 INFINITY_DIST = 1000000
 DIST_DIFF = 600
@@ -66,6 +66,39 @@ def matchStopsByDp ( coStops, gtfsStops, debug=False ):
   
   return ret, min(distSum[len(gtfsStops)]) / len(gtfsStops) + penalty
 
+
+def mergeRouteAsCircularRoute(routeA, routeB):
+  return {
+    "co": routeA['co'],
+    "route": routeA["route"],
+    "bound": routeA["bound"] + routeB["bound"],
+    "orig_en": routeA["orig_en"],
+    "orig_tc": routeA["orig_tc"],
+    "dest_en": routeB["dest_en"],
+    "dest_tc": routeB["dest_tc"],
+    "serviceType": routeA["serviceType"],
+    "stops": routeA['stops'] + routeB['stops']
+  }
+
+def getVirtualCircularRoutes(routeList, routeNo):
+  indices = []
+  for idx, route in enumerate(routeList):
+    if route['route'] == routeNo:
+      indices.append(idx)
+  if len(indices) != 2:
+    return []
+  
+  ret = []
+  routeA = routeList[indices[0]]
+  routeB = routeList[indices[1]]
+  if "co" not in routeA or "serviceType" not in routeA:
+    return []
+
+  return [
+    mergeRouteAsCircularRoute(routeA, routeB),
+    mergeRouteAsCircularRoute(routeB, routeA)    
+  ]
+
 def printStopMatches(bestMatch, gtfsStops, stopList, co):
   stopPair = [(bestMatch[4][gtfsStopIdx], bestMatch[5]["stops"][routeStopIdx]) for gtfsStopIdx, routeStopIdx in bestMatch[2]]
   print (bestMatch[3], bestMatch[0], bestMatch[1])
@@ -86,53 +119,54 @@ def matchRoutes(co):
 
   extraRoutes = []
   # one pass to find matches of co vs gtfs by DP
-  for routeId, routeObj in gtfsRoutes.items():
-    debug = False # routeObj['route'] == '788'
-    if co == 'gmb' and co in routeObj['co']: # handle for gmb
+  for gtfsId, gtfsRoute in gtfsRoutes.items():
+    debug = gtfsRoute['route'] == '85'
+    if co == 'gmb' and co in gtfsRoute['co']: # handle for gmb
       for route in routeList:
-        if route['gtfsId'] == routeId:
-          route['fares'] = [routeObj['fares']['1'][0] for i in range(len(route['stops'])-1) ]
-    else: # handle for other companies 
-      for bound, stops in routeObj['stops'].items():
+        if route['gtfsId'] == gtfsId:
+          route['fares'] = [gtfsRoute['fares']['1'][0] for i in range(len(route['stops'])-1) ]
+    elif co in gtfsRoute['co']: # handle for other companies 
+      for bound, stops in gtfsRoute['stops'].items():
         bestMatch = (-1, INFINITY_DIST)
-        for route in routeList:
-          if co in routeObj['co'] and route['route'] == routeObj['route']:
+        for route in routeList + getVirtualCircularRoutes(routeList, gtfsRoute['route']):
+          if co in gtfsRoute['co'] and route['route'] == gtfsRoute['route']:
             ret, avgDist = matchStopsByDp([stopList[stop] for stop in route['stops']], [gtfsStops[stop] for stop in stops], debug)
             if avgDist < bestMatch[1]:
-              bestMatch = (routeId, avgDist, ret, bound, stops, route)
-        if debug:
-          printStopMatches(bestMatch, gtfsStops, stopList, co)
+              bestMatch = (gtfsId, avgDist, ret, bound, stops, route)
+        #if bestMatch[0] == -1:
+        #  print (gtfsRoute['route'], getVirtualRoute(routeList, gtfsRoute['route']))
+        # if debug:
+        #   printStopMatches(bestMatch, gtfsStops, stopList, co)
 
         if bestMatch[1] < DIST_DIFF: # assume matching to be avg stop distance diff is lower than 100
-          routeObj = gtfsRoutes[bestMatch[0]]
           ret, bound, stops, route = bestMatch[2:]
           
           if (len(ret) == len(route['stops']) or len(ret) + 1 == len(route['stops'])) and 'gtfs' not in route:
-            route['fares'] = [routeObj['fares'][bound][i] for i, j in ret[:-1]]
-            route['freq'] = routeObj['freq'][bound]
-            route['jt'] = routeObj['jt']
-            route['co'] = routeObj['co']
-            route['gtfs'] = [routeId]
+            route['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]]
+            route['freq'] = gtfsRoute['freq'][bound]
+            route['jt'] = gtfsRoute['jt']
+            route['co'] = gtfsRoute['co']
+            route['gtfs'] = [gtfsId]
           else:
             extra = route.copy()
             extra['stops'] = [route['stops'][j] for i, j in ret]
-            extra['fares'] = [routeObj['fares'][bound][i] for i, j in ret[:-1]]
-            extra['freq'] = routeObj['freq'][bound]
-            extra['jt'] = routeObj['jt']
-            extra['co'] = routeObj['co']
+            extra['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]]
+            extra['freq'] = gtfsRoute['freq'][bound]
+            extra['jt'] = gtfsRoute['jt']
+            extra['co'] = gtfsRoute['co']
             extra['orig_tc'] = stopList[extra['stops'][0]]['name_tc']
             extra['orig_en'] = stopList[extra['stops'][0]]['name_en']
             extra['dest_tc'] = stopList[extra['stops'][-1]]['name_tc']
             extra['dest_en'] = stopList[extra['stops'][-1]]['name_en']
             extra['service_type'] = "2" if 'found' in route else "1"
-            extra['gtfs'] = [routeId]
+            extra['gtfs'] = [gtfsId]
             route['found'] = True        # mark the route has mapped to GTFS, mainly for nwfb/ctb routes
             extraRoutes.append(extra)
-          if '_route' not in routeObj:
-            routeObj['_route'] = {}
-          routeObj['_route'][co] = route.copy()
-        elif co in routeObj['co']:
-          print(co, routeObj['route'], 'cannot match any in GTFS', file=sys.stderr)
+          if '_route' not in gtfsRoute:
+            gtfsRoute['_route'] = {}
+          gtfsRoute['_route'][co] = route.copy()
+        elif co in gtfsRoute['co']:
+          print(co, gtfsRoute['route'], 'cannot match any in GTFS', file=sys.stderr)
     
   for route in routeList:
     if 'gtfs' not in route:

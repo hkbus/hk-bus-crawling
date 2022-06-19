@@ -4,3 +4,4 @@
 gtfs.zip
 gtfs
 *csv
+__pycache__

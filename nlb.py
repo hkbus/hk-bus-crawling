@@ -38,7 +38,6 @@ def getRouteStop(co):
    
     def getRouteStop(routeId):
         r = requests.post('https://rt.data.gov.hk/v2/transport/nlb/stop.php?action=list&routeId='+routeId)
-        print(r)
         return r.json()['stops']
 
     async def getRouteStopList ():

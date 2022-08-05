@@ -26,7 +26,7 @@ def getRouteStop(co):
         return
     else:
         # load routes
-        r = emitRequest('https://rt.data.gov.hk/v1/transport/citybus-nwfb/route/'+co)
+        r = emitRequest('https://rt.data.gov.hk/v1.1/transport/citybus-nwfb/route/'+co)
         routeList = r.json()['data']
 
     _stops = []
@@ -37,7 +37,7 @@ def getRouteStop(co):
    
     # function to load single stop info
     def getStop ( stopId ):
-        r = emitRequest('https://rt.data.gov.hk/v1/transport/citybus-nwfb/stop/'+stopId)
+        r = emitRequest('https://rt.data.gov.hk/v1.1/transport/citybus-nwfb/stop/'+stopId)
         return r.json()['data']
 
     # function to async load multiple stops info
@@ -55,7 +55,7 @@ def getRouteStop(co):
             return route
         route['stops'] = {}
         for direction in ['inbound', 'outbound']:
-            r = emitRequest('https://rt.data.gov.hk/v1/transport/citybus-nwfb/route-stop/'+co.upper()+'/'+route['route']+"/"+direction)
+            r = emitRequest('https://rt.data.gov.hk/v1.1/transport/citybus-nwfb/route-stop/'+co.upper()+'/'+route['route']+"/"+direction)
             route['stops'][direction] = [stop['stop'] for stop in r.json()['data']]
         return route
 

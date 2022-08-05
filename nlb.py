@@ -14,7 +14,7 @@ def getRouteStop(co):
         return
     else:
         # load routes
-        r = requests.get('https://rt.data.gov.hk/v1/transport/nlb/route.php?action=list')
+        r = requests.get('https://rt.data.gov.hk/v2/transport/nlb/route.php?action=lists')
         routeList = []
         for route in r.json()['routes']:
             routeList.append({
@@ -37,7 +37,7 @@ def getRouteStop(co):
             stopList = json.load(f)
    
     def getRouteStop(routeId):
-        r = requests.post('https://rt.data.gov.hk/v1/transport/nlb/stop.php?action=list', data = '{"routeId": "'+routeId+'"}')
+        r = requests.post('https://rt.data.gov.hk/v2/transport/nlb/stop.php?action=list', data = '{"routeId": "'+routeId+'"}')
         return r.json()['stops']
 
     async def getRouteStopList ():

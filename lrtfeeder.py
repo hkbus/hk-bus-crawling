@@ -38,6 +38,7 @@ for [route, chn, eng, circular] in routes:
 
 # Parse stops
 r = requests.get('https://opendata.mtr.com.hk/data/mtr_bus_stops.csv')
+r.encoding = 'utf-8'
 reader = csv.reader(r.text.split("\n") )
 headers = next(reader,None)
 stops = [stop for stop in reader if len(stop) == 8]

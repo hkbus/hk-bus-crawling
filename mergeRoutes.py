@@ -1,4 +1,5 @@
 import json
+from sys import stderr
 from haversine import haversine, Unit
 
 routeList = []
@@ -34,16 +35,19 @@ def importRouteListJson( co ):
   _stopList = json.load(open('stopList.%s.json'%co))
   for stopId, stop in _stopList.items():
     if stopId not in stopList:
-      stopList[stopId] = {
-        'name': {
-          'en': stop['name_en'],
-          'zh': stop['name_tc']
-        },
-        'location': {
-          'lat': float(stop['lat']),
-          'lng': float(stop['long'])
+      try:
+        stopList[stopId] = {
+          'name': {
+            'en': stop['name_en'],
+            'zh': stop['name_tc']
+          },
+          'location': {
+            'lat': float(stop['lat']),
+            'lng': float(stop['long'])
+          }
         }
-      }
+      except:
+        print("Problematic stop: ", stopId, file=stderr)
   
   for _route in _routeList:
     found = False

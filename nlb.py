@@ -38,7 +38,11 @@ def getRouteStop(co):
    
     def getRouteStop(routeId):
         r = requests.post('https://rt.data.gov.hk/v2/transport/nlb/stop.php?action=list&routeId='+routeId)
-        return r.json()['stops']
+        try:
+            return r.json()['stops']
+        except Exception as err:
+            print(r)
+            raise err
 
     async def getRouteStopList ():
         loop = asyncio.get_event_loop()

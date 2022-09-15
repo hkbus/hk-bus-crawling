@@ -2,6 +2,18 @@ import requests
 import json
 from os import path
 import asyncio
+import time
+
+def emitRequest(url):
+  # retry if "Too many request (429)"
+  while True:
+    r = requests.get(url)
+    if r.status_code == 200:
+      return r
+    elif r.status_code == 429 or r.status_code == 502:
+      time.sleep(1)
+    else:
+      raise Exception(r.status_code, url)
 
 def getRouteStop(co):
     # define output name
@@ -14,7 +26,7 @@ def getRouteStop(co):
         return
     else:
         # load routes
-        r = requests.get('https://rt.data.gov.hk/v2/transport/nlb/route.php?action=list')
+        r = emitRequest('https://rt.data.gov.hk/v2/transport/nlb/route.php?action=list')
         routeList = []
         for route in r.json()['routes']:
             routeList.append({
@@ -37,7 +49,7 @@ def getRouteStop(co):
             stopList = json.load(f)
    
     def getRouteStop(routeId):
-        r = requests.post('https://rt.data.gov.hk/v2/transport/nlb/stop.php?action=list&routeId='+routeId)
+        r = emitRequest('https://rt.data.gov.hk/v2/transport/nlb/stop.php?action=list&routeId='+routeId)
         try:
             return r.json()['stops']
         except Exception as err:

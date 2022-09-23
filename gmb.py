@@ -29,6 +29,7 @@ def mapServiceId(weekdays):
   for service_id in serviceIdMap:
     if all(i == j for i, j in zip(serviceIdMap[service_id], weekdays)):
       return service_id
+  return 999
   raise Exception("No service ID for weekdays: "+json.dumps(weekdays))
 
 def getFreq(headways):

@@ -95,10 +95,8 @@ def getRouteStop(co):
                     'bound': 'O' if bound == 'outbound' else 'I',
                     'orig_en': route['orig_en'] if bound == 'outbound' else route['dest_en'],
                     'orig_tc': route['orig_tc'] if bound == 'outbound' else route['dest_tc'],
-                    'orig_sc': route['orig_sc'] if bound == 'outbound' else route['dest_sc'],
                     'dest_en': route['dest_en'] if bound == 'outbound' else route['orig_en'],
                     'dest_tc': route['dest_tc'] if bound == 'outbound' else route['orig_tc'],
-                    'dest_sc': route['dest_sc'] if bound == 'outbound' else route['orig_sc'],
                     'stops': list(filter(lambda stopId: bool(stopList[stopId]), route['stops'][bound])),
                     'serviceType': 0
                 })

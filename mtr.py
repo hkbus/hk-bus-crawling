@@ -12,6 +12,7 @@ routeList = {}
 stopList = {}
 
 r = requests.get('https://opendata.mtr.com.hk/data/mtr_lines_and_stations.csv')
+r.encoding = 'utf-8'
 reader = csv.reader(r.text.split("\n") )
 headers = next(reader,None)
 routes = [route for route in reader if len(route) == 7]
@@ -31,7 +32,7 @@ for [route, bound, stopCode, stopId, chn, eng, seq] in routes:
       "stops": [None] * 100,
       "fare": []
     }
-  if seq == "1":
+  if int(float(seq)) == 1:
     routeList[route+"_"+bound]["orig_tc"] = chn
     routeList[route+"_"+bound]["orig_en"] = eng
   routeList[route+"_"+bound]["dest_tc"] = chn

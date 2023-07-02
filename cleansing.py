@@ -48,7 +48,6 @@ def cleansing(co):
   
 
 cleansing ('kmb')
-cleansing ('nwfb')
 cleansing ('ctb')
 cleansing ('nlb')
 cleansing ('lrtfeeder')

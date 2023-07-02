@@ -105,6 +105,5 @@ def getRouteStop(co):
         f.write(json.dumps(_routeList, ensure_ascii=False))
     with open(STOP_LIST, 'w') as f:
         f.write(json.dumps(stopList, ensure_ascii=False))
-
-getRouteStop('nwfb')
+        
 getRouteStop('ctb')

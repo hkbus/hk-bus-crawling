@@ -180,7 +180,6 @@ def matchRoutes(co):
     f.write(json.dumps(routeList, ensure_ascii=False))
   
 matchRoutes('kmb')
-matchRoutes('nwfb')
 matchRoutes('ctb')
 matchRoutes('nlb')
 matchRoutes('lrtfeeder')

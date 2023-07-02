@@ -150,7 +150,6 @@ def smartUnique():
   return _routeList
       
 importRouteListJson('kmb')
-importRouteListJson('nwfb')
 importRouteListJson('ctb')
 importRouteListJson('nlb')
 importRouteListJson('lrtfeeder')

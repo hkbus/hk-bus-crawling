@@ -142,7 +142,7 @@ def matchRoutes(co):
           ret, bound, stops, route = bestMatch[2:]
           
           if (len(ret) == len(route['stops']) or len(ret) + 1 == len(route['stops'])) and 'gtfs' not in route:
-            route['fares'] = [(gtfsRoute['fares'][bound][i] if i < len(gtfsRoute['fares'][bound]) else None) for i, j in ret[:-1]]
+            route['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) <= len(gtfsRoute["fares"][bound]) + 1 else None
             route['freq'] = gtfsRoute['freq'][bound]
             route['jt'] = gtfsRoute['jt']
             route['co'] = gtfsRoute['co']
@@ -150,7 +150,7 @@ def matchRoutes(co):
           else:
             extra = route.copy()
             extra['stops'] = [route['stops'][j] for i, j in ret]
-            extra['fares'] = [(gtfsRoute['fares'][bound][i] if i < len(gtfsRoute['fares'][bound]) else None) for i, j in ret[:-1]]
+            extra['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) <= len(gtfsRoute["fares"][bound]) + 1 else None
             extra['freq'] = gtfsRoute['freq'][bound]
             extra['jt'] = gtfsRoute['jt']
             extra['co'] = gtfsRoute['co']

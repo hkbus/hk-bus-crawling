@@ -15,7 +15,7 @@ def isNameMatch(name_a, name_b):
     tmp_b = name_b.lower()
     return tmp_a.find(tmp_b) >= 0 or tmp_b.find(tmp_a) >= 0
 
-# nwfb, ctb routes only give list of stops in topological order
+# ctb routes only give list of stops in topological order
 # the actual servicing routes may skip some stop in the coStops
 # this DP function is trying to map the coStops back to GTFS stops
 def matchStopsByDp ( coStops, gtfsStops, debug=False ):
@@ -160,7 +160,7 @@ def matchRoutes(co):
             extra['dest_en'] = stopList[extra['stops'][-1]]['name_en']
             extra['service_type'] = "2" if 'found' in route else "1"
             extra['gtfs'] = [gtfsId]
-            route['found'] = True        # mark the route has mapped to GTFS, mainly for nwfb/ctb routes
+            route['found'] = True        # mark the route has mapped to GTFS, mainly for ctb routes
             extraRoutes.append(extra)
           if '_route' not in gtfsRoute:
             gtfsRoute['_route'] = {}
@@ -189,7 +189,7 @@ matchRoutes('mtr')
 
 '''
 for routeId, route in gtfsRoutes.items():
-  if '_route' not in route and route['co'][0] in ['nwfb', 'ctb', 'kmb', 'nlb']:
+  if '_route' not in route and route['co'][0] in ['ctb', 'kmb', 'nlb']:
     print(routeId + ': ' + route['route'] + " " + route['orig']['zh'] + ' - ' + route['dest']['zh'] + ' not found')
 '''
 

@@ -37,7 +37,7 @@ jobs:
           python cleansing.py
           python mergeRoutes.py
       - name: Update MD5
-        run: md5sum routeFareList.min.json | cut -f1 -d ' ' > routeFareList.md5
+        run: md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
       - name: Update resources
         uses: test-room-7/action-update-file@v1
         with:

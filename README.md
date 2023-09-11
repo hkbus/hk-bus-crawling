@@ -11,26 +11,26 @@ Daily fetched JSON is in [gh-pages](https://github.com/hkbus/hk-bus-crawling/tre
 
 To install the dependencies,
 ```
-pip install -r requirements.txt
+pip install -r ./crawling/requirements.txt
 ```
 
 ## Data Fetching
 
 To fetch data, run the followings,
 ```
-python parseHoliday.py
-python ctb.py
-python kmb.py
-python nlb.py
-python lrtfeeder.py
-python lightRail.py
-python mtr.py
-python parseJourneyTime.py
-python parseGtfs.py
-python gmb.py
-python matchGtfs.py
-python cleansing.py
-python mergeRoutes.py
+python ./crawling/parseHoliday.py
+python ./crawling/ctb.py
+python ./crawling/kmb.py
+python ./crawling/nlb.py
+python ./crawling/lrtfeeder.py
+python ./crawling/lightRail.py
+python ./crawling/mtr.py
+python ./crawling/parseJourneyTime.py
+python ./crawling/parseGtfs.py
+python ./crawling/gmb.py
+python ./crawling/matchGtfs.py
+python ./crawling/cleansing.py
+python ./crawling/mergeRoutes.py
 ```
 
 ## Citing 

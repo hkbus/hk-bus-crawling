@@ -20,22 +20,22 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r ./crawling/requirements.txt
       - name: Crawling resources
         run: |
-          python parseHoliday.py
-          python ctb.py
-          python kmb.py
-          python nlb.py
-          python lrtfeeder.py
-          python lightRail.py
-          python mtr.py
-          python parseJourneyTime.py
-          python parseGtfs.py
-          python gmb.py
-          python matchGtfs.py
-          python cleansing.py
-          python mergeRoutes.py
+          python ./crawling/parseHoliday.py
+          python ./crawling/ctb.py
+          python ./crawling/kmb.py
+          python ./crawling/nlb.py
+          python ./crawling/lrtfeeder.py
+          python ./crawling/lightRail.py
+          python ./crawling/mtr.py
+          python ./crawling/parseJourneyTime.py
+          python ./crawling/parseGtfs.py
+          python ./crawling/gmb.py
+          python ./crawling/matchGtfs.py
+          python ./crawling/cleansing.py
+          python ./crawling/mergeRoutes.py
       - name: Update MD5
         run: md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
       - name: Update resources

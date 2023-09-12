@@ -5,3 +5,6 @@ gtfs.zip
 gtfs
 *csv
 __pycache__
+dist
+build
+hk_bus_eta.egg-info

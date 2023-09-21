@@ -161,6 +161,7 @@ for route in routeList:
   route['stops'] = {co: stops for co, stops in route['stops']}
 
 holidays = json.load(open('holiday.json'))
+serviceDayMap = json.load(open('gtfs.json'))['serviceDayMap']
 
 def standardizeDict(d):
   return {key: value if not isinstance(value, dict) else standardizeDict(value) for key, value in sorted(d.items())}
@@ -169,7 +170,8 @@ db = standardizeDict({
   'routeList': {getRouteId(v): v for v in routeList},
   'stopList': stopList,
   'stopMap': stopMap,
-  'holidays': holidays
+  'holidays': holidays,
+  'serviceDayMap': serviceDayMap,
 })
 
 with open( 'routeFareList.json', 'w' ) as f:

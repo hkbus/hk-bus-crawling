@@ -13,6 +13,7 @@ with zipfile.ZipFile("gtfs.zip","r") as zip_ref:
 
 routeList = {}
 stopList = {}
+serviceDayMap = {}
 routeJourneyTime = json.load(open('routeTime.json'))
 
 with open('gtfs/routes.txt') as csvfile:
@@ -113,9 +114,17 @@ with open('gtfs/stops.txt') as csvfile:
       'lng': float(stop_lon) 
     }
 
+with open('gtfs/calendar.txt') as csvfile:
+  reader = csv.reader(csvfile)
+  headers = next(reader, None)
+  for line in reader:
+    [service_id,mon,tue,wed,thur,fri,sat,sun, start_date, end_date] = line
+    serviceDayMap[service_id] = [sun, mon, tue, wed, thur, fri, sat]
+
 import json
 with open('gtfs.json', 'w') as f:
   f.write(json.dumps({
     'routeList': routeList,
-    'stopList': stopList
+    'stopList': stopList,
+    "serviceDayMap": serviceDayMap,
   }, ensure_ascii=False, indent=2))

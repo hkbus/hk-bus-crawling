@@ -14,7 +14,6 @@ with open('routeFareList.json', 'r', encoding="utf8") as read_file:
         del route_data["seq"]
     if "serviceDayMap" in data:
         del data["serviceDayMap"]
-    del data["stopMap"]
 
     with open('routeFareList.strip.json', 'w', encoding="utf-8") as output_file:
         output_file.write(json.dumps(data, ensure_ascii=False, separators=(',', ':')))

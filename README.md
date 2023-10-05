@@ -4,6 +4,8 @@
 
 This project is to fetch the bus route information of KMB, CTB, minibus, MTR, lightrail into one single JSON. It is daily synced to data.gov.hk and launched in gh-pages.
 
+**This fork additionally creates a stripped version output with certain data omitted. For details, see [crawling/createStripped.py](https://github.com/LOOHP/hk-bus-crawling/blob/master/crawling/createStripped.py).**
+
 ## Fetching Transport ETA
 
 The package is a python vertion for the npm package [hk-bus-eta](https://www.npmjs.com/package/hk-bus-eta).
@@ -73,6 +75,9 @@ python ./crawling/gmb.py
 python ./crawling/matchGtfs.py
 python ./crawling/cleansing.py
 python ./crawling/mergeRoutes.py
+
+# Additional script from this fork
+python ./crawling/createStripped.py
 ```
 
 ## Citing 

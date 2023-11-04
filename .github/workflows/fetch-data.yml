@@ -2,7 +2,7 @@ name: Data Fetching
 on: 
   push:
   schedule:
-    - cron: "5 19 * * *"
+    - cron: "30 18 * * *"
   workflow_dispatch:
 
 jobs:

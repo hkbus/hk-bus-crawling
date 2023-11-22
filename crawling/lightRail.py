@@ -39,7 +39,6 @@ for [route, bound, stopCode, stopId, chn, eng, seq] in routes:
   if "LR"+stopId not in stopList:
     while True:
       try:
-        print(chn)
         r = requests.get('https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q=輕鐵－' + chn, headers={'Accept': 'application/json'})
         lat, lng = epsgTransformer.transform(r.json()[0]['y'], r.json()[0]['x'])
         stopList["LR" + stopId] = {

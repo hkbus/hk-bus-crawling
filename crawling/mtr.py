@@ -4,6 +4,7 @@
 import csv
 import requests
 import json
+from json.decoder import JSONDecodeError
 from pyproj import Transformer
 
 epsgTransformer = Transformer.from_crs('epsg:2326', 'epsg:4326')
@@ -39,15 +40,20 @@ for [route, bound, stopCode, stopId, chn, eng, seq] in routes:
   routeList[route+"_"+bound]["dest_en"] = eng
   routeList[route+"_"+bound]["stops"][int(float(seq))] = stopCode
   if stopCode not in stopList:
-    r = requests.get('https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q=港鐵'+chn+"站", headers={'Accept': 'application/json'})
-    lat, lng = epsgTransformer.transform( r.json()[0]['y'], r.json()[0]['x'] )
-    stopList[stopCode] = {
-      "stop": stopCode,
-      "name_en": eng,
-      "name_tc": chn,
-      "lat": lat,
-      "long": lng
-    }
+    while True:
+      try:
+        r = requests.get('https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q=港鐵'+chn+"站", headers={'Accept': 'application/json'})
+        lat, lng = epsgTransformer.transform( r.json()[0]['y'], r.json()[0]['x'] )
+        stopList[stopCode] = {
+          "stop": stopCode,
+          "name_en": eng,
+          "name_tc": chn,
+          "lat": lat,
+          "long": lng
+        }
+        break
+      except JSONDecodeError as e:
+        print(e)
 
 def filterStops(route):
   route['stops'] = [stop for stop in route['stops'] if stop is not None]

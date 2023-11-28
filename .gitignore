@@ -9,3 +9,4 @@ dist
 build
 hk_bus_eta.egg-info
 waypoints
+*.zip

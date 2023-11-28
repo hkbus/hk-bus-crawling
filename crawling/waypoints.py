@@ -2,27 +2,21 @@ import requests
 import json
 import re
 import os
-import asyncio
+import zipfile
+import io
 
-r = requests.get('https://api.csdi.gov.hk/apim/dataquery/api/?id=td_rcd_1638844988873_41214&layer=fb_route_line&limit=1')
-r.encoding = 'utf-8'
-data = json.loads(r.text)
-cnt = data["numberMatched"]
+r = requests.get("https://static.csdi.gov.hk/csdi-webpage/download/common/51bbe0d88d421c1e94572e503ad0428fabe11e3300c40e221146550044e54de5")
+z = zipfile.ZipFile(io.BytesIO(r.content))
+with z.open("FB_ROUTE_LINE.json") as f:
+  data = json.loads(re.sub(r"([0-9]+\.[0-9]{6})[0-9]+", r"\1", f.read().decode("utf-8")).replace("\n", ""))
 
+print (data["type"])
 os.makedirs("waypoints", exist_ok=True)
 
-def getWaypoints(offset):
-  r = requests.get('https://api.csdi.gov.hk/apim/dataquery/api/?id=td_rcd_1638844988873_41214&layer=fb_route_line&limit=50&offset='+str(offset))
-  r.encoding = 'utf-8'
-  data = json.loads(re.sub(r"([0-9]+\.[0-9]{6})[0-9]+", r"\1", r.text).replace("\n", ""))
-  for feature in data["features"]:
-    properties = feature["properties"]
-    with open("waypoints/"+str(properties["ROUTE_ID"])+"-"+str(properties["ROUTE_SEQ"])+".json", "w") as f:
-      f.write(json.dumps({
-        "timeStamp": data["timeStamp"],
-        "features": [feature],
-        "type": "FeatureCollection"
-      }, ensure_ascii=False))
-  
-loop = asyncio.get_event_loop()
-futures = [loop.run_in_executor(None, getWaypoints, offset) for offset in range(0, cnt+1, 50)]
+for feature in data["features"]:
+  properties = feature["properties"]
+  with open("waypoints/"+str(properties["ROUTE_ID"])+"-"+("O" if properties["ROUTE_SEQ"] == 1 else "I")+".json", "wt") as f:
+    f.write(json.dumps({
+      "features": [feature],
+      "type": "FeatureCollection"
+    }, ensure_ascii=False))

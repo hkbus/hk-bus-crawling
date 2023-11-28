@@ -36,6 +36,7 @@ jobs:
           python ./crawling/matchGtfs.py
           python ./crawling/cleansing.py
           python ./crawling/mergeRoutes.py
+          python ./crawling/waypoints.py
       - name: Update MD5
         run: md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
       - name: Update resources
@@ -45,6 +46,7 @@ jobs:
               routeFareList.json
               routeFareList.min.json
               routeFareList.md5
+              waypoints/*.json
             commit-msg: Update resources
             github-token: ${{ secrets.GITHUB_TOKEN }}
             branch: gh-pages

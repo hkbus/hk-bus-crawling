@@ -82,5 +82,9 @@ Please kindly state you are using this app as
 HK Bus Crawling@2021, https://github.com/hkbus/hk-bus-crawling
 `
 
+## Waypoint data
+
+You may refer to the repository [HK Bus WayPoints Crawling](https://github.com/hkbus/route-waypoints)
+
 ## Contributors
 [ChunLaw](http://github.com/chunlaw/)

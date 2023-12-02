@@ -1,9 +1,7 @@
-import zipfile
-import requests
-from os import path
-import csv
 import json
-import codecs
+from os import path
+
+import requests
 
 if not path.isfile('holiday.json'):
   r = requests.get('https://www.1823.gov.hk/common/ical/tc.json')

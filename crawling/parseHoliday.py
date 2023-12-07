@@ -3,7 +3,6 @@ import logging
 from os import path
 
 import httpx
-import requests
 import asyncio
 
 logger = logging.getLogger(__name__)

@@ -18,7 +18,7 @@ import hashlib
 def get_platform_display(plat, lang):
     number = int(plat) if isinstance(plat, str) else plat
     if number < 0 or number > 20:
-        return f"Platform {number}" if lang == "en" else f"{number}號月台"
+        return ("Platform {}" if lang == "en" else "{}號月台").format(number)
     if number == 0:
         return "⓿"
     if number > 10:

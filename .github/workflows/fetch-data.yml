@@ -1,8 +1,8 @@
 name: Data Fetching
 on: 
   push:
-  schedule:
-    - cron: "5 19 * * *"
+  # schedule:
+  #   - cron: "5 19 * * *"
   workflow_dispatch:
 
 jobs:
@@ -26,28 +26,27 @@ jobs:
       - name: Crawling resources
         run: |
           python ./crawling/parseHoliday.py
-          python ./crawling/ctb.py
-          python ./crawling/kmb.py
-          python ./crawling/nlb.py
-          python ./crawling/lrtfeeder.py
-          python ./crawling/lightRail.py
-          python ./crawling/mtr.py
-          python ./crawling/parseJourneyTime.py
-          python ./crawling/parseGtfs.py
-          python ./crawling/gmb.py
-          python ./crawling/matchGtfs.py
-          python ./crawling/cleansing.py
-          python ./crawling/mergeRoutes.py
+          # python ./crawling/ctb.py
+          # python ./crawling/kmb.py
+          # python ./crawling/nlb.py
+          # python ./crawling/lrtfeeder.py
+          # python ./crawling/lightRail.py
+          # python ./crawling/mtr.py
+          # python ./crawling/parseJourneyTime.py
+          # python ./crawling/parseGtfs.py
+          # python ./crawling/gmb.py
+          # python ./crawling/matchGtfs.py
+          # python ./crawling/cleansing.py
+          # python ./crawling/mergeRoutes.py
       - name: Update MD5
         run: md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
-      - name: Update resources
-        uses: test-room-7/action-update-file@v1
-        with:
-            file-path: |
-              routeFareList.json
-              routeFareList.min.json
-              routeFareList.md5
-              CNAME
-            commit-msg: Update resources
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            branch: gh-pages
+      # - name: Update resources
+      #   uses: test-room-7/action-update-file@v1
+      #   with:
+      #       file-path: |
+      #         routeFareList.json
+      #         routeFareList.min.json
+      #         routeFareList.md5
+      #       commit-msg: Update resources
+      #       github-token: ${{ secrets.GITHUB_TOKEN }}
+      #       branch: gh-pages

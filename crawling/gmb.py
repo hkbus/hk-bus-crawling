@@ -22,7 +22,7 @@ async def emitRequest(url:str,client: httpx.AsyncClient):
       else:
         r.raise_for_status()
         raise Exception(r.status_code, url)
-    except (httpx.PoolTimeout, httpx.ReadTimeout) as e:
+    except (httpx.PoolTimeout, httpx.ReadTimeout, httpx.ReadError) as e:
       logger.warning(f"Exception {e} occurred, retrying")
       await asyncio.sleep(1)
 

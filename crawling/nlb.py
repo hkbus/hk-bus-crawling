@@ -3,21 +3,11 @@ import json
 import logging
 from os import path
 
+from crawling.crawl_utils import emitRequest
+
 import httpx
 
 logger=logging.getLogger(__name__)
-
-async def emitRequest(url:str, client:httpx.AsyncClient):
-  # retry if "Too many request (429)"
-  while True:
-    r = await client.get(url)
-    if r.status_code == 200:
-      return r
-    elif r.status_code == 429 or r.status_code == 502:
-      await asyncio.sleep(1)
-    else:
-      r.raise_for_status()
-      raise Exception(r.status_code, url)
 
 async def getRouteStop(co):
     # define output name

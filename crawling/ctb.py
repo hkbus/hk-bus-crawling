@@ -1,19 +1,8 @@
-import requests
 import json
 from os import path
 import asyncio
-import time
-
-def emitRequest(url):
-  # retry if "Too many request (429)"
-  while True:
-    r = requests.get(url)
-    if r.status_code == 200:
-      return r
-    elif r.status_code == 429:
-      time.sleep(1)
-    else:
-      raise Exception(r.status_code, url)
+import httpx
+from .crawl_utils import emitRequest
 
 def getRouteStop(co):
     # define output name

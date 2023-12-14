@@ -25,6 +25,7 @@ jobs:
           pip install -r ./crawling/requirements.txt
       - name: Crawling resources
         run: |
+          set -o xtrace
           python ./crawling/parseHoliday.py
           # python ./crawling/ctb.py
           # python ./crawling/kmb.py
@@ -35,9 +36,27 @@ jobs:
           python ./crawling/parseJourneyTime.py
           python ./crawling/parseGtfs.py
           python ./crawling/gmb.py
-          # python ./crawling/matchGtfs.py
-          # python ./crawling/cleansing.py
-          # python ./crawling/mergeRoutes.py
+          python ./crawling/matchGtfs.py
+          python ./crawling/cleansing.py
+          python ./crawling/mergeRoutes.py
+
+      - name: Archive crawling outputs
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Crawled Files
+          retention-days: 14
+          path: |
+            holiday.json
+            routeFareList*
+            routeList*
+            stopList*
+            routeTime.json
+            gtfs
+            gtfs.json
+            routeGtfs*
+            gtfs.zip
+            ROUTE_BUS.xml
       - name: Update MD5
         run: md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
       # - name: Update resources

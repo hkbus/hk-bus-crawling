@@ -5,13 +5,12 @@ import json
 import logging
 
 import httpx
+
 from .crawl_utils import emitRequest
 
 logger = logging.getLogger(__name__)
 
-REQUEST_LIMIT = 20
-
-
+REQUEST_LIMIT = 10
 
 async def getRouteStop(co):
   a_client = httpx.AsyncClient()

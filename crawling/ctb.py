@@ -100,4 +100,5 @@ async def getRouteStop(co):
         
 if __name__=='__main__':
     logging.basicConfig(level=logging.INFO)
+    logging.getLogger('httpx').setLevel(logging.WARNING)
     asyncio.run(getRouteStop('ctb'))

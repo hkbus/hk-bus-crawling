@@ -2,7 +2,8 @@ import json
 from os import path
 import asyncio
 import httpx
-from .crawl_utils import emitRequest
+
+from crawling.crawl_utils import emitRequest
 
 def getRouteStop(co):
     # define output name

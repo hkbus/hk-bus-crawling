@@ -6,7 +6,7 @@ import logging
 
 import httpx
 
-from .crawl_utils import emitRequest
+from crawling.crawl_utils import emitRequest
 
 logger = logging.getLogger(__name__)
 

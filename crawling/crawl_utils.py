@@ -15,9 +15,7 @@ async def emitRequest(url:str,client: httpx.AsyncClient):
         await asyncio.sleep(1)
       else:
         r.raise_for_status()
-        e = httpx.HTTPError(f"{r.status_code} response status")
-        e.request = r.request
-        raise e
+        raise Exception(r.status_code, url)
     except (httpx.PoolTimeout, httpx.ReadTimeout, httpx.ReadError) as e:
-      logger.warning(f"Exception {str(e)} occurred, retrying")
+      logger.warning(f"Exception {e} occurred, retrying")
       await asyncio.sleep(1)

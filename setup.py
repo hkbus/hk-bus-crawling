@@ -21,7 +21,7 @@ setup(
     long_description=long_description,
     packages=find_packages(),
     install_requires=['requests'],
-    keywords=['python', 'hongkong', 'eta', 'estimated time of arrival', 'kmb', 'mtr', 'ctb', 'minibus', 'lightrail'],
+    keywords=['python', 'hongkong', 'eta', 'estimated time of arrival', 'kmb', 'nlb', 'mtr', 'ctb', 'minibus', 'lightrail'],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

@@ -7,7 +7,7 @@ Github: https://github.com/chunlaw
 
 __author__ = "Chun Law"
 __email__ = "chunlaw@rocketmail.com"
-__status__ = "proudction"
+__status__ = "production"
 
 import requests
 import time

@@ -149,6 +149,7 @@ def matchRoutes(co):
             route['freq'] = gtfsRoute['freq'][bound]
             route['jt'] = gtfsRoute['jt']
             route['co'] = gtfsRoute['co']
+            route['url'] = gtfsRoute['url']
             route['gtfs'] = [gtfsId]
           else:
             extra = route.copy()
@@ -157,6 +158,7 @@ def matchRoutes(co):
             extra['freq'] = gtfsRoute['freq'][bound]
             extra['jt'] = gtfsRoute['jt']
             extra['co'] = gtfsRoute['co']
+            extra['url'] = gtfsRoute['url']
             extra['orig_tc'] = stopList[extra['stops'][0]]['name_tc']
             extra['orig_en'] = stopList[extra['stops'][0]]['name_en']
             extra['dest_tc'] = stopList[extra['stops'][-1]]['name_tc']

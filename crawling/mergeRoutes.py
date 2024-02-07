@@ -6,7 +6,7 @@ routeList = []
 stopList = {}
 stopMap = {}
 
-def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, faresHoliday, freq, jt, nlbId, gtfsId, serviceType = 1):
+def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, faresHoliday, freq, jt, nlbId, gtfsId, serviceType, url):
   return {
     'route': route,
     'co': co,
@@ -21,7 +21,8 @@ def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, faresHoliday,
     'jt': jt,
     'nlbId': nlbId,
     'gtfsId': gtfsId,
-    'seq': seq
+    'seq': seq,
+    'url': url
   }
 
 def isGtfsMatch(knownRoute, newRoute):
@@ -104,7 +105,8 @@ def importRouteListJson( co ):
           jt = _route.get('jt', None),
           nlbId = _route.get('id', None),
           gtfsId = _route.get('gtfsId', _route.get('gtfs', [None])[0]),
-          seq = len(_route['stops'])
+          seq = len(_route['stops']),
+          url = _route.get('url', None)
         )
       )
 

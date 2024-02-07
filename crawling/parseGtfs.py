@@ -34,7 +34,8 @@ with open('gtfs/routes.txt') as csvfile:
         'zh': '',
         'en': route_long_name.split(' - ')[1].replace(' (CIRCULAR)', '')
       },
-      'jt': routeJourneyTime[route_id]["journeyTime"] if route_id in routeJourneyTime else None
+      'jt': routeJourneyTime[route_id]["journeyTime"] if route_id in routeJourneyTime else None,
+      'url': route_url
     }
   
 def takeFirst(elem):

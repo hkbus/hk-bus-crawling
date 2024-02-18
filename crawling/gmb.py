@@ -78,7 +78,7 @@ async def getRouteStop(co):
     async with req_route_limit:
       r = await emitRequest('https://data.etagmb.gov.hk/route/'+region+'/'+route_no, a_client)
       await asyncio.gather(*[get_route_directions(route, route_no) for route in r.json()['data']])
-    routeList.sort(lambda a: a['gtfsId'])
+    routeList.sort(key = lambda a: a['gtfsId'])
 
   req_route_region_limit = asyncio.Semaphore(REQUEST_LIMIT)
   async def get_routes_region(region: str):

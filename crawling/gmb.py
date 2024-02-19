@@ -23,17 +23,17 @@ async def getRouteStop(co):
       serviceIdMap[service_id] = [mon == "1", tue == "1", wed == "1", thur == "1", fri == "1", sat == "1", sun == "1"]
     serviceIdMap["111"] = [True, True, False, True, True, True, True]
 
-  def mapServiceId(weekdays):
-    for service_id in serviceIdMap:
-      if all(i == j for i, j in zip(serviceIdMap[service_id], weekdays)):
+  def mapServiceId(weekdays, serviceIdMap_a):
+    for service_id in serviceIdMap_a:
+      if all(i == j for i, j in zip(serviceIdMap_a[service_id], weekdays)):
         return service_id
     return 999
     raise Exception("No service ID for weekdays: "+json.dumps(weekdays))
 
-  def getFreq(headways):
+  def getFreq(headways, serviceIdMap_a):
     freq = {}
     for headway in headways:
-      service_id = mapServiceId( headway['weekdays'] )
+      service_id = mapServiceId( headway['weekdays'] , serviceIdMap_a)
       if service_id not in freq:
         freq[service_id] = {}
       freq[service_id][headway['start_time'].replace(':', '')[:4]] = [
@@ -67,7 +67,7 @@ async def getRouteStop(co):
         "bound": 'O' if direction['route_seq'] == 1 else 'I',
         "service_type": 1 if route["description_tc"] == '正常班次' else service_type,
         "stops": [str(stop['stop_id']) for stop in rs.json()['data']['route_stops']],
-        "freq": getFreq(direction['headways'])
+        "freq": getFreq(direction['headways'], serviceIdMap)
       })
       #print(routeList)
       if route["description_tc"] != '正常班次':

@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 REQUEST_LIMIT = 10
 
 async def getRouteStop(co):
-    a_client = httpx.AsyncClient()
+    a_client = httpx.AsyncClient(timeout=httpx.Timeout(30.0, pool=None))
     # define output name
     ROUTE_LIST = 'routeList.'+co+'.json'
     STOP_LIST = 'stopList.'+co+'.json'

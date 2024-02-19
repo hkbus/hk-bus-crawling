@@ -12,6 +12,7 @@ async def emitRequest(url:str,client: httpx.AsyncClient):
       if r.status_code == 200:
         return r
       elif r.status_code == 429 or r.status_code == 502:
+        logger.warning(f"status_code={r.status_code}, wait and retry")
         await asyncio.sleep(1)
       else:
         r.raise_for_status()

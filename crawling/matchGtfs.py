@@ -80,7 +80,8 @@ def mergeRouteAsCircularRoute(routeA, routeB):
     "dest_en": routeB["dest_en"],
     "dest_tc": routeB["dest_tc"],
     "serviceType": routeA["serviceType"],
-    "stops": routeA['stops'] + routeB['stops']
+    "stops": routeA['stops'] + routeB['stops'],
+    "virtual": True,
   }
 
 def getVirtualCircularRoutes(routeList, routeNo):
@@ -144,7 +145,7 @@ def matchRoutes(co):
         if bestMatch[1] < DIST_DIFF: # assume matching to be avg stop distance diff is lower than 100
           ret, bound, stops, route = bestMatch[2:]
           
-          if (len(ret) == len(route['stops']) or len(ret) + 1 == len(route['stops'])) and 'gtfs' not in route:
+          if (len(ret) == len(route['stops']) or len(ret) + 1 == len(route['stops'])) and 'gtfs' not in route and "virtual" not in route:
             route['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) <= len(gtfsRoute["fares"][bound]) + 1 else None
             route['freq'] = gtfsRoute['freq'][bound]
             route['jt'] = gtfsRoute['jt']

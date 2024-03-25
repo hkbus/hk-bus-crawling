@@ -84,10 +84,18 @@ with open('routeList.gmb.json', 'w') as f:
   f.write(json.dumps(routeList, ensure_ascii=False))
 print ("Route done")
 
+with open("gtfs.json") as f:
+  gtfs = json.load(f)
+  gtfsStops = gtfs["stopList"]
+
 for stop_id in stops.keys():
-  r = emitRequest('https://data.etagmb.gov.hk/stop/'+str(stop_id))
-  stops[stop_id]['lat'] = r.json()['data']['coordinates']['wgs84']['latitude']
-  stops[stop_id]['long'] = r.json()['data']['coordinates']['wgs84']['longitude']
+  if stop_id not in gtfsStops:
+    r = emitRequest('https://data.etagmb.gov.hk/stop/'+str(stop_id))
+    stops[stop_id]['lat'] = r.json()['data']['coordinates']['wgs84']['latitude']
+    stops[stop_id]['long'] = r.json()['data']['coordinates']['wgs84']['longitude']
+  else:
+    stops[stop_id]['lat'] = gtfsStops[stop_id]['lat']
+    stops[stop_id]['long'] = gtfsStops[stop_id]['lng']
 
 with open('stopList.gmb.json', 'w') as f:
   f.write(json.dumps(stops, ensure_ascii=False))

@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import requests
 import json
-import time
-import csv
 
 with open("gtfs.json") as f:
   gtfsZh = json.load(f)

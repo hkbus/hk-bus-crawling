@@ -129,11 +129,11 @@ def matchRoutes(co):
       for route in routeList:
         if route['gtfsId'] == gtfsId:
           route['fares'] = [gtfsRoute['fares']['1'][0] for i in range(len(route['stops'])-1) ]
-    elif co == "sunferry" and "ferry" in gtfsRoute['co']:
+    elif ( co == "sunferry" or co == "fortuneferry" ) and "ferry" in gtfsRoute['co']:
       for route in routeList:
         if route['gtfsId'] == gtfsId:
           route['fares'] = [gtfsRoute['fares']['1'][0] for i in range(len(route['stops'])-1) ]
-    elif co in gtfsRoute['co']: # handle for other companies 
+    elif co in gtfsRoute['co'] or ( co == "hkkf" and 'ferry' in gtfsRoute['co'] ): # handle for other companies 
       for bound, stops in gtfsRoute['stops'].items():
         bestMatch = (-1, INFINITY_DIST)
         for route in routeList + getVirtualCircularRoutes(routeList, gtfsRoute['route']):
@@ -195,6 +195,8 @@ matchRoutes('gmb')
 matchRoutes('lightRail')
 matchRoutes('mtr')
 matchRoutes('sunferry')
+matchRoutes('fortuneferry')
+matchRoutes('hkkf')
 
 '''
 for routeId, route in gtfsRoutes.items():

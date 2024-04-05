@@ -156,6 +156,7 @@ importRouteListJson('lrtfeeder')
 importRouteListJson('gmb')
 importRouteListJson('lightRail')
 importRouteListJson('mtr')
+importRouteListJson('sunferry')
 routeList = smartUnique()
 for route in routeList:
   route['stops'] = {co: stops for co, stops in route['stops']}

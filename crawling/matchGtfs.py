@@ -129,6 +129,10 @@ def matchRoutes(co):
       for route in routeList:
         if route['gtfsId'] == gtfsId:
           route['fares'] = [gtfsRoute['fares']['1'][0] for i in range(len(route['stops'])-1) ]
+    elif co == "sunferry" and "ferry" in gtfsRoute['co']:
+      for route in routeList:
+        if route['gtfsId'] == gtfsId:
+          route['fares'] = [gtfsRoute['fares']['1'][0] for i in range(len(route['stops'])-1) ]
     elif co in gtfsRoute['co']: # handle for other companies 
       for bound, stops in gtfsRoute['stops'].items():
         bestMatch = (-1, INFINITY_DIST)
@@ -190,6 +194,7 @@ matchRoutes('lrtfeeder')
 matchRoutes('gmb')
 matchRoutes('lightRail')
 matchRoutes('mtr')
+matchRoutes('sunferry')
 
 '''
 for routeId, route in gtfsRoutes.items():

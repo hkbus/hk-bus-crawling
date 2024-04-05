@@ -4,35 +4,35 @@ from os import path
 import csv
 import json
 
-if not path.isfile('gtfs.zip'):
-  r = requests.get('https://static.data.gov.hk/td/pt-headway-tc/gtfs.zip')
-  open('gtfs.zip', 'wb').write(r.content)
+if not path.isfile('gtfs-en.zip'):
+  r = requests.get('https://static.data.gov.hk/td/pt-headway-en/gtfs.zip')
+  open('gtfs-en.zip', 'wb').write(r.content)
 
-with zipfile.ZipFile("gtfs.zip","r") as zip_ref:
-  zip_ref.extractall("gtfs")
+with zipfile.ZipFile("gtfs-en.zip","r") as zip_ref:
+  zip_ref.extractall("gtfs-en")
 
 routeList = {}
 stopList = {}
 serviceDayMap = {}
 routeJourneyTime = json.load(open('routeTime.json'))
 
-with open('gtfs/routes.txt') as csvfile:
+with open('gtfs-en/routes.txt') as csvfile:
   reader = csv.reader(csvfile)
   headers = next(reader, None)
   for [route_id, agency_id, route_short_name, route_long_name, route_type, route_url] in reader:
     routeList[route_id] = {
       'co': agency_id.replace('LWB', 'KMB').lower().split('+'),
-      'route': route_short_name,
+      'route': route_short_name if route_short_name != "" else route_id,
       'stops': {},
       'fares': {},
       'freq': {},
       'orig': {
-        'zh': route_long_name.split(' - ')[0],
-        'en': '',
+        'zh': '',
+        'en': route_long_name.split(' - ')[0]
       },
       'dest': {
-        'zh': route_long_name.split(' - ')[1].replace(' (CIRCULAR)', ''),
-        'en': '',
+        'zh': '',
+        'en': route_long_name.split(' - ')[1].replace(' (CIRCULAR)', '')
       },
       'jt': routeJourneyTime[route_id]["journeyTime"] if route_id in routeJourneyTime else None
     }
@@ -41,7 +41,7 @@ def takeFirst(elem):
   return int(elem[0])
 
 # parse timetable
-with open('gtfs/trips.txt') as csvfile:
+with open('gtfs-en/trips.txt') as csvfile:
   reader = csv.reader(csvfile)
   headers = next(reader, None)
   for [route_id, service_id, trip_id] in reader:
@@ -53,7 +53,7 @@ with open('gtfs/trips.txt') as csvfile:
     if start_time not in routeList[route_id]['freq'][bound][calendar]:
       routeList[route_id]['freq'][bound][calendar][start_time] = None
 
-with open('gtfs/frequencies.txt') as csvfile:
+with open('gtfs-en/frequencies.txt') as csvfile:
   reader = csv.reader(csvfile)
   headers = next(reader, None)
   for [trip_id, _start_time, end_time, headway_secs] in reader:
@@ -61,7 +61,7 @@ with open('gtfs/frequencies.txt') as csvfile:
     routeList[route_id]['freq'][bound][calendar][start_time] = (end_time[0:5].replace(':', ''), headway_secs)
 
 # parse stop seq
-with open('gtfs/stop_times.txt') as csvfile:
+with open('gtfs-en/stop_times.txt') as csvfile:
   reader = csv.reader(csvfile)
   headers = next(reader, None)
   for [trip_id, arrival_time, departure_time, stop_id, stop_sequence, pickup_type, drop_off_type, timepoint] in reader:
@@ -71,7 +71,7 @@ with open('gtfs/stop_times.txt') as csvfile:
     routeList[route_id]['stops'][bound][stop_sequence] = stop_id
 
 # parse fares
-with open('gtfs/fare_attributes.txt') as csvfile:
+with open('gtfs-en/fare_attributes.txt') as csvfile:
   reader = csv.reader(csvfile)
   headers = next(reader, None)
   for [fare_id,price,currency_type,payment_method,transfers,agency_id] in reader:
@@ -105,7 +105,7 @@ def parseStopName(name):
   return ret
   
 
-with open('gtfs/stops.txt') as csvfile:
+with open('gtfs-en/stops.txt') as csvfile:
   reader = csv.reader(csvfile)
   headers = next(reader, None)
   for [stop_id,stop_name,stop_lat,stop_lon,zone_id,location_type,stop_timezone] in reader:
@@ -116,7 +116,7 @@ with open('gtfs/stops.txt') as csvfile:
       'lng': float(stop_lon) 
     }
 
-with open('gtfs/calendar.txt') as csvfile:
+with open('gtfs-en/calendar.txt') as csvfile:
   reader = csv.reader(csvfile)
   headers = next(reader, None)
   for line in reader:
@@ -124,7 +124,7 @@ with open('gtfs/calendar.txt') as csvfile:
     serviceDayMap[service_id] = [sun, mon, tue, wed, thur, fri, sat]
 
 import json
-with open('gtfs.json', 'w') as f:
+with open('gtfs-en.json', 'w') as f:
   f.write(json.dumps({
     'routeList': routeList,
     'stopList': stopList,

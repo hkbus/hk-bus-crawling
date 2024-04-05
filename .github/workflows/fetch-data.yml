@@ -33,7 +33,9 @@ jobs:
           python ./crawling/mtr.py
           python ./crawling/parseJourneyTime.py
           python ./crawling/parseGtfs.py
+          python ./crawling/parseGtfsEn.py
           python ./crawling/gmb.py
+          python ./crawling/parseSunferry.py
           python ./crawling/matchGtfs.py
           python ./crawling/cleansing.py
           python ./crawling/mergeRoutes.py

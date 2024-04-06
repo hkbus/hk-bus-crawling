@@ -30,26 +30,26 @@ for [route_code, [orig, dest]] in routes.items():
           "route": route_code,
           "orig_tc": gtfsRoute["orig"]["zh"],
           "orig_en": gtfsEn["routeList"][route_id]["orig"]["en"],
-          "dest_tc": gtfsRoute["dest"]["en"],
+          "dest_tc": gtfsRoute["dest"]["zh"],
           "dest_en": gtfsEn["routeList"][route_id]["dest"]["en"],
           "service_type": 1,
           "bound": "O",
           "stops": gtfsRoute["stops"]["1"],
           "freq": gtfsRoute["freq"]["1"],
         })
-      elif dest.lower() == gtfsRoute["orig"]["zh"].lower() and orig.lower() == gtfsRoute["dest"]["zh"].lower():
-        routeList.append({
-          "gtfsId": route_id,
-          "route": route_code,
-          "dest_tc": gtfsRoute["orig"]["zh"],
-          "dest_en": gtfsEn["routeList"][route_id]["orig"]["en"],
-          "orig_tc": gtfsRoute["dest"]["zh"],
-          "orig_en": gtfsEn["routeList"][route_id]["dest"]["en"],
-          "service_type": 1,
-          "bound": "I",
-          "stops": gtfsRoute["stops"]["2"] if "2" in gtfsRoute["stops"] else gtfsRoute["stops"]["1"][::-1],
-          "freq": gtfsRoute["freq"]["2"] if "2" in gtfsRoute["freq"] else {},
-        })
+        if "2" in gtfsRoute["freq"]:
+          routeList.append({
+            "gtfsId": route_id,
+            "route": route_code,
+            "dest_tc": gtfsRoute["orig"]["zh"],
+            "dest_en": gtfsEn["routeList"][route_id]["orig"]["en"],
+            "orig_tc": gtfsRoute["dest"]["zh"],
+            "orig_en": gtfsEn["routeList"][route_id]["dest"]["en"],
+            "service_type": 1,
+            "bound": "I",
+            "stops": gtfsRoute["stops"]["2"] if "2" in gtfsRoute["stops"] else gtfsRoute["stops"]["1"][::-1],
+            "freq": gtfsRoute["freq"]["2"] if "2" in gtfsRoute["freq"] else {},
+          })
 
 
 for route in routeList:

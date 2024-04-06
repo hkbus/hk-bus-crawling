@@ -19,6 +19,7 @@ def isNameMatch(name_a, name_b):
 # the actual servicing routes may skip some stop in the coStops
 # this DP function is trying to map the coStops back to GTFS stops
 def matchStopsByDp ( coStops, gtfsStops, co, debug=False ):
+  co = 'unknown' if co not in gtfsStops[0]['stopName'] else co # handle unkown stop
   if len(gtfsStops) > len(coStops) + 1:
     return [], INFINITY_DIST
   if len(gtfsStops) - len(coStops) == 1:
@@ -137,7 +138,9 @@ def matchRoutes(co):
       for bound, stops in gtfsRoute['stops'].items():
         bestMatch = (-1, INFINITY_DIST)
         for route in routeList + getVirtualCircularRoutes(routeList, gtfsRoute['route']):
-          if co in gtfsRoute['co'] and route['route'] == gtfsRoute['route']:
+          if ( co in gtfsRoute['co'] and route['route'] == gtfsRoute['route'] ) or \
+             ( co == 'hkkf' and ( ( route["orig_tc"].startswith(gtfsRoute['orig']['zh']) and route["dest_tc"].startswith(gtfsRoute['dest']['zh']) ) or 
+                                 ( route["orig_tc"].startswith(gtfsRoute['dest']['zh']) and route["dest_tc"].startswith(gtfsRoute['orig']['zh']) ) ) ):
             ret, avgDist = matchStopsByDp([stopList[stop] for stop in route['stops']], [gtfsStops[stop] for stop in stops], co, debug)
             if avgDist < bestMatch[1]:
               bestMatch = (gtfsId, avgDist, ret, bound, stops, route)

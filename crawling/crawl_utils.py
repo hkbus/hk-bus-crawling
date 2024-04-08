@@ -1,6 +1,7 @@
 import httpx
 import asyncio
 import logging
+import os
 
 logger=logging.getLogger(__name__)
 
@@ -24,3 +25,8 @@ async def emitRequest(url:str,client: httpx.AsyncClient):
       logger.warning(f"Exception {repr(e)} occurred, wait {retry_timeout} and retry. URL={url}")
       await asyncio.sleep(retry_timeout)
       retry_timeout = min (retry_timeout * 2, RETRY_TIMEOUT_MAX)
+
+
+def get_request_limit():
+  default_limit = "4"
+  return int(os.environ.get('REQUEST_LIMIT', default_limit))

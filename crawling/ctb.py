@@ -5,11 +5,9 @@ from os import path
 
 import httpx
 
-from crawling.crawl_utils import emitRequest
+from crawling.crawl_utils import emitRequest, get_request_limit
 
 logger = logging.getLogger(__name__)
-
-REQUEST_LIMIT = 10
 
 async def getRouteStop(co):
     a_client = httpx.AsyncClient(timeout=httpx.Timeout(30.0, pool=None))
@@ -33,7 +31,7 @@ async def getRouteStop(co):
             stopList = json.load(f)
    
     # function to load single stop info
-    req_stop_list_limit = asyncio.Semaphore(REQUEST_LIMIT)
+    req_stop_list_limit = asyncio.Semaphore(get_request_limit())
     async def getStop ( stopId ):
         async with req_stop_list_limit:
             r = await emitRequest('https://rt.data.gov.hk/v2/transport/citybus/stop/'+stopId, a_client)
@@ -44,7 +42,7 @@ async def getRouteStop(co):
         ret = await asyncio.gather(*[getStop(stop) for stop in stops])
         return ret
 
-    req_route_stop_limit = asyncio.Semaphore(REQUEST_LIMIT)
+    req_route_stop_limit = asyncio.Semaphore(get_request_limit())
     async def getRouteStop(param):
         co, route = param
         if route.get('bound', 0) != 0 or route.get('stops', {}):

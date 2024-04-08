@@ -6,11 +6,9 @@ import logging
 
 import httpx
 
-from crawling.crawl_utils import emitRequest
+from crawling.crawl_utils import emitRequest, get_request_limit
 
 logger = logging.getLogger(__name__)
-
-REQUEST_LIMIT = 10
 
 async def getRouteStop(co):
   a_client = httpx.AsyncClient()
@@ -73,14 +71,14 @@ async def getRouteStop(co):
       if route["description_tc"] != '正常班次':
         service_type += 1
     
-  req_route_limit = asyncio.Semaphore(REQUEST_LIMIT)
+  req_route_limit = asyncio.Semaphore(get_request_limit())
   async def get_route(region:str, route_no):
     async with req_route_limit:
       r = await emitRequest('https://data.etagmb.gov.hk/route/'+region+'/'+route_no, a_client)
       await asyncio.gather(*[get_route_directions(route, route_no) for route in r.json()['data']])
     routeList.sort(key = lambda a: a['gtfsId'])
 
-  req_route_region_limit = asyncio.Semaphore(REQUEST_LIMIT)
+  req_route_region_limit = asyncio.Semaphore(get_request_limit())
   async def get_routes_region(region: str):
     async with req_route_region_limit:
       r = await emitRequest('https://data.etagmb.gov.hk/route/'+region, a_client)
@@ -93,7 +91,7 @@ async def getRouteStop(co):
   logger.info("Route done")
 
 
-  req_stops_limit = asyncio.Semaphore(REQUEST_LIMIT)
+  req_stops_limit = asyncio.Semaphore(get_request_limit())
   with open("gtfs.json") as f:
     gtfs = json.load(f)
     gtfsStops = gtfs["stopList"]

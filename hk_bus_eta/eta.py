@@ -7,13 +7,23 @@ Github: https://github.com/chunlaw
 
 __author__ = "Chun Law"
 __email__ = "chunlaw@rocketmail.com"
-__status__ = "proudction"
+__status__ = "production"
 
 import requests
 import time
 from datetime import datetime, timezone
 import re
 import hashlib
+
+def get_platform_display(plat, lang):
+    number = int(plat) if isinstance(plat, str) else plat
+    if number < 0 or number > 20:
+        return ("Platform {}" if lang == "en" else "{}號月台").format(number)
+    if number == 0:
+        return "⓿"
+    if number > 10:
+        return chr(9451 + (number - 11))
+    return chr(10102 + (number - 1))
 
 class HKEta:
   holidays = None
@@ -90,7 +100,7 @@ class HKEta:
     } for e in data]
   
   def ctb(self, stop_id, route, bound, seq):
-    data = requests.get("https://rt.data.gov.hk//v2/transport/citybus/eta/CTB/{}/{}".format(stop_id, route)).json()['data']
+    data = requests.get("https://rt.data.gov.hk/v2/transport/citybus/eta/CTB/{}/{}".format(stop_id, route)).json()['data']
     data = list(filter(lambda e: 'eta' in e and e['dir'] in bound, data))
     data.sort(key=lambda e: abs(seq - e['seq']))
     data = [e for e in data if e['seq'] == data[0]['seq']]
@@ -163,8 +173,8 @@ class HKEta:
       ret.append({
         "eta": e["time"].replace(" ", "T") + "+08:00",
         "remark": {
-          "zh": "{}號月台".format(e["plat"]),
-          "en": "Platform {}".format(e["plat"])
+          "zh": get_platform_display(e["plat"], "zh"),
+          "en": get_platform_display(e["plat"], "en")
         },
         "co": "mtr"
       })
@@ -187,8 +197,8 @@ class HKEta:
           ret.append({
             "eta": dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S+08:00"),
             "remark": {
-              "zh": "{}號月台".format(platform_id),
-              "en": "Platform {}".format(platform_id)
+              "zh": get_platform_display(platform_id, "zh"),
+              "en": get_platform_display(platform_id, "en")
             },
             "co": "lightrail"
           })

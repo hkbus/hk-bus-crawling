@@ -92,12 +92,23 @@ async def getRouteStop(co):
     json.dump(routeList, f, ensure_ascii=False)
   logger.info("Route done")
 
+
   req_stops_limit = asyncio.Semaphore(REQUEST_LIMIT)
+  with open("gtfs.json") as f:
+    gtfs = json.load(f)
+    gtfsStops = gtfs["stopList"]
+
   async def update_stop_loc(stop_id):
-    async with req_stops_limit:
-      r = await emitRequest('https://data.etagmb.gov.hk/stop/'+str(stop_id), a_client)
-      stops[stop_id]['lat'] = r.json()['data']['coordinates']['wgs84']['latitude']
-      stops[stop_id]['long'] = r.json()['data']['coordinates']['wgs84']['longitude']
+    if stop_id not in gtfsStops:
+      logger.info(f"Getting stop {stop_id} from etagmb")
+      async with req_stops_limit:
+        r = await emitRequest('https://data.etagmb.gov.hk/stop/'+str(stop_id), a_client)
+        stops[stop_id]['lat'] = r.json()['data']['coordinates']['wgs84']['latitude']
+        stops[stop_id]['long'] = r.json()['data']['coordinates']['wgs84']['longitude']
+    else:
+      logger.debug(f"Getting stop {stop_id} from gtfs")
+      stops[stop_id]['lat'] = gtfsStops[stop_id]['lat']
+      stops[stop_id]['long'] = gtfsStops[stop_id]['lng']
 
   await asyncio.gather(*[update_stop_loc(stop_id) for stop_id in sorted(stops.keys())])
 

@@ -1,21 +1,16 @@
-import requests
-import json
-from os import path
 import asyncio
-import time
+import json
+import logging
+from os import path
 
-def emitRequest(url):
-  # retry if "Too many request (429)"
-  while True:
-    r = requests.get(url)
-    if r.status_code == 200:
-      return r
-    elif r.status_code == 429:
-      time.sleep(1)
-    else:
-      raise Exception(r.status_code, url)
+import httpx
 
-def getRouteStop(co):
+from crawling.crawl_utils import emitRequest, get_request_limit
+
+logger = logging.getLogger(__name__)
+
+async def getRouteStop(co):
+    a_client = httpx.AsyncClient(timeout=httpx.Timeout(30.0, pool=None))
     # define output name
     ROUTE_LIST = 'routeList.'+co+'.json'
     STOP_LIST = 'stopList.'+co+'.json'
@@ -26,7 +21,7 @@ def getRouteStop(co):
         return
     else:
         # load routes
-        r = emitRequest('https://rt.data.gov.hk/v2/transport/citybus/route/'+co)
+        r = await emitRequest('https://rt.data.gov.hk/v2/transport/citybus/route/'+co, a_client)
         routeList = r.json()['data']
 
     _stops = []
@@ -36,40 +31,34 @@ def getRouteStop(co):
             stopList = json.load(f)
    
     # function to load single stop info
-    def getStop ( stopId ):
-        r = emitRequest('https://rt.data.gov.hk/v2/transport/citybus/stop/'+stopId)
+    req_stop_list_limit = asyncio.Semaphore(get_request_limit())
+    async def getStop ( stopId ):
+        async with req_stop_list_limit:
+            r = await emitRequest('https://rt.data.gov.hk/v2/transport/citybus/stop/'+stopId, a_client)
         return r.json()['data']
 
     # function to async load multiple stops info
     async def getStopList ( stops ):
-        loop = asyncio.get_event_loop()
-        futures = [loop.run_in_executor(None, getStop, stop) for stop in stops]
-        ret = []
-        for future in futures:
-            ret.append(await future)
+        ret = await asyncio.gather(*[getStop(stop) for stop in stops])
         return ret
 
-    def getRouteStop(param):
+    req_route_stop_limit = asyncio.Semaphore(get_request_limit())
+    async def getRouteStop(param):
         co, route = param
         if route.get('bound', 0) != 0 or route.get('stops', {}):
             return route
         route['stops'] = {}
         for direction in ['inbound', 'outbound']:
-            r = emitRequest('https://rt.data.gov.hk/v2/transport/citybus/route-stop/'+co.upper()+'/'+route['route']+"/"+direction)
+            r = await emitRequest('https://rt.data.gov.hk/v2/transport/citybus/route-stop/'+co.upper()+'/'+route['route']+"/"+direction, a_client)
             route['stops'][direction] = [stop['stop'] for stop in r.json()['data']]
         return route
 
     async def getRouteStopList ():
-        loop = asyncio.get_event_loop()
-        futures = [loop.run_in_executor(None, getRouteStop, (co, route)) for route in routeList]
-        ret = []
-        for future in futures:
-            ret.append(await future)
+        ret = await asyncio.gather(*[getRouteStop((co, route))
+                             for route in routeList])
         return ret
 
-
-    loop = asyncio.get_event_loop()
-    routeList = loop.run_until_complete(getRouteStopList())
+    routeList = await getRouteStopList()
     for route in routeList:
         for direction, stops in route['stops'].items():
             for stopId in stops:
@@ -77,8 +66,9 @@ def getRouteStop(co):
 
     # load stops for this route aync
     _stops = list(set(_stops))
+    _stops.sort()
     
-    stopInfos = list( zip ( _stops, loop.run_until_complete(getStopList(_stops)) ) )
+    stopInfos = list( zip ( _stops, await getStopList(_stops)) )
     for stopId, stopInfo in stopInfos:
         stopList[stopId] = stopInfo
     
@@ -106,4 +96,7 @@ def getRouteStop(co):
     with open(STOP_LIST, 'w') as f:
         f.write(json.dumps(stopList, ensure_ascii=False))
         
-getRouteStop('ctb')
+if __name__=='__main__':
+    logging.basicConfig(level=logging.INFO)
+    logging.getLogger('httpx').setLevel(logging.WARNING)
+    asyncio.run(getRouteStop('ctb'))

@@ -156,7 +156,7 @@ def matchRoutes(co):
             route['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) <= len(gtfsRoute["fares"][bound]) + 1 else None
             route['freq'] = gtfsRoute['freq'][bound]
             route['jt'] = gtfsRoute['jt']
-            route['co'] = gtfsRoute['co']
+            route['co'] = gtfsRoute['co'] if co in gtfsRoute['co'] else ( gtfsRoute['co'] + [co] )
             route['gtfs'] = [gtfsId]
           else:
             extra = route.copy()

@@ -23,6 +23,7 @@ def cleansing(co):
   
   for i in range(len(routeList)):
     route = routeList[i]
+    route["co"] = [co for co in route["co"] if co != "ferry"]
     if 'skip' in route or 'freq' in route:
       continue
     bestIdx, maxBus = -1, 0

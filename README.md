@@ -6,7 +6,7 @@ This project is to fetch the bus route information of KMB, CTB, NLB, minibus, MT
 
 ## Fetching Transport ETA
 
-The package is a python vertion for the npm package [hk-bus-eta](https://www.npmjs.com/package/hk-bus-eta).
+The package is a python version for the npm package [hk-bus-eta](https://www.npmjs.com/package/hk-bus-eta).
 
 ### Installation
 To install the package,
@@ -44,14 +44,22 @@ print( route_ids )
 ```
 
 
-## Crawling by yourself
+## Data Crawling by yourself
 
 ### Usage
 Daily fetched JSON is in [gh-pages](https://github.com/hkbus/hk-bus-crawling/tree/gh-pages) or direct download [here](https://hkbus.github.io/hk-bus-crawling/routeFareList.min.json)
 
 ### Installation
 
-To install the dependencies,
+To avoid the conflict of dependencies between python projects, it's better to create a fresh environment for this run:
+
+1. Consider to install either [Miniforge3](https://github.com/conda-forge/miniforge?tab=readme-ov-file#download), Conda or pyenv
+2. Create env: `conda create -n hkbus_crawling python=3.88 pip`
+3. Activate env: `conda activate hkbus_crawling`
+
+
+To install the dependencies to your environment:
+
 ```
 pip install -r ./crawling/requirements.txt
 ```
@@ -69,6 +77,10 @@ python ./crawling/lightRail.py
 python ./crawling/mtr.py
 python ./crawling/parseJourneyTime.py
 python ./crawling/parseGtfs.py
+python ./crawling/parseGtfsEn.py
+python ./crawling/sunferry.py
+python ./crawling/fortuneferry.py
+python ./crawling/hkkf.py
 python ./crawling/gmb.py
 python ./crawling/matchGtfs.py
 python ./crawling/cleansing.py

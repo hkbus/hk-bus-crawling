@@ -3,7 +3,7 @@ import json
 import logging
 from os import path
 
-from crawling.crawl_utils import emitRequest
+from crawl_utils import emitRequest
 
 import httpx
 
@@ -40,7 +40,7 @@ async def getRouteStop(co):
 
     stopList = {}
     if path.isfile(STOP_LIST):
-        with open(STOP_LIST) as f:
+        with open(STOP_LIST, 'r', encoding='UTF-8') as f:
             stopList = json.load(f)
    
     async def getRouteStop(routeId):
@@ -79,7 +79,7 @@ async def getRouteStop(co):
 
     await getRouteStopList()
 
-    with open(ROUTE_LIST, 'w') as rf, open(STOP_LIST, 'w') as sf:
+    with open(ROUTE_LIST, 'w', encoding='UTF-8') as rf, open(STOP_LIST, 'w', encoding='UTF-8') as sf:
         json.dump(routeList, rf, ensure_ascii=False)
         json.dump(stopList, sf, ensure_ascii=False)
     logger.info("Dumped lists")

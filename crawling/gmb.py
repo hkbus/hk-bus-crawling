@@ -6,7 +6,7 @@ import logging
 
 import httpx
 
-from crawling.crawl_utils import emitRequest, get_request_limit
+from crawl_utils import emitRequest, get_request_limit
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +14,7 @@ async def getRouteStop(co):
   a_client = httpx.AsyncClient()
   # parse gtfs service_id
   serviceIdMap = {}
-  with open('gtfs/calendar.txt') as csvfile:
+  with open('gtfs/calendar.txt', 'r', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile)
     headers = next(reader, None)
     for [service_id, mon, tue, wed, thur, fri, sat, sun, *tmp] in reader:
@@ -26,7 +26,7 @@ async def getRouteStop(co):
       if all(i == j for i, j in zip(serviceIdMap_a[service_id], weekdays)):
         return service_id
     return 999
-    raise Exception("No service ID for weekdays: "+json.dumps(weekdays))
+    # raise Exception("No service ID for weekdays: "+json.dumps(weekdays))
 
   def getFreq(headways, serviceIdMap_a):
     freq = {}
@@ -86,13 +86,13 @@ async def getRouteStop(co):
   
   await asyncio.gather(*[get_routes_region(r) for r in ['HKI', 'KLN', "NT"]])
 
-  with open(f'routeList.{co}.json', 'w') as f:
+  with open(f'routeList.{co}.json', 'w', encoding='UTF-8') as f:
     json.dump(routeList, f, ensure_ascii=False)
   logger.info("Route done")
 
 
   req_stops_limit = asyncio.Semaphore(get_request_limit())
-  with open("gtfs.json") as f:
+  with open("gtfs.json", "r", encoding='UTF-8') as f:
     gtfs = json.load(f)
     gtfsStops = gtfs["stopList"]
 
@@ -110,7 +110,7 @@ async def getRouteStop(co):
 
   await asyncio.gather(*[update_stop_loc(stop_id) for stop_id in sorted(stops.keys())])
 
-  with open(f'stopList.{co}.json', 'w') as f:
+  with open(f'stopList.{co}.json', 'w', encoding='UTF-8') as f:
     json.dump(stops,f, ensure_ascii=False)
 
 if __name__=='__main__':

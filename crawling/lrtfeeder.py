@@ -15,7 +15,7 @@ headers = next(reader,None)
 routes = [route for route in reader if len(route) == 4]
 for [route, chn, eng, circular] in routes:
   if route == '':
-    continue;
+    continue
   start = {
     "zh": chn.split('至')[0],
     "en": eng.split(' to ')[0]
@@ -56,7 +56,7 @@ for [route, bound, seq, stationId, lat, lng, name_zh, name_en] in stops:
     "long": lng
   }
 
-with open('routeList.lrtfeeder.json', 'w') as f:
+with open('routeList.lrtfeeder.json', 'w', encoding='UTF-8') as f:
   f.write(json.dumps([route for route in routeList.values() if len(route['stops']) > 0], ensure_ascii=False))
-with open('stopList.lrtfeeder.json', 'w') as f:
+with open('stopList.lrtfeeder.json', 'w', encoding='UTF-8') as f:
   f.write(json.dumps(stopList, ensure_ascii=False))

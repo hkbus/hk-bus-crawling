@@ -5,7 +5,7 @@ from os import path
 
 import httpx
 
-from crawling.crawl_utils import emitRequest, get_request_limit
+from crawl_utils import emitRequest, get_request_limit
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ async def getRouteStop(co):
     _stops = []
     stopList = {}
     if path.isfile(STOP_LIST):
-        with open(STOP_LIST) as f:
+        with open(STOP_LIST, 'r', encoding='UTF-8') as f:
             stopList = json.load(f)
    
     # function to load single stop info
@@ -91,9 +91,9 @@ async def getRouteStop(co):
                     'serviceType': 0
                 })
 
-    with open(ROUTE_LIST, 'w') as f:
+    with open(ROUTE_LIST, 'w', encoding='UTF-8') as f:
         f.write(json.dumps(_routeList, ensure_ascii=False))
-    with open(STOP_LIST, 'w') as f:
+    with open(STOP_LIST, 'w', encoding='UTF-8') as f:
         f.write(json.dumps(stopList, ensure_ascii=False))
         
 if __name__=='__main__':

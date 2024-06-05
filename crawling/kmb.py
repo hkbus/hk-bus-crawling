@@ -11,7 +11,7 @@ def getRouteStop(co = 'kmb'):
 
     stopList = {}
     if path.isfile(STOP_LIST):
-        with open(STOP_LIST) as f:
+        with open(STOP_LIST, 'r', encoding='UTF-8') as f:
             stopList = json.load(f)
     else:
         # load stops
@@ -59,9 +59,9 @@ def getRouteStop(co = 'kmb'):
         # flatten the routeList back to array
         routeList = [routeList[routeKey] for routeKey in routeList.keys() if not routeKey.startswith('K')]
    
-    with open(ROUTE_LIST, 'w') as f:
+    with open(ROUTE_LIST, 'w', encoding='UTF-8') as f:
         f.write(json.dumps(routeList, ensure_ascii=False))
-    with open(STOP_LIST, 'w') as f:
+    with open(STOP_LIST, 'w', encoding='UTF-8') as f:
         f.write(json.dumps(stopList, ensure_ascii=False))
 
 getRouteStop()

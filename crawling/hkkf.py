@@ -33,10 +33,10 @@ for stopId in [1,2,3,4,5,6]:
   apiStops.append(stop)
 
 
-with open("gtfs.json") as f:
+with open("gtfs.json", 'r', encoding="utf-8") as f:
   gtfsZh = json.load(f)
 
-with open("gtfs-en.json") as f:
+with open("gtfs-en.json", 'r', encoding="utf-8") as f:
   gtfs = json.load(f)
   gtfsRoutes = gtfs["routeList"]
   gtfsStops = gtfs["stopList"]
@@ -86,8 +86,8 @@ for apiStop in apiStops:
     "long": apiStop["long"]
   }
 
-with open('routeList.hkkf.json', 'w') as f:
+with open('routeList.hkkf.json', 'w', encoding="utf-8") as f:
   f.write(json.dumps(routeList, ensure_ascii=False))
 
-with open('stopList.hkkf.json', 'w') as f:
+with open('stopList.hkkf.json', 'w', encoding="utf-8") as f:
   f.write(json.dumps(stopList, ensure_ascii=False))

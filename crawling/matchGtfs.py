@@ -5,7 +5,7 @@ from haversine import haversine
 INFINITY_DIST = 1000000
 DIST_DIFF = 600
 
-with open('gtfs.json') as f:
+with open('gtfs.json', 'r', encoding='UTF-8') as f:
   gtfs = json.load(f)
   gtfsRoutes = gtfs['routeList']
   gtfsStops = gtfs['stopList']
@@ -19,7 +19,7 @@ def isNameMatch(name_a, name_b):
 # the actual servicing routes may skip some stop in the coStops
 # this DP function is trying to map the coStops back to GTFS stops
 def matchStopsByDp ( coStops, gtfsStops, co, debug=False ):
-  co = 'unknown' if co not in gtfsStops[0]['stopName'] else co # handle unkown stop
+  co = 'unknown' if co not in gtfsStops[0]['stopName'] else co # handle unknown stop
   if len(gtfsStops) > len(coStops) + 1:
     return [], INFINITY_DIST
   if len(gtfsStops) - len(coStops) == 1:
@@ -117,9 +117,9 @@ def printStopMatches(bestMatch, gtfsStops, stopList, co):
 
 def matchRoutes(co):
   print (co)
-  with open( 'routeList.%s.json' % co ) as f:
+  with open( 'routeList.%s.json' % co, 'r', encoding="utf-8" ) as f:
     routeList = json.load(f)
-  with open( 'stopList.%s.json' % co ) as f:
+  with open( 'stopList.%s.json' % co, 'r', encoding="utf-8" ) as f:
     stopList = json.load(f)
 
   extraRoutes = []
@@ -187,7 +187,7 @@ def matchRoutes(co):
   if co != 'mtr': routeList.extend(extraRoutes)
   routeList = [route for route in routeList if 'found' not in route or 'fares' in route] # skipping routes that just partially mapped to GTFS
     
-  with open( 'routeFareList.%s.json' % co, 'w' ) as f:
+  with open( 'routeFareList.%s.json' % co, 'w', encoding='UTF-8' ) as f:
     f.write(json.dumps(routeList, ensure_ascii=False))
   
 matchRoutes('kmb')
@@ -210,5 +210,5 @@ for routeId, route in gtfsRoutes.items():
 routeFareList = {}
 
 
-with open( 'routeGtfs.all.json', 'w' ) as f:
+with open( 'routeGtfs.all.json', 'w', encoding='UTF-8' ) as f:
   f.write(json.dumps(gtfsRoutes, ensure_ascii=False, indent=4))

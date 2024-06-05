@@ -31,8 +31,8 @@ def isGtfsMatch(knownRoute, newRoute):
   return knownRoute['gtfsId'] in newRoute['gtfs']
   
 def importRouteListJson( co ):
-  _routeList = json.load(open('routeFareList.%s.cleansed.json'%co))
-  _stopList = json.load(open('stopList.%s.json'%co))
+  _routeList = json.load(open('routeFareList.%s.cleansed.json'%co, 'r', encoding='UTF-8'))
+  _stopList = json.load(open('stopList.%s.json'%co, 'r', encoding='UTF-8'))
   for stopId, stop in _stopList.items():
     if stopId not in stopList:
       try:
@@ -163,8 +163,8 @@ routeList = smartUnique()
 for route in routeList:
   route['stops'] = {co: stops for co, stops in route['stops']}
 
-holidays = json.load(open('holiday.json'))
-serviceDayMap = json.load(open('gtfs.json'))['serviceDayMap']
+holidays = json.load(open('holiday.json', 'r', encoding='UTF-8'))
+serviceDayMap = json.load(open('gtfs.json', 'r', encoding='UTF-8'))['serviceDayMap']
 
 def standardizeDict(d):
   return {key: value if not isinstance(value, dict) else standardizeDict(value) for key, value in sorted(d.items())}
@@ -177,8 +177,8 @@ db = standardizeDict({
   'serviceDayMap': serviceDayMap,
 })
 
-with open( 'routeFareList.json', 'w' ) as f:
+with open( 'routeFareList.json', 'w', encoding='UTF-8' ) as f:
   f.write(json.dumps(db, ensure_ascii=False, indent=4))
 
-with open( 'routeFareList.min.json', 'w' ) as f:
+with open( 'routeFareList.min.json', 'w', encoding='UTF-8' ) as f:
   f.write(json.dumps(db, ensure_ascii=False, separators=(',', ':')))

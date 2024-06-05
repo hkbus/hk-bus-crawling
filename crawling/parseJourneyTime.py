@@ -5,7 +5,7 @@ from os import path
 if not path.isfile('ROUTE_BUS.xml'):
   r = requests.get('https://static.data.gov.hk/td/routes-fares-xml/ROUTE_BUS.xml')
   r.encoding = 'utf-8'
-  with open('ROUTE_BUS.xml', 'w') as f:
+  with open('ROUTE_BUS.xml', 'w', encoding='UTF-8') as f:
     f.write(r.text)
 
 routeTimeList = {}
@@ -20,5 +20,5 @@ for route in root.iter('ROUTE'):
     }
 
 import json
-with open('routeTime.json', 'w') as f:
+with open('routeTime.json', 'w', encoding='UTF-8') as f:
   f.write(json.dumps(routeTimeList, ensure_ascii=False))

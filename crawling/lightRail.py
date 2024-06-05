@@ -56,7 +56,7 @@ for [route, bound, stopCode, stopId, chn, eng, seq] in routes:
       logger.exception(f"Error parsing {url}: {r.text}")
       raise
 
-with open('routeList.lightRail.json', 'w') as f:
+with open('routeList.lightRail.json', 'w', encoding='UTF-8') as f:
   f.write(json.dumps([route for route in routeList.values() if len(route['stops']) > 0], ensure_ascii=False))
-with open('stopList.lightRail.json', 'w') as f:
+with open('stopList.lightRail.json', 'w', encoding='UTF-8') as f:
   f.write(json.dumps(stopList, ensure_ascii=False))

@@ -18,7 +18,7 @@ def countBus(freq):
   return sum
 
 def cleansing(co):
-  with open('routeFareList.%s.json' % co) as f:
+  with open('routeFareList.%s.json' % co, 'r', encoding='UTF-8') as f:
     routeList = json.load(f)
   
   for i in range(len(routeList)):
@@ -44,7 +44,7 @@ def cleansing(co):
   _routeList = [route for route in routeList if 'skip' not in route]
   print (co, len(routeList), len(_routeList))
   
-  with open('routeFareList.%s.cleansed.json' % co, 'w') as f:
+  with open('routeFareList.%s.cleansed.json' % co, 'w', encoding='UTF-8') as f:
     f.write(json.dumps(_routeList, ensure_ascii=False))
   
 

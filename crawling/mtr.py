@@ -53,7 +53,7 @@ def filterStops(route):
   route['stops'] = [stop for stop in route['stops'] if stop is not None]
   return route
 
-with open('routeList.mtr.json', 'w') as f:
+with open('routeList.mtr.json', 'w', encoding='UTF-8') as f:
   f.write(json.dumps(list(map(filterStops, [route for route in routeList.values() if len(route['stops']) > 0])), ensure_ascii=False))
-with open('stopList.mtr.json', 'w') as f:
+with open('stopList.mtr.json', 'w', encoding='UTF-8') as f:
   f.write(json.dumps(stopList, ensure_ascii=False))

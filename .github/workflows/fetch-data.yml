@@ -45,6 +45,7 @@ jobs:
           python ./crawling/matchGtfs.py
           python ./crawling/cleansing.py
           python ./crawling/mergeRoutes.py
+          python crawling/routeCompare.py
 
       - name: Archive crawling outputs
         uses: actions/upload-artifact@v3
@@ -73,6 +74,7 @@ jobs:
               routeFareList.min.json
               routeFareList.md5
               CNAME
+              route-ts
             commit-msg: Update resources
             github-token: ${{ secrets.GITHUB_TOKEN }}
             branch: gh-pages

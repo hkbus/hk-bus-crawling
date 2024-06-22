@@ -11,5 +11,6 @@ hk_bus_eta.egg-info
 waypoints
 *.zip
 gtfs-en
+route-ts
 
 .DS_Store

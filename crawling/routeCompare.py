@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Check route lateset update time
+# Check route latest update time
 
 import asyncio
 import logging
@@ -7,6 +7,8 @@ import httpx
 import json
 import os
 import time
+import xxhash
+import re
 
 from crawl_utils import emitRequest
 
@@ -20,19 +22,18 @@ async def routeCompare():
   os.makedirs("route-ts", exist_ok=True)
 
   def isRouteEqual(a, b):
-    if a["bound"] != b["bound"] or b["freq"] != a["freq"] or a["orig"] != b["orig"] or a["dest"] != b["dest"] or a["faresHoliday"] != b["faresHoliday"] or a["fares"] != b["fares"] or a["stops"] != b["stops"]:
-      return False
-    return True
+    return xxhash.xxh3_64(str(a)).hexdigest() == xxhash.xxh3_64(str(b)).hexdigest()
 
   for newKey in newDb['routeList']:
-    updated = False
     if newKey not in oldDb['routeList'] or not isRouteEqual(oldDb['routeList'][newKey], newDb['routeList'][newKey]):
-      with open("route-ts/"+newKey, "w") as f:
+      filename = re.sub(r'[\\\/\:\*\?\"\<\>\|]', '', newKey).upper()
+      with open(os.path.join("route-ts", filename), "w", encoding='utf-8') as f:
         f.write(str(int(time.time())))
-      
+
   for oldKey in oldDb['routeList']:
     if oldKey not in newDb['routeList']:
-      with open("route-ts/"+oldKey, "w") as f:
+      filename = re.sub(r'[\\\/\:\*\?\"\<\>\|]', '', oldKey).upper()
+      with open(os.path.join("route-ts", filename), "w", encoding='utf-8') as f:
         f.write(str(int(time.time())))
 
 if __name__=='__main__':

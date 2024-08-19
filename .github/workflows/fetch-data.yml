@@ -76,6 +76,7 @@ jobs:
               routeFareList.md5
               CNAME
               route-ts/*
+              exits.mtr.json
             commit-msg: Update resources
             github-token: ${{ secrets.GITHUB_TOKEN }}
             branch: gh-pages

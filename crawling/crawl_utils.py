@@ -28,5 +28,5 @@ async def emitRequest(url:str,client: httpx.AsyncClient, headers={}):
 
 
 def get_request_limit():
-  default_limit = "4"
+  default_limit = "10"
   return int(os.environ.get('REQUEST_LIMIT', default_limit))

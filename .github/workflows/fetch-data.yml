@@ -77,4 +77,4 @@ jobs:
         with:
             folder: build
             commit-message: Update resources
-            branch: test
+            branch: gh-pages

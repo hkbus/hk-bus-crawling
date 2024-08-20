@@ -41,7 +41,7 @@ async def main():
   for entry in reader:
     mtrStops[entry[3]] = {
       "name_tc": entry[4],
-      "name_en": entry[4],
+      "name_en": entry[5],
     }
 
   r = await emitRequest("https://opendata.mtr.com.hk/data/barrier_free_facilities.csv", a_client)
@@ -65,7 +65,7 @@ async def main():
         checkResult(r.json(), q, stop, char+str(i), (char+str(char)) in stop)
         
   with open('exits.mtr.json', 'w', encoding='UTF-8') as f:
-    f.write(json.dumps(res, ensure_ascii=False))
+    f.write(json.dumps(list({(v['name']['zh']+v['exit']): v for v in res}.values()), ensure_ascii=False))
 
 if __name__ == '__main__':
   logging.basicConfig(level=logging.INFO)

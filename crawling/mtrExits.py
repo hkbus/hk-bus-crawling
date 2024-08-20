@@ -29,7 +29,6 @@ def checkResult(results, q, stop, exit, barrierFree):
         "lng": lng,
         "barrierFree": barrierFree,
       })
-      print(q)
       return True
   return False  
 

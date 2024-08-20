@@ -65,6 +65,7 @@ jobs:
             routeGtfs*
             gtfs.zip
             ROUTE_BUS.xml
+            exits.mtr.json
       - name: Update MD5
         run: md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
       - name: Update resources
@@ -75,8 +76,8 @@ jobs:
               routeFareList.min.json
               routeFareList.md5
               CNAME
-              route-ts/*
               exits.mtr.json
+              route-ts/*
             commit-msg: Update resources
             github-token: ${{ secrets.GITHUB_TOKEN }}
             branch: gh-pages

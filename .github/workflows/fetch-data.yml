@@ -68,16 +68,13 @@ jobs:
             exits.mtr.json
       - name: Update MD5
         run: md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
+      - name: create deployment folder
+        run: mkdir -p build
+      - name: cp files into deployment folder
+        run: cp -r routeFareList.json routeFareList.min.json routeFareList.md5 CNAME exits.mtr.json route-ts build/
       - name: Update resources
-        uses: test-room-7/action-update-file@v1
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-            file-path: |
-              routeFareList.json
-              routeFareList.min.json
-              routeFareList.md5
-              CNAME
-              exits.mtr.json
-              route-ts/*
-            commit-msg: Update resources
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            branch: gh-pages
+            folder: build
+            commit-message: Update resources
+            branch: test

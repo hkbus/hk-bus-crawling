@@ -46,7 +46,7 @@ jobs:
           python ./crawling/cleansing.py
           python ./crawling/mergeRoutes.py
           python ./crawling/routeCompare.py
-          python ./crawling/mtr-exits.py
+          python ./crawling/mtrExits.py
 
       - name: Archive crawling outputs
         uses: actions/upload-artifact@v3

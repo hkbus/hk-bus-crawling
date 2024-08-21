@@ -81,3 +81,4 @@ jobs:
             folder: build
             commit-message: Update resources
             branch: gh-pages
+            clean: false

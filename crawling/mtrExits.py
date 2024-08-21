@@ -4,7 +4,6 @@ import logging
 from crawl_utils import emitRequest
 from pyproj import Transformer
 import json
-import string
 import httpx
 import csv
 import re
@@ -13,9 +12,7 @@ res = []
 mtrStops = {}
 epsgTransformer = Transformer.from_crs('epsg:2326', 'epsg:4326')
 
-def checkResult(results, q, stop, exit, barrierFree):
-  for result in results:
-    if result['nameZH'] == q:
+def addRes(result, stop, exit, barrierFree):
       lat, lng = epsgTransformer.transform( result['y'], result['x'] )
       res.append({
         "name_en": stop["name_en"],
@@ -29,8 +26,6 @@ def checkResult(results, q, stop, exit, barrierFree):
         "lng": lng,
         "barrierFree": barrierFree,
       })
-      return True
-  return False  
 
 async def main():
   a_client = httpx.AsyncClient(timeout=httpx.Timeout(30.0, pool=None))
@@ -55,17 +50,17 @@ async def main():
   
   # crawl exit geolocation
   for key, stop in mtrStops.items():
+    if stop['name_tc'] == '':
+      continue
     q = '港鐵'+stop['name_tc']+'站進出口'
     r = await emitRequest("https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q="+q, a_client)
-    for char in string.ascii_uppercase:
-      q = '港鐵'+stop['name_tc']+'站-'+str(char)+'進出口'
-      checkResult(r.json(), q, stop, char, str(char) in stop)
-      for i in range(1,10):
-        q = '港鐵'+stop['name_tc']+'站-'+char+str(i)+'進出口'
-        checkResult(r.json(), q, stop, char+str(i), (char+str(char)) in stop)
+    stopExits = [se for se in r.json() if re.match(r"港鐵\w+站-\w+進出口", se['nameZH'])]
+    for se in stopExits:
+      i = re.match(r"港鐵\w+站-(\w+)進出口", se['nameZH']).groups()
+      addRes(se, stop, i[0], i[0] in stop)
         
   with open('exits.mtr.json', 'w', encoding='UTF-8') as f:
-    f.write(json.dumps(list({(v['name']['zh']+v['exit']): v for v in res}.values()), ensure_ascii=False))
+    json.dump(list({(v['name']['zh']+v['exit']): v for v in res}.values()), fp=f, ensure_ascii=False)
 
 if __name__ == '__main__':
   logging.basicConfig(level=logging.INFO)

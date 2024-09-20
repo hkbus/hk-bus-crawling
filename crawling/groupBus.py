@@ -1,4 +1,3 @@
-from numpy import float64
 from scipy.spatial import KDTree
 import json
 import math
@@ -30,7 +29,7 @@ def calculate_bearing(lat1, lon1, lat2, lon2):
 
 def group_bus_stops(bus_stops, max_distance=50, bearing_threshold=35):
     tree = KDTree(bus_stops.select("lat", "lng"))
-    groups = pl.DataFrame(schema={"id":str, "lat":pl.Float64(), "lng":pl.Float64(), "name_en":str, "name_zh":str, "bus_group_id":pl.Int32()})
+    groups = pl.DataFrame(schema={"id":str, "lat":pl.Float64, "lng":pl.Float64, "name_en":str, "name_zh":str, "bus_group_id":pl.Int32})
     visited = set()
     group_id = 1
 

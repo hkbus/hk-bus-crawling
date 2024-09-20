@@ -15,4 +15,6 @@ wheel==0.36.2
 pyproj==3.3.0
 httpx==0.25.2
 xxhash==3.2.0
+polars==1.7.1
+scipy==1.24.0
 -e .

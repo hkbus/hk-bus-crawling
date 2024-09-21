@@ -74,7 +74,14 @@ jobs:
       - name: create deployment folder
         run: mkdir -p build
       - name: cp files into deployment folder
-        run: cp -r routeFareList.json routeFareList.min.json routeFareList.md5 CNAME exits.mtr.json build/
+        run: |
+          cp -r \
+          routeFareList.json \
+          routeFareList.min.json \
+          routeFareList.md5 \
+          CNAME \
+          exits.mtr.json \
+          build/
       - name: cp route-ts into deployment folder
         run: cp -r route-ts build
       - name: Update resources

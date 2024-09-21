@@ -81,6 +81,7 @@ jobs:
           routeFareList.md5 \
           CNAME \
           exits.mtr.json \
+          groupBus_all.json \
           build/
       - name: cp route-ts into deployment folder
         run: cp -r route-ts build

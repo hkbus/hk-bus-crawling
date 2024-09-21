@@ -45,6 +45,7 @@ jobs:
           python ./crawling/matchGtfs.py
           python ./crawling/cleansing.py
           python ./crawling/mergeRoutes.py
+          python ./crawling/groupBus.py
           python ./crawling/routeCompare.py
           python ./crawling/mtrExits.py
 

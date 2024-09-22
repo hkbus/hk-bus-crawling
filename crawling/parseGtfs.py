@@ -97,7 +97,7 @@ async def parseGtfs():
       _tmp.sort(key=takeFirst)
       routeList[route_id]['fares'][bound] = [v[0] for k,v in _tmp]
 
-  nameReg = re.compile('\[(.*)\] (.*)')
+  nameReg = re.compile(r'\[(.*)\] (.*)')
   def parseStopName(name):
     ret = {}
     for str in name.split('|'):

@@ -7,6 +7,8 @@ on:
 
 jobs:
   Fetch-Route-Data:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
@@ -15,7 +17,7 @@ jobs:
       - name: Setup Python environment
         uses: actions/setup-python@v4
         with:
-            python-version: '3.8'
+            python-version: '3.12'
             architecture: 'x64'
             cache: 'pip'
             cache-dependency-path: crawling/requirements.txt
@@ -45,6 +47,7 @@ jobs:
           python ./crawling/matchGtfs.py
           python ./crawling/cleansing.py
           python ./crawling/mergeRoutes.py
+          python ./crawling/groupBus.py
           python ./crawling/routeCompare.py
           python ./crawling/mtrExits.py
 
@@ -67,12 +70,21 @@ jobs:
             ROUTE_BUS.xml
             route-ts/
             exits.mtr.json
+            groupBus_all.json
       - name: Update MD5
         run: md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
       - name: create deployment folder
         run: mkdir -p build
       - name: cp files into deployment folder
-        run: cp -r routeFareList.json routeFareList.min.json routeFareList.md5 CNAME exits.mtr.json route-ts build/
+        run: |
+          cp -r \
+          routeFareList.json \
+          routeFareList.min.json \
+          routeFareList.md5 \
+          CNAME \
+          exits.mtr.json \
+          groupBus_all.json \
+          build/
       - name: cp route-ts into deployment folder
         run: cp -r route-ts build
       - name: Update resources

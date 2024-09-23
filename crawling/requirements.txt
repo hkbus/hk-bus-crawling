@@ -3,7 +3,7 @@ certifi==2020.12.5
 cffi==1.15.0
 chardet==4.0.0
 cryptography==3.4.7
-haversine==2.3.0
+haversine>=2.3.0
 idna==2.10
 pycparser==2.20
 pyOpenSSL==20.0.1
@@ -12,7 +12,7 @@ PySocks==1.7.1
 six==1.15.0
 urllib3==1.26.4
 wheel==0.36.2
-pyproj==3.3.0
+pyproj>=3.6.1
 httpx==0.25.2
 xxhash==3.2.0
 -e .

@@ -1,6 +1,8 @@
 name: Data Fetching
 on: 
   push:
+      branches-ignore:
+        - alpha
   schedule:
     - cron: "5 19 * * *"
   workflow_dispatch:

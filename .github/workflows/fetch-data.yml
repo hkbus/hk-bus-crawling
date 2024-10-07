@@ -49,6 +49,11 @@ jobs:
           python ./crawling/routeCompare.py
           python ./crawling/mtrExits.py
 
+      - name: Update MD5
+        run: |
+          md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
+          md5sum routeFareList.alpha.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.alpha.md5
+
       - name: Archive crawling outputs
         uses: actions/upload-artifact@v4
         if: always()
@@ -69,10 +74,6 @@ jobs:
             ROUTE_BUS.xml
             route-ts/
             exits.mtr.json
-      - name: Update MD5
-        run: |
-          md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
-          md5sum routeFareList.alpha.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.alpha.md5
       - name: create deployment folder
         run: mkdir -p build
       - name: cp files into deployment folder

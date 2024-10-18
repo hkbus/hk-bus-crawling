@@ -156,7 +156,7 @@ def matchRoutes(co):
             routeCandidate['co'] = gtfsRoute['co'] if co in gtfsRoute['co'] else ( gtfsRoute['co'] + [co] )
             routeCandidate['stops'] = [route['stops'][j] for i, j in ret]
             routeCandidate['gtfs'] = [gtfsId]
-            route['gtfs'] = [gtfsId]
+            route['found'] = True
           else:
             routeCandidate['stops'] = [route['stops'][j] for i, j in ret]
             routeCandidate['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) <= len(gtfsRoute["fares"][bound]) + 1 else None
@@ -184,7 +184,7 @@ def matchRoutes(co):
   print (co, len([route for route in routeList if 'gtfs' not in route]), 'out of',len(routeList), 'not match')
   if co != 'mtr': routeList.extend(routeCandidates)
   routeList = [route for route in routeList if 'found' not in route or 'fares' in route] # skipping routes that just partially mapped to GTFS
-    
+
   with open( 'routeFareList.%s.json' % co, 'w', encoding='UTF-8' ) as f:
     f.write(json.dumps(routeList, ensure_ascii=False))
   

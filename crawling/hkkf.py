@@ -57,7 +57,8 @@ async def getRouteStop(co):
       "stops": [
         "KF" + str(orig["pier_id"]),
         "KF" + str(dest["pier_id"]),
-      ]
+      ],
+      "co": "hkkf",
     })
     routeList.append({
       "route": "KF" + str(apiRoute["route_id"]),
@@ -70,7 +71,8 @@ async def getRouteStop(co):
       "stops": [
         "KF" + str(dest["pier_id"]),
         "KF" + str(orig["pier_id"]),
-      ]
+      ],
+      "co": "hkkf",
     })
 
   for apiStop in apiStops:

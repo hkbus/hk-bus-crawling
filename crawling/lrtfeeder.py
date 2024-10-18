@@ -40,7 +40,8 @@ async def getRouteStop(co = 'lrtfeeder'):
         "dest_tc": end["zh"] if bound == 'O' else start['zh'],
         "orig_en": start['en'] if bound == 'O' else end['en'],
         "dest_en": end["en"] if bound == 'O' else start['en'],
-        "stops": []
+        "stops": [],
+        "co": "lrtfeeder"
       }
 
   # Parse stops

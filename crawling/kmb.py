@@ -40,6 +40,7 @@ async def getRouteStop():
         r = await emitRequest('https://data.etabus.gov.hk/v1/transport/kmb/route/', a_client)
         for route in r.json()['data']:
             route['stops'] = {}
+            route['co'] = 'kmb'
             routeList['+'.join([route['route'], route['service_type'], route['bound']])] = route
 
         # load route stops

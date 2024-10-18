@@ -122,10 +122,10 @@ def matchRoutes(co):
   with open( 'stopList.%s.json' % co, 'r', encoding="utf-8" ) as f:
     stopList = json.load(f)
 
-  extraRoutes = []
+  routeCandidates = []
   # one pass to find matches of co vs gtfs by DP
   for gtfsId, gtfsRoute in gtfsRoutes.items():
-    debug = gtfsRoute['route'] == '85'
+    debug = False and gtfsId == '1047' and gtfsRoute['orig']['zh'] == '沙田站'
     if co == 'gmb' and co in gtfsRoute['co']: # handle for gmb
       for route in routeList:
         if route['gtfsId'] == gtfsId:
@@ -144,35 +144,33 @@ def matchRoutes(co):
             ret, avgDist = matchStopsByDp([stopList[stop] for stop in route['stops']], [gtfsStops[stop] for stop in stops], co, debug)
             if avgDist < bestMatch[1]:
               bestMatch = (gtfsId, avgDist, ret, bound, stops, route)
-        #if bestMatch[0] == -1:
-        #  print (gtfsRoute['route'], getVirtualRoute(routeList, gtfsRoute['route']))
-        # if debug:
-        #   printStopMatches(bestMatch, gtfsStops, stopList, co)
 
         if bestMatch[1] < DIST_DIFF: # assume matching to be avg stop distance diff is lower than 100
           ret, bound, stops, route = bestMatch[2:]
           
+          routeCandidate = route.copy()
           if (len(ret) == len(route['stops']) or len(ret) + 1 == len(route['stops'])) and 'gtfs' not in route and "virtual" not in route:
-            route['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) <= len(gtfsRoute["fares"][bound]) + 1 else None
-            route['freq'] = gtfsRoute['freq'][bound]
-            route['jt'] = gtfsRoute['jt']
-            route['co'] = gtfsRoute['co'] if co in gtfsRoute['co'] else ( gtfsRoute['co'] + [co] )
+            routeCandidate['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) <= len(gtfsRoute["fares"][bound]) + 1 else None
+            routeCandidate['freq'] = gtfsRoute['freq'][bound]
+            routeCandidate['jt'] = gtfsRoute['jt']
+            routeCandidate['co'] = gtfsRoute['co'] if co in gtfsRoute['co'] else ( gtfsRoute['co'] + [co] )
+            routeCandidate['stops'] = [route['stops'][j] for i, j in ret]
+            routeCandidate['gtfs'] = [gtfsId]
             route['gtfs'] = [gtfsId]
           else:
-            extra = route.copy()
-            extra['stops'] = [route['stops'][j] for i, j in ret]
-            extra['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) <= len(gtfsRoute["fares"][bound]) + 1 else None
-            extra['freq'] = gtfsRoute['freq'][bound]
-            extra['jt'] = gtfsRoute['jt']
-            extra['co'] = gtfsRoute['co']
-            extra['orig_tc'] = stopList[extra['stops'][0]]['name_tc']
-            extra['orig_en'] = stopList[extra['stops'][0]]['name_en']
-            extra['dest_tc'] = stopList[extra['stops'][-1]]['name_tc']
-            extra['dest_en'] = stopList[extra['stops'][-1]]['name_en']
-            extra['service_type'] = "2" if 'found' in route else "1"
-            extra['gtfs'] = [gtfsId]
+            routeCandidate['stops'] = [route['stops'][j] for i, j in ret]
+            routeCandidate['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) <= len(gtfsRoute["fares"][bound]) + 1 else None
+            routeCandidate['freq'] = gtfsRoute['freq'][bound]
+            routeCandidate['jt'] = gtfsRoute['jt']
+            routeCandidate['co'] = gtfsRoute['co']
+            routeCandidate['orig_tc'] = stopList[routeCandidate['stops'][0]]['name_tc']
+            routeCandidate['orig_en'] = stopList[routeCandidate['stops'][0]]['name_en']
+            routeCandidate['dest_tc'] = stopList[routeCandidate['stops'][-1]]['name_tc']
+            routeCandidate['dest_en'] = stopList[routeCandidate['stops'][-1]]['name_en']
+            routeCandidate['service_type'] = "2" if 'found' in route else "1"
+            routeCandidate['gtfs'] = [gtfsId]
             route['found'] = True        # mark the route has mapped to GTFS, mainly for ctb routes
-            extraRoutes.append(extra)
+          routeCandidates.append(routeCandidate)
           if '_route' not in gtfsRoute:
             gtfsRoute['_route'] = {}
           gtfsRoute['_route'][co] = route.copy()
@@ -184,7 +182,7 @@ def matchRoutes(co):
       route['co'] = [co]
       
   print (co, len([route for route in routeList if 'gtfs' not in route]), 'out of',len(routeList), 'not match')
-  if co != 'mtr': routeList.extend(extraRoutes)
+  if co != 'mtr': routeList.extend(routeCandidates)
   routeList = [route for route in routeList if 'found' not in route or 'fares' in route] # skipping routes that just partially mapped to GTFS
     
   with open( 'routeFareList.%s.json' % co, 'w', encoding='UTF-8' ) as f:

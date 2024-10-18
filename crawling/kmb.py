@@ -9,11 +9,11 @@ import httpx
 
 from crawl_utils import emitRequest
 
-async def getRouteStop(co = 'kmb'):
+async def getRouteStop():
     a_client = httpx.AsyncClient(timeout=httpx.Timeout(30.0, pool=None))
     # define output name
-    ROUTE_LIST = 'routeList.'+co+'.json'
-    STOP_LIST = 'stopList.'+co+'.json'
+    ROUTE_LIST = 'routeList.kmb.json'
+    STOP_LIST = 'stopList.kmb.json'
 
     stopList = {}
     if path.isfile(STOP_LIST):
@@ -21,7 +21,7 @@ async def getRouteStop(co = 'kmb'):
             stopList = json.load(f)
     else:
         # load stops
-        r = await emitRequest('https://data.etabus.gov.hk/v1/transport/'+co+'/stop', a_client)
+        r = await emitRequest('https://data.etabus.gov.hk/v1/transport/kmb/stop', a_client)
         _stopList = r.json()['data']
         for stop in _stopList:
             stopList[stop['stop']] = stop
@@ -37,13 +37,13 @@ async def getRouteStop(co = 'kmb'):
         return
     else:
         # load routes
-        r = await emitRequest('https://data.etabus.gov.hk/v1/transport/'+co+'/route/', a_client)
+        r = await emitRequest('https://data.etabus.gov.hk/v1/transport/kmb/route/', a_client)
         for route in r.json()['data']:
             route['stops'] = {}
             routeList['+'.join([route['route'], route['service_type'], route['bound']])] = route
 
         # load route stops
-        r = await emitRequest('https://data.etabus.gov.hk/v1/transport/'+co+'/route-stop/', a_client)
+        r = await emitRequest('https://data.etabus.gov.hk/v1/transport/kmb/route-stop/', a_client)
         for stop in r.json()['data']:
             routeKey = '+'.join([stop['route'], stop['service_type'], stop['bound']])
             if routeKey in routeList:

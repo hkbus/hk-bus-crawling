@@ -104,3 +104,5 @@ jobs:
             commit-message: Update resources
             branch: gh-pages
             clean: false
+            clean-exclude: |
+              alpha/*

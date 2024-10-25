@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup Python environment
         uses: actions/setup-python@v5
         with:
@@ -106,3 +108,27 @@ jobs:
             clean: false
             clean-exclude: |
               alpha/*
+
+      - name: Check if alpha branch status
+        id: alpha-check
+        shell: bash
+        run: |
+          ALPHA_BRANCH_NAME=alpha
+          echo "alpha_exist=$( git rev-parse --verify --no-revs "${ALPHA_BRANCH_NAME}" && echo yes )" >> "$GITHUB_OUTPUT"
+          # Basically, this command will do the diff
+          # > git diff --exit-code --no-patch <base>...<test_branch>
+          echo "alpha_newer=$( git diff --exit-code --no-patch master..."${ALPHA_BRANCH_NAME}" > /dev/null || echo yes )" >> "$GITHUB_OUTPUT"
+
+      - name: Copy master build to alpha when no update or not exist
+        if: github.ref_name == 'master' && ( steps.alpha-check.outputs.alpha_newer != 'yes' || steps.alpha-check.outputs.alpha_exist != 'yes')
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+            target-folder: alpha/
+            folder: build
+            commit-message: Update resources
+            branch: gh-pages
+            clean: false
+            clean-exclude: |
+              alpha/*
+      
+      # FIXME: Implement the logic on alpha is newer

@@ -22,10 +22,12 @@ jobs:
             cache: 'pip'
             cache-dependency-path: crawling/requirements.txt
       - name: Install dependencies
+        shell: bash
         run: |
           python -m pip install --upgrade pip
           pip install -r ./crawling/requirements.txt
       - name: Crawling resources
+        shell: bash
         env:
           REQUEST_LIMIT: "6"
         run: |
@@ -52,6 +54,7 @@ jobs:
           python ./crawling/mtrExits.py
 
       - name: Update MD5
+        shell: bash
         run: |
           md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
           md5sum routeFareList.alpha.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.alpha.md5
@@ -77,8 +80,10 @@ jobs:
             route-ts/
             exits.mtr.json
       - name: create deployment folder
+        shell: bash
         run: mkdir -p build
       - name: cp files into deployment folder
+        shell: bash
         run: |
           cp \
           routeFareList.json \

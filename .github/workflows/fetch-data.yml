@@ -30,13 +30,17 @@ jobs:
             echo "alpha_newer=yes" >> "$GITHUB_OUTPUT"
           fi
 
-      # FIXME: Implement the logic on alpha is newer
       - name: Set github page upload path by alpha branch status
+        id: target-path
         shell: bash
         run: |
           should_deploy_to_alpha=${{ steps.alpha-check.outputs.alpha_newer == 'yes' && github.ref_name == env.ALPHA_BRANCH_NAME }}
-          echo "${should_deploy_to_alpha}"
-          exit 1
+          if [ "${should_deploy_to_alpha}" == "true" ]
+          then
+            echo "target-path=alpha/" >> "$GITHUB_OUTPUT"
+          else
+            echo "target-path=/" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Setup Python environment
         uses: actions/setup-python@v5
@@ -137,6 +141,7 @@ jobs:
       - name: Update resources
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+            target-folder: ${{ steps.target-path.outputs.target-path }}
             folder: build
             commit-message: Update resources
             branch: gh-pages

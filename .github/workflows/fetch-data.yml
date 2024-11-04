@@ -148,3 +148,10 @@ jobs:
             clean: false
             clean-exclude: |
               alpha/*
+
+      - name: Trigger alpha build on schedule
+        if: github.event_name == 'schedule' && steps.alpha-check.outputs.alpha_newer == 'yes'
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: ${{ github.workflow }}
+          ref: ${{ env.ALPHA_BRANCH_NAME }}

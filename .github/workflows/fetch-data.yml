@@ -1,8 +1,8 @@
 name: Data Fetching
 on: 
   push:
-      branches-ignore:
-        - alpha
+      # branches-ignore:
+      #   - alpha
   schedule:
     - cron: "5 19 * * *"
   workflow_dispatch:
@@ -13,11 +13,31 @@ jobs:
     permissions:
       contents: write
 
+    env:
+      ALPHA_BRANCH_NAME: alpha
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Check if alpha branch status
+        id: alpha-check
+        shell: bash
+        run: |
+          if git rev-parse --verify --no-revs "${ALPHA_BRANCH_NAME}" && ! git diff --exit-code master..."${ALPHA_BRANCH_NAME}"
+          then
+            echo "alpha_newer=yes" >> "$GITHUB_OUTPUT"
+          fi
+
+      # FIXME: Implement the logic on alpha is newer
+      - name: Set github page upload path by alpha branch status
+        shell: bash
+        run: |
+          should_deploy_to_alpha=${{ steps.alpha-check.outputs.alpha_newer == 'yes' && github.ref_name == env.ALPHA_BRANCH_NAME }}
+          echo "${should_deploy_to_alpha}"
+          exit 1
+
       - name: Setup Python environment
         uses: actions/setup-python@v5
         with:
@@ -102,16 +122,6 @@ jobs:
       - name: cp route-ts into deployment folder
         run: cp -r route-ts build
 
-      - name: Check if alpha branch status
-        id: alpha-check
-        shell: bash
-        run: |
-          ALPHA_BRANCH_NAME=alpha
-          if git rev-parse --verify --no-revs "${ALPHA_BRANCH_NAME}" && ! git diff --exit-code master..."${ALPHA_BRANCH_NAME}"
-          then
-            echo "alpha_newer=yes" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Copy master build to alpha when no update or not exist
         if: github.ref_name == 'master' && steps.alpha-check.outputs.alpha_newer != 'yes'
         uses: JamesIves/github-pages-deploy-action@v4
@@ -124,8 +134,6 @@ jobs:
             clean-exclude: |
               alpha/*
       
-      # FIXME: Implement the logic on alpha is newer
-
       - name: Update resources
         uses: JamesIves/github-pages-deploy-action@v4
         with:

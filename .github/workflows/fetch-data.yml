@@ -107,13 +107,13 @@ jobs:
         shell: bash
         run: |
           ALPHA_BRANCH_NAME=alpha
-          echo "alpha_exist=$( git rev-parse --verify --no-revs "${ALPHA_BRANCH_NAME}" && echo yes )" >> "$GITHUB_OUTPUT"
-          # Basically, this command will do the diff
-          # > git diff --exit-code --no-patch <base>...<test_branch>
-          echo "alpha_newer=$( git diff --exit-code --no-patch master..."${ALPHA_BRANCH_NAME}" > /dev/null || echo yes )" >> "$GITHUB_OUTPUT"
+          if git rev-parse --verify --no-revs "${ALPHA_BRANCH_NAME}" && ! git diff --exit-code master..."${ALPHA_BRANCH_NAME}"
+          then
+            echo "alpha_newer=yes" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Copy master build to alpha when no update or not exist
-        if: github.ref_name == 'master' && ( steps.alpha-check.outputs.alpha_newer != 'yes' || steps.alpha-check.outputs.alpha_exist != 'yes')
+        if: github.ref_name == 'master' && steps.alpha-check.outputs.alpha_newer != 'yes'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
             target-folder: alpha/

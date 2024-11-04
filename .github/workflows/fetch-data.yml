@@ -101,15 +101,6 @@ jobs:
           build/
       - name: cp route-ts into deployment folder
         run: cp -r route-ts build
-      - name: Update resources
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-            folder: build
-            commit-message: Update resources
-            branch: gh-pages
-            clean: false
-            clean-exclude: |
-              alpha/*
 
       - name: Check if alpha branch status
         id: alpha-check
@@ -134,3 +125,13 @@ jobs:
               alpha/*
       
       # FIXME: Implement the logic on alpha is newer
+
+      - name: Update resources
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+            folder: build
+            commit-message: Update resources
+            branch: gh-pages
+            clean: false
+            clean-exclude: |
+              alpha/*

@@ -26,7 +26,7 @@ jobs:
         shell: bash
         run: |
           set -o xtrace
-          if git rev-parse --verify --no-revs "origin/${ALPHA_BRANCH_NAME}" && ! git diff --exit-code --merge-base master "origin/${ALPHA_BRANCH_NAME}" --
+          if git rev-parse --verify --no-revs "origin/${ALPHA_BRANCH_NAME}" && ! git diff --exit-code --merge-base origin/master "origin/${ALPHA_BRANCH_NAME}" --
           then
             echo "alpha_newer=yes" >> "$GITHUB_OUTPUT"
           fi

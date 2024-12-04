@@ -25,6 +25,7 @@ jobs:
         id: alpha-check
         shell: bash
         run: |
+          set -o xtrace
           if git rev-parse --verify --no-revs "${ALPHA_BRANCH_NAME}" && ! git diff --exit-code --merge-base master "${ALPHA_BRANCH_NAME}"
           then
             echo "alpha_newer=yes" >> "$GITHUB_OUTPUT"

@@ -35,6 +35,7 @@ jobs:
         id: target-path
         shell: bash
         run: |
+          set -o xtrace
           should_deploy_to_alpha=${{ steps.alpha-check.outputs.alpha_newer == 'yes' && github.ref_name == env.ALPHA_BRANCH_NAME }}
           if [ "${should_deploy_to_alpha}" == "true" ]
           then
@@ -125,6 +126,7 @@ jobs:
           exits.mtr.json \
           build/
       - name: cp route-ts into deployment folder
+        shell: bash
         run: cp -r route-ts build
 
       - name: Copy master build to alpha when no update or not exist

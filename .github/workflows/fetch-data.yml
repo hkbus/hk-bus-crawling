@@ -11,6 +11,7 @@ jobs:
   Fetch-Route-Data:
     runs-on: ubuntu-latest
     permissions:
+      actions: write
       contents: write
 
     env:

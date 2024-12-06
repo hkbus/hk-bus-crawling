@@ -11,6 +11,7 @@ jobs:
   Fetch-Route-Data:
     runs-on: ubuntu-latest
     permissions:
+      actions: write
       contents: write
 
     env:
@@ -26,7 +27,7 @@ jobs:
         shell: bash
         run: |
           set -o xtrace
-          if git rev-parse --verify --no-revs "${ALPHA_BRANCH_NAME}" && ! git diff --exit-code master..."${ALPHA_BRANCH_NAME}"
+          if git rev-parse --verify --no-revs "origin/${ALPHA_BRANCH_NAME}" && ! git diff --exit-code --merge-base origin/master "origin/${ALPHA_BRANCH_NAME}" --
           then
             echo "alpha_newer=yes" >> "$GITHUB_OUTPUT"
           fi
@@ -135,7 +136,7 @@ jobs:
         with:
             target-folder: alpha/
             folder: build
-            commit-message: Update resources
+            commit-message: "Update resources from ${{ github.run_number }}:${{ github.run_attempt }}"
             branch: gh-pages
             clean: false
             clean-exclude: |
@@ -146,7 +147,7 @@ jobs:
         with:
             target-folder: ${{ steps.target-path.outputs.target-path }}
             folder: build
-            commit-message: Update resources
+            commit-message: "Update resources from ${{ github.run_id }}:${{ github.run_attempt }}"
             branch: gh-pages
             clean: false
             clean-exclude: |

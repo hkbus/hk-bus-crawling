@@ -134,7 +134,7 @@ jobs:
         with:
             target-folder: alpha/
             folder: build
-            commit-message: "Update resources from ${{ github.run_id }}:${{ github.run_attempt }}"
+            commit-message: "Update resources from ${{ github.run_number }}:${{ github.run_attempt }}"
             branch: gh-pages
             clean: false
             clean-exclude: |

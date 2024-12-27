@@ -5,7 +5,8 @@ import httpx
 from os import path
 import json
 
-from crawl_utils import emitRequest
+from crawl_utils import emitRequest, store_version
+from datetime import datetime
 
 async def parseJourneyTime():
   a_client = httpx.AsyncClient(timeout=httpx.Timeout(30.0, pool=None))
@@ -18,6 +19,8 @@ async def parseJourneyTime():
   routeTimeList = {}
   tree = ET.parse('ROUTE_BUS.xml')
   root = tree.getroot()
+  version = datetime.fromisoformat(root.attrib["generated"]+"+08:00")
+  store_version('routes-fares-xml/ROUTE_BUS', version.isoformat())
   for route in root.iter('ROUTE'):
     if route.find('ROUTE_TYPE').text == '1':
       routeTimeList[route.find('ROUTE_ID').text] = {

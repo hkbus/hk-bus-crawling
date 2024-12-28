@@ -1,0 +1,22 @@
+name: Format
+
+on: [push]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Format code
+        id: autopep8
+        uses: peter-evans/autopep8@v2
+        with:
+          args: --exit-code --recursive --in-place --aggressive --aggressive --indent-size=2 .
+      - name: Commit autopep8 changes
+        if: steps.autopep8.outputs.exit-code == 2
+        run: |
+          # copied from https://github.com/creyD/prettier_action/blob/9561a3f1e164fa28b6f4da59c1807e1cd1af7cf5/entrypoint.sh#L131
+          git config user.name "GitHub Action"
+          git config user.email "actions@github.com"
+          git commit -am "Formatted Code!" --author="$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>" || echo "No files added to commit"
+          git push

@@ -1,12 +1,14 @@
 import asyncio
+import datetime
 import logging
 import zipfile
+from zoneinfo import ZoneInfo
 import httpx
 from os import path
 import csv
 import json
 import re
-from crawl_utils import emitRequest
+from crawl_utils import emitRequest, store_version
 
 def takeFirst(elem):
   return int(elem[0])
@@ -19,6 +21,9 @@ async def parseGtfs():
 
   with zipfile.ZipFile("gtfs.zip", "r") as zip_ref:
     zip_ref.extractall("gtfs")
+    version = min([f.date_time for f in zip_ref.infolist()])
+    version = datetime.datetime(*version, tzinfo=ZoneInfo("Asia/Hong_Kong"))
+    store_version('GTFS', version.isoformat())
 
   routeList = {}
   stopList = {}

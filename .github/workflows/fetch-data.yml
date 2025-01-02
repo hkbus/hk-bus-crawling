@@ -59,6 +59,7 @@ jobs:
             holiday.json
             routeFareList*
             routeList*
+            stopCandidates*
             stopList*
             stopMap*
             routeTime.json

@@ -150,7 +150,7 @@ def matchRoutes(co):
           
           routeCandidate = route.copy()
           if (len(ret) == len(route['stops']) or len(ret) + 1 == len(route['stops'])) and 'gtfs' not in route and "virtual" not in route:
-            routeCandidate['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) <= len(gtfsRoute["fares"][bound]) + 1 else None
+            routeCandidate['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) < len(gtfsRoute["fares"][bound]) + 1 else None
             routeCandidate['freq'] = gtfsRoute['freq'][bound]
             routeCandidate['jt'] = gtfsRoute['jt']
             routeCandidate['co'] = gtfsRoute['co'] if co in gtfsRoute['co'] else ( gtfsRoute['co'] + [co] )
@@ -159,7 +159,7 @@ def matchRoutes(co):
             route['found'] = True
           else:
             routeCandidate['stops'] = [route['stops'][j] for i, j in ret]
-            routeCandidate['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) <= len(gtfsRoute["fares"][bound]) + 1 else None
+            routeCandidate['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]] if len(ret[:-1]) < len(gtfsRoute["fares"][bound]) + 1 else None
             routeCandidate['freq'] = gtfsRoute['freq'][bound]
             routeCandidate['jt'] = gtfsRoute['jt']
             routeCandidate['co'] = gtfsRoute['co']

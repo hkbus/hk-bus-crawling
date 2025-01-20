@@ -17,7 +17,7 @@ def get_stop_group(
 
   def get_stops_haversine_distance(stop_a, stop_b):
     if stop_a['location']['lat'] == stop_b['location']['lat'] and stop_a['location']['lng'] == stop_b['location']['lng']:
-        return 0
+      return 0
     return haversine(
         (stop_a['location']['lat'], stop_a['location']['lng']),
         (stop_b['location']['lat'], stop_b['location']['lng']),

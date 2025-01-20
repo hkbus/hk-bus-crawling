@@ -7,6 +7,7 @@ import asyncio
 
 logger = logging.getLogger(__name__)
 
+
 async def main():
   if not path.isfile('holiday.json'):
     async with httpx.AsyncClient() as a_client:
@@ -19,6 +20,6 @@ async def main():
   else:
     logger.info('holiday.json already exist, download skipped')
 
-if __name__=='__main__':
+if __name__ == '__main__':
   logging.basicConfig(level=logging.INFO)
   asyncio.run(main())

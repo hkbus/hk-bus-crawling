@@ -2,7 +2,7 @@ name: Data Fetching
 on: 
   push:
   schedule:
-    - cron: "5 19 * * *"
+    - cron: "10 21 * * *" # 05:10 (HKT) daily
   workflow_dispatch:
 
 jobs:

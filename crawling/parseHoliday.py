@@ -1,12 +1,11 @@
 import json
 import logging
 from os import path
-
+from datetime import datetime
 import httpx
 import asyncio
 
 logger = logging.getLogger(__name__)
-
 
 async def main():
   if not path.isfile('holiday.json'):
@@ -15,11 +14,11 @@ async def main():
       data = r.json()
     with open('holiday.json', 'w') as f:
       json.dump([holiday['dtstart'][0]
-                for holiday in data['vcalendar'][0]['vevent']], f)
+                for holiday in data['vcalendar'][0]['vevent'] if int(holiday['dtstart'][0][:4]) >= datetime.now().year], f)
     logger.info('Created holiday.json')
   else:
     logger.info('holiday.json already exist, download skipped')
 
-if __name__ == '__main__':
+if __name__=='__main__':
   logging.basicConfig(level=logging.INFO)
   asyncio.run(main())

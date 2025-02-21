@@ -54,7 +54,7 @@ Daily fetched JSON is in [gh-pages](https://github.com/hkbus/hk-bus-crawling/tre
 To avoid the conflict of dependencies between python projects, it's better to create a fresh environment for this run:
 
 1. Consider to install either [Miniforge3](https://github.com/conda-forge/miniforge?tab=readme-ov-file#download), Conda or pyenv
-2. Create env: `conda create -n hkbus_crawling python=3.88 pip`
+2. Create env: `conda create -n hkbus_crawling python=3.12 pip`
 3. Activate env: `conda activate hkbus_crawling`
 
 

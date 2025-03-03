@@ -133,12 +133,12 @@ async def getRouteStop(co):
           "dest_tc": direction['dest_tc'],
           "dest_en": direction['dest_en'],
           "bound": 'O' if direction['route_seq'] == 1 else 'I',
-          "service_type": 1 if route["description_tc"] == '正常班次' else service_type,
+          "service_type": 1 if route["description_tc"].strip() == '正常班次' else service_type,
           "stops": [str(stop['stop_id']) for stop in rs.json()['data']['route_stops']],
           "freq": getFreq(direction['headways'], serviceIdMap)
       })
       # print(routeList)
-      if route["description_tc"] != '正常班次':
+      if route["description_tc"].strip() != '正常班次':
         service_type += 1
 
   req_route_limit = asyncio.Semaphore(get_request_limit())

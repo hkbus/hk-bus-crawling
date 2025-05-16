@@ -29,7 +29,8 @@ async def routeCompare():
         str(b)).hexdigest()
 
   for newStop in newDb['stopList']:
-    if newStop not in oldDb['stopList'] or not isRouteEqual(oldDb['stopList'][newStop], newDb['stopList'][newStop]):
+    if newStop not in oldDb['stopList'] or not isRouteEqual(
+            oldDb['stopList'][newStop], newDb['stopList'][newStop]):
       changedStops.add(newStop)
 
   for oldStop in oldDb['stopList']:
@@ -40,7 +41,9 @@ async def routeCompare():
     busStopsinRoute = set()
     for provider in newDb['routeList'][newKey]['stops']:
       busStopsinRoute.update(newDb['routeList'][newKey]['stops'][provider])
-    if newKey not in oldDb['routeList'] or bool(changedStops & busStopsinRoute) or not isRouteEqual(oldDb['routeList'][newKey], newDb['routeList'][newKey]):
+    if newKey not in oldDb['routeList'] or bool(
+            changedStops & busStopsinRoute) or not isRouteEqual(
+            oldDb['routeList'][newKey], newDb['routeList'][newKey]):
       filename = re.sub(r'[\\\/\:\*\?\"\<\>\|]', '', newKey).upper()
       with open(os.path.join("route-ts", filename), "w", encoding='utf-8') as f:
         f.write(str(int(time.time())))

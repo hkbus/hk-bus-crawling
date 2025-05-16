@@ -19,6 +19,7 @@ async def routeCompare():
   r.encoding = 'utf-8'
   oldDb = r.json()
   newDb = json.load(open('routeFareList.min.json', 'r', encoding='UTF-8'))
+  changedStops = set()
 
   os.makedirs("route-ts", exist_ok=True)
 
@@ -27,9 +28,19 @@ async def routeCompare():
         str(a)).hexdigest() == xxhash.xxh3_64(
         str(b)).hexdigest()
 
+  for newStop in newDb['stopList']:
+    if newStop not in oldDb['stopList'] or not isRouteEqual(oldDb['stopList'][newStop], newDb['stopList'][newStop]):
+      changedStops.add(newStop)
+
+  for oldStop in oldDb['stopList']:
+    if oldStop not in newDb['stopList']:
+      changedStops.add(oldStop)
+
   for newKey in newDb['routeList']:
-    if newKey not in oldDb['routeList'] or not isRouteEqual(
-            oldDb['routeList'][newKey], newDb['routeList'][newKey]):
+    busStopsinRoute = set()
+    for provider in newDb['routeList'][newKey]['stops']:
+      busStopsinRoute.update(newDb['routeList'][newKey]['stops'][provider])
+    if newKey not in oldDb['routeList'] or bool(changedStops & busStopsinRoute) or not isRouteEqual(oldDb['routeList'][newKey], newDb['routeList'][newKey]):
       filename = re.sub(r'[\\\/\:\*\?\"\<\>\|]', '', newKey).upper()
       with open(os.path.join("route-ts", filename), "w", encoding='utf-8') as f:
         f.write(str(int(time.time())))

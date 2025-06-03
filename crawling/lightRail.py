@@ -11,9 +11,9 @@ import httpx
 from crawl_utils import emitRequest
 
 # List of Circular Routes 
-circularRoutes = ["705", "706"]
+circularRoutes = ("705", "706")
 
-def getbound(route, bound):
+def getBound(route, bound):
   if route in circularRoutes:
     return "O"
   else:
@@ -31,7 +31,7 @@ async def getRouteStop(co='lightRail'):
 
   routeList = {}
   stopList = {}
-  orig_set = set()
+  routeCollection = set()
 
   r = await emitRequest('https://opendata.mtr.com.hk/data/light_rail_routes_and_stops.csv', a_client)
   reader = csv.reader(r.text.split("\n"))
@@ -39,39 +39,44 @@ async def getRouteStop(co='lightRail'):
   routes = [route for route in reader if len(route) == 7]
   for [route, bound, stopCode, stopId, chn, eng, seq] in routes:
     key = routeKey(route, bound)
+    lightRailId = "LR" + stopId
     if key not in routeList:
-      routeList[key] = {
-          "gtfsId": None,
-          "route": route,
-          "bound": getbound(route, bound),
-          "service_type": "1",
-          "orig_tc": None,
-          "orig_en": None,
-          "dest_tc": None,
-          "dest_en": None,
-          "stops": [],
-          "fare": []
+      lightRailObject = routeList[key] = {
+        "gtfsId": None,
+        "route": route,
+        "bound": getBound(route, bound),
+        "service_type": "1",
+        "orig_tc": None,
+        "orig_en": None,
+        "dest_tc": None,
+        "dest_en": None,
+        "stops": [],
+        "fare": []
       }
-    if key not in orig_set:
-      routeList[key]["orig_tc"] = chn
-      routeList[key]["orig_en"] = eng
-      orig_set.add(key)
-    routeList[key]["dest_tc"] = chn
-    routeList[key]["dest_en"] = eng
-    if not routeList[key]["stops"] or routeList[key]["stops"][-1] != "LR" + stopId:
+    else:
+      lightRailObject = routeList[key]
+    
+    if key not in routeCollection:
+      lightRailObject["orig_tc"] = chn
+      lightRailObject["orig_en"] = eng
+      routeCollection.add(key)
+    lightRailObject["dest_tc"] = chn
+    lightRailObject["dest_en"] = eng
+    if not lightRailObject["stops"] or lightRailObject["stops"][-1] != lightRailId:
       if route in circularRoutes and seq != "1.00":
         # Avoid adding the same stop (orig & dest) twice in circular routes
-        if "LR" + stopId == routeList[key]["stops"][0]:
+        if lightRailId == lightRailObject["stops"][0]:
           continue
-      routeList[key]["stops"].append("LR" + stopId)
-    if "LR" + stopId not in stopList:
+      lightRailObject["stops"].append(lightRailId)
+
+    if lightRailId not in stopList:
       url = f'https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q={chn}輕鐵站'
       r = await emitRequest(url, a_client, headers={'Accept': 'application/json'})
       try:
         lat, lng = epsgTransformer.transform(
             r.json()[0]['y'], r.json()[0]['x'])
-        stopList["LR" + stopId] = {
-            "stop": "LR" + stopId,
+        stopList[lightRailId] = {
+            "stop": lightRailId,
             "name_en": eng,
             "name_tc": chn,
             "lat": lat,

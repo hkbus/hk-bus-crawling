@@ -44,7 +44,7 @@ async def getRouteStop(co='lightRail'):
     routeList[route + "_" + bound]["dest_en"] = eng
     routeList[route + "_" + bound]["stops"].append("LR" + stopId)
     if "LR" + stopId not in stopList:
-      url = 'https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q=輕鐵－' + chn
+      url = f'https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q={chn}輕鐵站'
       r = await emitRequest(url, a_client, headers={'Accept': 'application/json'})
       try:
         lat, lng = epsgTransformer.transform(

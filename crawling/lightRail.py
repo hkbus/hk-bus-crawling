@@ -10,19 +10,22 @@ import httpx
 
 from crawl_utils import emitRequest
 
-# List of Circular Routes 
+# List of Circular Routes
 circularRoutes = ("705", "706")
+
 
 def getBound(route, bound):
   if route in circularRoutes:
     return "O"
   else:
     return "O" if bound == "1" else "I"
-  
+
+
 def routeKey(route, bound):
-    if route in circularRoutes:
-        return f"{route}_O"
-    return f"{route}_{bound}"
+  if route in circularRoutes:
+    return f"{route}_O"
+  return f"{route}_{bound}"
+
 
 async def getRouteStop(co='lightRail'):
   a_client = httpx.AsyncClient(timeout=httpx.Timeout(30.0, pool=None))
@@ -42,26 +45,28 @@ async def getRouteStop(co='lightRail'):
     lightRailId = "LR" + stopId
     if key not in routeList:
       lightRailObject = routeList[key] = {
-        "gtfsId": None,
-        "route": route,
-        "bound": getBound(route, bound),
-        "service_type": "1",
-        "orig_tc": None,
-        "orig_en": None,
-        "dest_tc": None,
-        "dest_en": None,
-        "stops": [],
-        "fare": []
+          "gtfsId": None,
+          "route": route,
+          "bound": getBound(route, bound),
+          "service_type": "1",
+          "orig_tc": None,
+          "orig_en": None,
+          "dest_tc": None,
+          "dest_en": None,
+          "stops": [],
+          "fare": []
       }
     else:
       lightRailObject = routeList[key]
-    
+
     if key not in routeCollection:
       lightRailObject["orig_tc"] = chn
       lightRailObject["orig_en"] = eng
       routeCollection.add(key)
-    lightRailObject["dest_tc"] = chn + " (循環線)" if route in circularRoutes else chn
-    lightRailObject["dest_en"] = eng + " (Circular)" if route in circularRoutes else eng
+    lightRailObject["dest_tc"] = chn + \
+        " (循環線)" if route in circularRoutes else chn
+    lightRailObject["dest_en"] = eng + \
+        " (Circular)" if route in circularRoutes else eng
     if not lightRailObject["stops"] or lightRailObject["stops"][-1] != lightRailId:
       if route in circularRoutes and seq != "1.00":
         # Avoid adding the same stop (orig & dest) twice in circular routes

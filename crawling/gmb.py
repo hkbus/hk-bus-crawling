@@ -3,7 +3,7 @@ import asyncio
 import csv
 import json
 import logging
-
+import time
 import httpx
 
 from crawl_utils import emitRequest, get_request_limit
@@ -146,6 +146,7 @@ async def getRouteStop(co):
   async def get_route(region: str, route_no):
     async with req_route_limit:
       r = await emitRequest('https://data.etagmb.gov.hk/route/' + region + '/' + route_no, a_client)
+      time.sleep(0.1)
       await asyncio.gather(*[get_route_directions(route, route_no) for route in r.json()['data']])
     routeList.sort(key=lambda a: a['gtfsId'])
 

@@ -4,7 +4,7 @@ on:
       # branches-ignore:
       #   - alpha
   schedule:
-    - cron: "5 19 * * *"
+    - cron: "10 21 * * *" # 05:10 (HKT) daily
   workflow_dispatch:
 
 jobs:
@@ -100,6 +100,7 @@ jobs:
             holiday.json
             routeFareList*
             routeList*
+            stopCandidates*
             stopList*
             stopMap*
             routeTime.json
@@ -110,6 +111,11 @@ jobs:
             ROUTE_BUS.xml
             route-ts/
             exits.mtr.json
+            0versions.json
+      - name: Update MD5
+        run: |
+          md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
+          md5sum routeFareList.alpha.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.alpha.md5
       - name: create deployment folder
         shell: bash
         run: mkdir -p build
@@ -125,6 +131,7 @@ jobs:
           routeFareList.alpha.md5  \
           CNAME \
           exits.mtr.json \
+          0versions.json \
           build/
       - name: cp route-ts into deployment folder
         shell: bash

@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 async def emitRequest(url: str, client: httpx.AsyncClient, headers={}):
-  RETRY_TIMEOUT_MAX = 60
+  RETRY_TIMEOUT_MAX = 300
   retry_timeout = 1
   # retry if "Too many request (429)"
   while True:
@@ -16,7 +16,7 @@ async def emitRequest(url: str, client: httpx.AsyncClient, headers={}):
       r = await client.get(url, headers=headers)
       if r.status_code == 200:
         return r
-      elif r.status_code in (429, 502, 504):
+      elif r.status_code in (429, 502, 504, 403):
         logger.warning(
             f"status_code={r.status_code}, wait {retry_timeout} and retry. URL={url}")
         await asyncio.sleep(retry_timeout)

@@ -1,6 +1,8 @@
 name: Data Fetching
 on: 
   push:
+      # branches-ignore:
+      #   - alpha
   schedule:
     - cron: "10 21 * * *" # 05:10 (HKT) daily
   workflow_dispatch:
@@ -8,10 +10,41 @@ on:
 jobs:
   Fetch-Route-Data:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write
 
+    env:
+      ALPHA_BRANCH_NAME: alpha
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if alpha branch status
+        id: alpha-check
+        shell: bash
+        run: |
+          set -o xtrace
+          if git rev-parse --verify --no-revs "origin/${ALPHA_BRANCH_NAME}" && ! git diff --exit-code --merge-base origin/master "origin/${ALPHA_BRANCH_NAME}" --
+          then
+            echo "alpha_newer=yes" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set github page upload path by alpha branch status
+        id: target-path
+        shell: bash
+        run: |
+          set -o xtrace
+          should_deploy_to_alpha=${{ steps.alpha-check.outputs.alpha_newer == 'yes' && github.ref_name == env.ALPHA_BRANCH_NAME }}
+          if [ "${should_deploy_to_alpha}" == "true" ]
+          then
+            echo "target-path=alpha/" >> "$GITHUB_OUTPUT"
+          else
+            echo "target-path=/" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Setup Python environment
         uses: actions/setup-python@v5
         with:
@@ -20,10 +53,12 @@ jobs:
             cache: 'pip'
             cache-dependency-path: crawling/requirements.txt
       - name: Install dependencies
+        shell: bash
         run: |
           python -m pip install --upgrade pip
           pip install -r ./crawling/requirements.txt
       - name: Crawling resources
+        shell: bash
         env:
           REQUEST_LIMIT: "6"
         run: |
@@ -48,6 +83,12 @@ jobs:
           python ./crawling/mergeStopList.py
           python ./crawling/routeCompare.py
           python ./crawling/mtrExits.py
+
+      - name: Update MD5
+        shell: bash
+        run: |
+          md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
+          md5sum routeFareList.alpha.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.alpha.md5
 
       - name: Archive crawling outputs
         uses: actions/upload-artifact@v4
@@ -76,8 +117,10 @@ jobs:
           md5sum routeFareList.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.md5
           md5sum routeFareList.alpha.min.json | cut -f1 -d ' ' | tr -d $'\n' > routeFareList.alpha.md5
       - name: create deployment folder
+        shell: bash
         run: mkdir -p build
       - name: cp files into deployment folder
+        shell: bash
         run: |
           cp \
           routeFareList.json \
@@ -91,11 +134,35 @@ jobs:
           0versions.json \
           build/
       - name: cp route-ts into deployment folder
+        shell: bash
         run: cp -r route-ts build
+
+      - name: Copy master build to alpha when no update or not exist
+        if: github.ref_name == 'master' && steps.alpha-check.outputs.alpha_newer != 'yes'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+            target-folder: alpha/
+            folder: build
+            commit-message: "Update resources from ${{ github.run_number }}:${{ github.run_attempt }}"
+            branch: gh-pages
+            clean: false
+            clean-exclude: |
+              alpha/*
+      
       - name: Update resources
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+            target-folder: ${{ steps.target-path.outputs.target-path }}
             folder: build
-            commit-message: Update resources
+            commit-message: "Update resources from ${{ github.run_number }}:${{ github.run_attempt }}"
             branch: gh-pages
             clean: false
+            clean-exclude: |
+              alpha/*
+
+      - name: Trigger alpha build on schedule
+        if: ( github.event_name == 'schedule' || github.event_name=='workflow_dispatch') && steps.alpha-check.outputs.alpha_newer == 'yes'
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: ${{ github.workflow }}
+          ref: ${{ env.ALPHA_BRANCH_NAME }}

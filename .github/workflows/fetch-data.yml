@@ -4,7 +4,7 @@ on:
       # branches-ignore:
       #   - alpha
   schedule:
-    - cron: "10 21 * * *" # 05:10 (HKT) daily
+    - cron: "10 9,21 * * *" # 05:10 and 17:10 (HKT) daily
   workflow_dispatch:
 
 jobs:

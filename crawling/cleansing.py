@@ -17,7 +17,7 @@ def countBus(freq):
         sum += 1
         continue
       endTime, waitTime = v
-      sum += int((int(endTime[0:2]) - int(startTime[0:2])) * 60 + \
+      sum += int((int(endTime[0:2]) - int(startTime[0:2])) * 60 +
                  int(endTime[2:4]) - int(startTime[2:4])) / (int(waitTime) / 60)
   return sum
 
@@ -51,7 +51,8 @@ def cleansing(co):
           maxBus = bus
     if bestIdx != -1:
       routeList[bestIdx]['service_type'] = 1 if 'service_type' not in routeList[i] else routeList[bestIdx]['service_type']
-      if len(routeList[i]['stops']) <= 0 or routeList[i]['stops'] == routeList[bestIdx]['stops']:
+      if len(routeList[i]['stops']
+             ) <= 0 or routeList[i]['stops'] == routeList[bestIdx]['stops']:
         routeList[i]['skip'] = True
 
   _routeList = [route for route in routeList if 'skip' not in route]

@@ -51,7 +51,8 @@ def cleansing(co):
           maxBus = bus
     if bestIdx != -1:
       routeList[bestIdx]['service_type'] = 1 if 'service_type' not in routeList[i] else routeList[bestIdx]['service_type']
-      routeList[i]['skip'] = True
+      if len(routeList[i]['stops']) <= 0 or routeList[i]['stops'] == routeList[bestIdx]['stops']:
+        routeList[i]['skip'] = True
 
   _routeList = [route for route in routeList if 'skip' not in route]
   print(co, len(routeList), len(_routeList))

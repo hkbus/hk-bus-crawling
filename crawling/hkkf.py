@@ -25,9 +25,7 @@ def parseStop(name_en, apiStops):
 
 
 async def getRouteStop(co):
-  a_client = httpx.AsyncClient(
-      timeout=httpx.Timeout(
-          30.0, pool=None), verify=False)
+  a_client = httpx.AsyncClient(timeout=httpx.Timeout(30.0, pool=None), verify=False)
   routeList = []
   stopList = {}
 

@@ -39,8 +39,8 @@ async def getRouteStop(co='lightRail'):
   r = await emitRequest('https://opendata.mtr.com.hk/data/light_rail_routes_and_stops.csv', a_client)
   reader = csv.reader(r.text.split("\n"))
   headers = next(reader, None)
-  routes = [route for route in reader if len(route) == 7]
-  for [route, bound, stopCode, stopId, chn, eng, seq] in routes:
+  routes = [route for route in reader if len(route) >= 7]
+  for [route, bound, stopCode, stopId, chn, eng, seq, *rest] in routes:
     key = routeKey(route, bound)
     lightRailId = "LR" + stopId
     if key not in routeList:

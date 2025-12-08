@@ -51,7 +51,16 @@ async def getRouteStop(co='lrtfeeder'):
   reader = csv.reader(r.text.split("\n"))
   headers = next(reader, None)
   stops = [stop for stop in reader if len(stop) >= 8]
-  for [route, bound, seq, stationId, lat, lng, name_zh, name_en, *rest] in stops:
+  for [
+      route,
+      bound,
+      seq,
+      stationId,
+      lat,
+      lng,
+      name_zh,
+      name_en,
+          *rest] in stops:
     routeKey = route + "_" + bound
     if routeKey in routeList:
       routeList[routeKey]['stops'].append(stationId)

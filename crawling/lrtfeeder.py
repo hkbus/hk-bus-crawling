@@ -20,8 +20,8 @@ async def getRouteStop(co='lrtfeeder'):
   r.encoding = 'utf-8'
   reader = csv.reader(r.text.split("\n"))
   headers = next(reader, None)
-  routes = [route for route in reader if len(route) == 4]
-  for [route, chn, eng, circular] in routes:
+  routes = [route for route in reader if len(route) >= 4]
+  for [route, chn, eng, *rest] in routes:
     if route == '':
       continue
     start = {
@@ -50,8 +50,8 @@ async def getRouteStop(co='lrtfeeder'):
   r.encoding = 'utf-8'
   reader = csv.reader(r.text.split("\n"))
   headers = next(reader, None)
-  stops = [stop for stop in reader if len(stop) == 8]
-  for [route, bound, seq, stationId, lat, lng, name_zh, name_en] in stops:
+  stops = [stop for stop in reader if len(stop) >= 8]
+  for [route, bound, seq, stationId, lat, lng, name_zh, name_en, *rest] in stops:
     routeKey = route + "_" + bound
     if routeKey in routeList:
       routeList[routeKey]['stops'].append(stationId)

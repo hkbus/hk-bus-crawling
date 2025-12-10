@@ -20,10 +20,11 @@ async def getRouteStop(co='lrtfeeder'):
   r.encoding = 'utf-8'
   reader = csv.reader(r.text.split("\n"))
   headers = next(reader, None)
-  routes = [route for route in reader if len(route) >= 4]
-  for [route, chn, eng, *rest] in routes:
+  routes = [route for route in reader if len(route) == 7]
+  for [route, chn, eng, isCircular, lineUp, lineDown, referenceId] in routes:
     if route == '':
       continue
+    serviceType = "1" if len(referenceId.split('-')) == 1 else ( (int)(referenceId.split('-')[1]) + 1 )
     start = {
         "zh": chn.split('至')[0],
         "en": eng.split(' to ')[0]
@@ -33,10 +34,10 @@ async def getRouteStop(co='lrtfeeder'):
         "en": eng.split(' to ')[1]
     }
     for bound in ['I', 'O']:
-      routeList[route + "_" + bound] = {
+      routeList[referenceId + "_" + bound] = {
           "route": route,
           "bound": bound,
-          "service_type": "1",
+          "service_type": serviceType,
           "orig_tc": start['zh'] if bound == 'O' else end['zh'],
           "dest_tc": end["zh"] if bound == 'O' else start['zh'],
           "orig_en": start['en'] if bound == 'O' else end['en'],
@@ -51,8 +52,8 @@ async def getRouteStop(co='lrtfeeder'):
   reader = csv.reader(r.text.split("\n"))
   headers = next(reader, None)
   stops = [stop for stop in reader if len(stop) >= 8]
-  for [route, bound, seq, stationId, lat, lng, name_zh, name_en, *rest] in stops:
-    routeKey = route + "_" + bound
+  for [route, bound, seq, stationId, lat, lng, name_zh, name_en, referenceId] in stops:
+    routeKey = referenceId + "_" + bound
     if routeKey in routeList:
       routeList[routeKey]['stops'].append(stationId)
     else:

@@ -24,7 +24,8 @@ async def getRouteStop(co='lrtfeeder'):
   for [route, chn, eng, isCircular, lineUp, lineDown, referenceId] in routes:
     if route == '':
       continue
-    serviceType = "1" if len(referenceId.split('-')) == 1 else ( (int)(referenceId.split('-')[1]) + 1 )
+    serviceType = "1" if len(referenceId.split(
+        '-')) == 1 else ((int)(referenceId.split('-')[1]) + 1)
     start = {
         "zh": chn.split('至')[0],
         "en": eng.split(' to ')[0]
@@ -52,7 +53,16 @@ async def getRouteStop(co='lrtfeeder'):
   reader = csv.reader(r.text.split("\n"))
   headers = next(reader, None)
   stops = [stop for stop in reader if len(stop) >= 8]
-  for [route, bound, seq, stationId, lat, lng, name_zh, name_en, referenceId] in stops:
+  for [
+      route,
+      bound,
+      seq,
+      stationId,
+      lat,
+      lng,
+      name_zh,
+      name_en,
+          referenceId] in stops:
     routeKey = referenceId + "_" + bound
     if routeKey in routeList:
       routeList[routeKey]['stops'].append(stationId)

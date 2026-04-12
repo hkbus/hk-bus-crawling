@@ -10,8 +10,6 @@ import httpx
 
 from crawl_utils import emitRequest
 
-logger = logging.getLogger(__name__)
-
 # List of Circular Routes
 circularRoutes = ("705", "706")
 
@@ -102,4 +100,5 @@ async def getRouteStop(co='lightRail'):
 if __name__ == '__main__':
   logging.basicConfig(level=logging.INFO)
   logging.getLogger('httpx').setLevel(logging.WARNING)
+  logger = logging.getLogger(__name__)
   asyncio.run(getRouteStop())

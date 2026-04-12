@@ -73,7 +73,7 @@ def importRouteListJson(co):
 
   for _route in _routeList:
     found = False
-    specialType = 1
+    speicalType = 1
     orig = {
         'en': _route['orig_en'].replace(
             '/',
@@ -113,14 +113,16 @@ def importRouteListJson(co):
             route['stops'].append((co, _route['stops']))
             route['bound'][co] = _route['bound']
         elif _route['orig_en'].upper() == route['orig']['en'].upper() and _route['dest_en'].upper() == route['dest']['en'].upper():
-          specialType = int(route['serviceType']) + 1
+          speicalType = int(route['serviceType']) + 1
+          if _route["route"] == '606' and _route['dest_tc'].startswith("彩雲"):
+            print("Yes", speicalType)
 
     if not found:
       routeList.append(
           getRouteObj(
               route=_route['route'],
               co=_route['co'],
-              serviceType=_route.get('service_type', specialType),
+              serviceType=_route.get('service_type', speicalType),
               stops=[(co, _route['stops'])],
               bound={co: _route['bound']},
               orig=orig,

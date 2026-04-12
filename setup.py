@@ -14,13 +14,13 @@ DESCRIPTION = 'Query the ETA (Estimated Time of Arrival) of HK Bus/Minibus/MTR/L
 setup(
     name="hk-bus-eta",
     version=VERSION,
-    author="Chun Law (chunlaw)",
-    author_email="<chunlaw@rocketmail.com>",
+    author="Chun Law (chunalw)",
+    author_email="<chunlaw@rocketmail.com.com>",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,
     packages=find_packages(),
-    install_requires=['httpx'],
+    install_requires=['requests'],
     keywords=[
         'python',
         'hongkong',

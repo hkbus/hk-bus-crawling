@@ -5,16 +5,27 @@ from haversine import haversine
 INFINITY_DIST = 1000000
 DIST_DIFF = 600
 
+
+def joy_you_fare(fare_str):
+  """Compute Joy You fare from adult fare string.
+  Adult fare <= $10: $2; adult fare > $10: 20% of adult fare."""
+  fare = float(fare_str)
+  if 2 <= fare <= 10.0:
+    return '2.0'
+  return str(min(fare, round(fare * 0.2, 1)))
+
+
+def apply_joy_you(fares):
+  if fares is None:
+    return None
+  return [joy_you_fare(f) for f in fares]
+
+
 with open('gtfs.json', 'r', encoding='UTF-8') as f:
   gtfs = json.load(f)
   gtfsRoutes = gtfs['routeList']
   gtfsStops = gtfs['stopList']
 
-
-def isNameMatch(name_a, name_b):
-  tmp_a = name_a.lower()
-  tmp_b = name_b.lower()
-  return tmp_a.find(tmp_b) >= 0 or tmp_b.find(tmp_a) >= 0
 
 # ctb routes only give list of stops in topological order
 # the actual servicing routes may skip some stop in the coStops
@@ -137,11 +148,15 @@ def matchRoutes(co):
         if route['gtfsId'] == gtfsId:
           route['fares'] = [gtfsRoute['fares']['1'][0]
                             for i in range(len(route['stops']) - 1)]
+          route['fares_joy_you'] = [joy_you_fare(gtfsRoute['fares']['1'][0])
+                                  for i in range(len(route['stops']) - 1)]
     elif (co == "sunferry" or co == "fortuneferry") and "ferry" in gtfsRoute['co']:
       for route in routeList:
         if route['gtfsId'] == gtfsId:
           route['fares'] = [gtfsRoute['fares']['1'][0]
                             for i in range(len(route['stops']) - 1)]
+          route['fares_joy_you'] = [joy_you_fare(gtfsRoute['fares']['1'][0])
+                                  for i in range(len(route['stops']) - 1)]
     # handle for other companies
     elif co in gtfsRoute['co'] or (co == "hkkf" and 'ferry' in gtfsRoute['co']):
       for bound, stops in gtfsRoute['stops'].items():
@@ -174,6 +189,7 @@ def matchRoutes(co):
                   route['stops'])) and 'gtfs' not in route and "virtual" not in route:
             routeCandidate['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]
                                        ] if len(ret[:-1]) < len(gtfsRoute["fares"][bound]) + 1 else None
+            routeCandidate['fares_joy_you'] = apply_joy_you(routeCandidate['fares'])
             routeCandidate['freq'] = gtfsRoute['freq'][bound]
             routeCandidate['jt'] = gtfsRoute['jt']
             routeCandidate['co'] = gtfsRoute['co'] if co in gtfsRoute['co'] else (
@@ -185,6 +201,7 @@ def matchRoutes(co):
             routeCandidate['stops'] = [route['stops'][j] for i, j in ret]
             routeCandidate['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]
                                        ] if len(ret[:-1]) < len(gtfsRoute["fares"][bound]) + 1 else None
+            routeCandidate['fares_joy_you'] = apply_joy_you(routeCandidate['fares'])
             routeCandidate['freq'] = gtfsRoute['freq'][bound]
             routeCandidate['jt'] = gtfsRoute['jt']
             routeCandidate['co'] = gtfsRoute['co']

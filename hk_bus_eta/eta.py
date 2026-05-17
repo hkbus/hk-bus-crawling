@@ -199,6 +199,7 @@ class HKEta:
       })
     return ret
 
+
 def lightrail(self, stop_id, route, dest):
     platform_list = requests.get(
         "https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id={}&with_special=1".format(stop_id[2:])).json().get("platform_list", [])
@@ -214,7 +215,8 @@ def lightrail(self, stop_id, route, dest):
             stop = e.get("stop")
             time_en = (e.get("time_en") or "").strip()
             # match route number OR additionalInfo1
-            if (route == route_no or route == additionalInfo1) and (dest_ch == dest.get("zh") or any("Circular" in s for s in dest_en)) and stop == 0:
+            if (route == route_no or route == additionalInfo1) and (dest_ch == dest.get(
+                "zh") or any("Circular" in s for s in dest_en)) and stop == 0:
                 # parse wait time defensively
                 waitTime = 0
                 te = time_en.lower()
@@ -223,13 +225,16 @@ def lightrail(self, stop_id, route, dest):
                 else:
                     m = re.search(r'\d+', time_en)
                     waitTime = int(m.group()) if m else 0
-                dt = datetime.fromtimestamp(time.time() + waitTime * 60 + 8 * 3600)
+                dt = datetime.fromtimestamp(
+    time.time() + waitTime * 60 + 8 * 3600)
                 # platform text
                 plat_zh = get_platform_display(platform_id, "zh")
                 plat_en = get_platform_display(platform_id, "en")
                 # append routeRemarkChi2 / routeRemarkEng2 if present
-                remark_chi2 = e.get("routeRemarkChi2") or e.get("routeRemarkChi2", "")  # defensive access
-                remark_eng2 = e.get("routeRemarkEng2") or e.get("routeRemarkEng2", "")
+                remark_chi2 = e.get("routeRemarkChi2") or e.get(
+                    "routeRemarkChi2", "")  # defensive access
+                remark_eng2 = e.get("routeRemarkEng2") or e.get(
+                    "routeRemarkEng2", "")
                 remark_zh = plat_zh
                 if remark_chi2:
                     remark_zh = "{} - {}".format(plat_zh, remark_chi2)

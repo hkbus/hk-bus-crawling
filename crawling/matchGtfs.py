@@ -167,6 +167,9 @@ def matchRoutes(co):
           ret, bound, stops, route = bestMatch[2:]
 
           routeCandidate = route.copy()
+          # NLB hardcodes bound "O"; set from GTFS dir (1->O, 2->I).
+          if co == 'nlb':
+            routeCandidate['bound'] = 'O' if bound == '1' else 'I'
           if (
               len(ret) == len(
                   route['stops']) or len(ret) +

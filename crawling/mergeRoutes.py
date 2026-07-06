@@ -21,7 +21,8 @@ def getRouteObj(
         jt,
         nlbId,
         gtfsId,
-        serviceType=1):
+        serviceType=1,
+        rankByFreq=False):
   return {
       'route': route,
       'co': co,
@@ -36,7 +37,8 @@ def getRouteObj(
       'jt': jt,
       'nlbId': nlbId,
       'gtfsId': gtfsId,
-      'seq': seq
+      'seq': seq,
+      'rankByFreq': rankByFreq
   }
 
 
@@ -49,7 +51,7 @@ def isGtfsMatch(knownRoute, newRoute):
   return knownRoute['gtfsId'] in newRoute['gtfs']
 
 
-def importRouteListJson(co):
+def importRouteListJson(co, trustServiceType=True):
   _routeList = json.load(
       open(
           'routeFareList.%s.cleansed.json' %
@@ -118,11 +120,15 @@ def importRouteListJson(co):
             print("Yes", speicalType)
 
     if not found:
+      # Trust the operator-provided service_type when available. Sources that
+      # do not supply an authoritative service_type (i.e. CTB) are flagged so
+      # their serviceType can be assigned later by bus-frequency ranking.
+      hasSourceServiceType = trustServiceType and 'service_type' in _route
       routeList.append(
           getRouteObj(
               route=_route['route'],
               co=_route['co'],
-              serviceType=_route.get('service_type', speicalType),
+              serviceType=_route['service_type'] if hasSourceServiceType else speicalType,
               stops=[(co, _route['stops'])],
               bound={co: _route['bound']},
               orig=orig,
@@ -133,7 +139,8 @@ def importRouteListJson(co):
               jt=_route.get('jt', None),
               nlbId=_route.get('id', None),
               gtfsId=_route.get('gtfsId', _route.get('gtfs', [None])[0]),
-              seq=len(_route['stops'])
+              seq=len(_route['stops']),
+              rankByFreq=not trustServiceType
           )
       )
 
@@ -150,6 +157,44 @@ def isMatchStops(stops_a, stops_b, debug=False):
 def getRouteId(v):
   return '%s+%s+%s+%s' % (v['route'], v['serviceType'],
                           v['orig']['en'], v['dest']['en'])
+
+
+def countBus(freq):
+  # Estimate the number of bus trips implied by a route's frequency table.
+  if freq is None:
+    return 0
+  total = 0
+  for entries in freq.values():
+    for startTime, v in entries.items():
+      if v is None:
+        total += 1
+        continue
+      endTime, waitTime = v
+      total += int((int(endTime[0:2]) - int(startTime[0:2])) * 60 +
+                   int(endTime[2:4]) - int(startTime[2:4])) / (int(waitTime) / 60)
+  return total
+
+
+def assignServiceTypeByFreq():
+  # For sources without an authoritative service_type (i.e. CTB), assign
+  # serviceType by ranking variants of the same route by bus frequency: the
+  # variant with the most buses becomes serviceType 1, the next 2, and so on.
+  # Variants are grouped by route number, direction and service provider(s).
+  # Different service types may have different origin/destination while sharing
+  # the same direction, so orig/dest must not be part of the grouping key.
+  groups = {}
+  for route in routeList:
+    if not route.pop('rankByFreq', False):
+      continue
+    direction = tuple(sorted(route['bound'].values()))
+    providers = tuple(sorted(route['co']))
+    key = (route['route'], direction, providers)
+    groups.setdefault(key, []).append(route)
+  for routes in groups.values():
+    # most buses first; break ties by longer stop sequence, then keep order
+    routes.sort(key=lambda r: (-countBus(r['freq']), -len(r['stops'][0][1])))
+    for idx, route in enumerate(routes):
+      route['serviceType'] = idx + 1
 
 
 def smartUnique():
@@ -184,7 +229,7 @@ def smartUnique():
 
 
 importRouteListJson('kmb')
-importRouteListJson('ctb')
+importRouteListJson('ctb', trustServiceType=False)
 importRouteListJson('nlb')
 importRouteListJson('lrtfeeder')
 importRouteListJson('gmb')
@@ -193,6 +238,7 @@ importRouteListJson('mtr')
 importRouteListJson('sunferry')
 importRouteListJson('fortuneferry')
 importRouteListJson('hkkf')
+assignServiceTypeByFreq()
 routeList = smartUnique()
 for route in routeList:
   route['stops'] = {co: stops for co, stops in route['stops']}

@@ -159,9 +159,12 @@ class HKEta:
     data = list(filter(lambda e: e["busStopId"] == stop_id, data))
     ret = []
     for buses in data:
+      bus_stop_remark = buses.get("busStopRemark")
       for bus in buses['bus']:
         remark = ""
-        if bus["busRemark"] is not None:
+        if bus_stop_remark:
+          remark = bus_stop_remark
+        elif bus["busRemark"] is not None:
           remark = bus["busRemark"]
         elif bus["isScheduled"] == 1:
           remark = "Scheduled" if language == "en" else "預定班次"

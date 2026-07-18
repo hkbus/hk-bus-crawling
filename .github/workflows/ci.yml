@@ -1,0 +1,22 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  parse-and-import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Syntax gate (every .py must parse)
+        run: python -m compileall -q .
+      - name: Import gate (the pip package must import)
+        run: |
+          pip install requests
+          python -c "from hk_bus_eta import HKEta; assert callable(HKEta.lrtfeeder) and callable(HKEta.lightrail)"
+      - name: Undefined-name gate
+        run: |
+          pip install flake8
+          flake8 . --select=E9,F63,F7,F82 --show-source

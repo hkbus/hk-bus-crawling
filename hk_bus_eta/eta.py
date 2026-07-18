@@ -202,7 +202,6 @@ class HKEta:
       })
     return ret
 
-
   def lightrail(self, stop_id, route, dest):
     platform_list = requests.get(
         "https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id={}&with_special=1".format(stop_id[2:])).json().get("platform_list", [])
@@ -218,8 +217,10 @@ class HKEta:
         stop = e.get("stop")
         time_en = (e.get("time_en") or "").strip()
         # match route number OR additionalInfo1
-        if (route == route_no or route == additionalInfo1) and (dest_ch == dest.get(
-                "zh") or any("Circular" in s for s in dest_en)) and stop == 0:
+        if (
+            route == route_no or route == additionalInfo1) and (
+            dest_ch == dest.get("zh") or any(
+                "Circular" in s for s in dest_en)) and stop == 0:
           # parse wait time defensively
           waitTime = 0
           te = time_en.lower()

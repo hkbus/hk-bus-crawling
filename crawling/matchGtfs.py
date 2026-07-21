@@ -24,10 +24,19 @@ def isNameMatch(name_a, name_b):
 def matchStopsByDp(coStops, gtfsStops, co, debug=False):
   # handle unknown stop
   co = 'unknown' if co not in gtfsStops[0]['stopName'] else co
-  if len(gtfsStops) > len(coStops) + 1:
-    return [], INFINITY_DIST
-  if len(gtfsStops) - len(coStops) == 1:
-    gtfsStops = gtfsStops[:-1]
+  # circular/loop GTFS trips revisit their origin; treat coStops as cyclic so a
+  # rotational offset, the loop-closing terminus or a second partial lap aligns
+  # instead of being dropped by the drop-off truncation or the length guard
+  loop = len(coStops) > 1 and any(
+      gtfsStops[0] is stop for stop in gtfsStops[1:])
+  if loop:
+    coIdx = list(range(len(coStops))) * (len(gtfsStops) // len(coStops) + 2)
+    coStops = coStops * (len(gtfsStops) // len(coStops) + 2)
+  else:
+    if len(gtfsStops) > len(coStops) + 1:
+      return [], INFINITY_DIST
+    if len(gtfsStops) - len(coStops) == 1:
+      gtfsStops = gtfsStops[:-1]
 
   # initialization
   distSum = [[INFINITY_DIST for x in range(
@@ -71,7 +80,10 @@ def matchStopsByDp(coStops, gtfsStops, co, debug=False):
   ret.reverse()
 
   # penalty distance is given for not exact match route
-  penalty = sum([abs(a - b) for a, b in ret]) * 0.01
+  base = ret[0][1] if loop and ret else 0
+  penalty = sum([abs(a - (b - base)) for a, b in ret]) * 0.01
+  if loop:
+    ret = [(a, coIdx[b]) for a, b in ret]
 
   return ret, min(distSum[len(gtfsStops)]) / len(gtfsStops) + penalty
 

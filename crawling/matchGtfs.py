@@ -186,7 +186,7 @@ def matchRoutes(co):
               len(ret) == len(
                   route['stops']) or len(ret) +
               1 == len(
-                  route['stops'])) and 'gtfs' not in route and "virtual" not in route:
+                  route['stops'])) and ret[0][1] == 0 and 'gtfs' not in route and "virtual" not in route:
             routeCandidate['fares'] = [gtfsRoute['fares'][bound][i] for i, j in ret[:-1]
                                        ] if len(ret[:-1]) < len(gtfsRoute["fares"][bound]) + 1 else None
             routeCandidate['freq'] = gtfsRoute['freq'][bound]

@@ -2,6 +2,15 @@ import json
 from sys import stderr
 from haversine import haversine, Unit
 
+# Max distance allowed between two operators' markers for the same physical
+# stop when merging a jointly-operated route. Operators may mark opposite ends
+# of a long interchange: at Aberdeen Tunnel, KMB's 香港仔隧道 and CTB's
+# 黃竹坑醫院, 香港仔隧道 sit 307-354m apart, which blocked every joint route
+# through that corridor (107, 107P, 170, 171, 171A, 171P, 671, 671X, N170,
+# N171). Among routes that do merge, the worst pair is 171m, so 400m separates
+# the two populations with room to spare.
+MAX_MERGE_STOP_DIST = 400
+
 routeList = []
 stopList = {}
 stopMap = {}
@@ -109,7 +118,7 @@ def importRouteListJson(co, trustServiceType=True):
                 (stop_b['location']['lat'], stop_b['location']['lng']),
                 unit=Unit.METERS  # specify that we want distance in metres, default unit is km
             )
-            merge = merge and dist < 300
+            merge = merge and dist < MAX_MERGE_STOP_DIST
           if merge:
             found = True
             route['stops'].append((co, _route['stops']))

@@ -112,15 +112,6 @@ async def prepare_raw_data(force: bool = False):
             route_list = json.loads(raw_route_list_path.read_text("utf-8"))
         else:
             route_list = await get_route_list(a_client)
-            for route in route_list:
-                if route["route"] == "796X":
-                    if route.get("orig_sc") and route.get("dest_sc"):
-                        raise ValueError(
-                            "Route 796X has orig_sc and dest_sc now, revert the dirty fix"
-                        )
-                    else:
-                        route["orig_sc"] = route["orig_tc"]
-                        route["dest_sc"] = route["dest_tc"]
             raw_route_list_path.write_text(
                 json.dumps(route_list, ensure_ascii=False), encoding="UTF-8"
             )

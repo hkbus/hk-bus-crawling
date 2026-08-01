@@ -1,6 +1,6 @@
 # HK Bus Crawling (a.k.a. hk-bus-eta)
 
-[![Python 3.8.8](https://img.shields.io/badge/python-3.8.8-blue.svg)](https://www.python.org/downloads/release/python-388/) ![Data fetching status](https://github.com/hkbus/hk-bus-crawling/actions/workflows/fetch-data.yml/badge.svg) 
+[![Python 3.8.8](https://img.shields.io/badge/python-3.8.8-blue.svg)](https://www.python.org/downloads/release/python-388/) ![Data fetching status](https://github.com/hkbus/hk-bus-crawling/actions/workflows/fetch-data.yml/badge.svg) [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/hkbus/hk-bus-crawling)
 
 This project is to fetch the bus route information of KMB, CTB, NLB, minibus, MTR, lightrail into one single JSON. It is daily synced to data.gov.hk and launched in gh-pages.
 

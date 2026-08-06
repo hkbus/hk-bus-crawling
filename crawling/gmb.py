@@ -49,10 +49,12 @@ async def getRouteStop(co):
           headway['end_time'].replace(':', '')[:4],
           str(headway['frequency'] * 60)
       ] if hasHeadway else None
-      # a headway range carries its upper bound as a third element
-      if entry is not None and headway['frequency_upper'] not in (
-              None, headway['frequency']):
-        entry.append(str(headway['frequency_upper'] * 60))
+      # a headway range carries its upper bound as a third element;
+      # a few routes publish an upper below frequency, so ignore those
+      upper = headway['frequency_upper']
+      if entry is not None and upper is not None and \
+              upper > headway['frequency']:
+        entry.append(str(upper * 60))
       freq[service_id][headway['start_time'].replace(':', '')[:4]] = entry
     return freq
 

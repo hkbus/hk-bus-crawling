@@ -16,7 +16,7 @@ def countBus(freq):
       if v is None:
         sum += 1
         continue
-      endTime, waitTime = v
+      endTime, waitTime = v[:2]
       sum += int((int(endTime[0:2]) - int(startTime[0:2])) * 60 +
                  int(endTime[2:4]) - int(startTime[2:4])) / (int(waitTime) / 60)
   return sum

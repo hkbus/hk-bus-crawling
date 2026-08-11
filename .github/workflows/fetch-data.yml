@@ -4,7 +4,7 @@ on:
       # branches-ignore:
       #   - alpha
   schedule:
-    - cron: "10 9,21 * * *" # 05:10 and 17:10 (HKT) daily
+    - cron: "10 3,9,21 * * *" # 11:10, 17:10 and 05:10 (HKT) daily; extra midday pass self-heals a missed 05:10 window in ~6h instead of ~12h
   workflow_dispatch:
 
 jobs:

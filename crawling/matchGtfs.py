@@ -130,7 +130,8 @@ def matchRoutes(co):
 
   routeCandidates = []
   # a virtual circular route is built from the two real one-way routes of the
-  # same route number, so a match against it is also a match for both of them
+  # same route number, so a match against it is also a match for both of them.
+  # a route number can match more than one GTFS route, so keep the closest.
   circularGtfs = {}
   # one pass to find matches of co vs gtfs by DP
   for gtfsId, gtfsRoute in gtfsRoutes.items():
@@ -204,8 +205,10 @@ def matchRoutes(co):
             routeCandidate['gtfs'] = [gtfsId]
             # mark the route has mapped to GTFS, mainly for ctb routes
             route['found'] = True
-          if "virtual" in route:
-            circularGtfs.setdefault(route['route'], gtfsId)
+          if "virtual" in route and (
+                  route['route'] not in circularGtfs
+                  or bestMatch[1] < circularGtfs[route['route']][1]):
+            circularGtfs[route['route']] = (gtfsId, bestMatch[1])
           routeCandidates.append(routeCandidate)
           if '_route' not in gtfsRoute:
             gtfsRoute['_route'] = {}
@@ -223,7 +226,7 @@ def matchRoutes(co):
       # the virtual circular route that consumed this route number matched
       # GTFS; this leg is part of that route, so it carries the same id
       if route['route'] in circularGtfs:
-        route['gtfs'] = [circularGtfs[route['route']]]
+        route['gtfs'] = [circularGtfs[route['route']][0]]
 
   print(co,
         len([route for route in routeList if 'gtfs' not in route]),

@@ -38,10 +38,13 @@ def matchStopsByDp(coStops, gtfsStops, co, debug=False):
   # Perform DP
   for i in range(len(gtfsStops)):
     gtfsStop = gtfsStops[i]
+    # GTFS may label a stop under an operator other than the matched one
+    names = gtfsStop['stopName']
+    coNames = {names[co]} if co in names else set(names.values())
     for j in range(len(coStops)):
       coStop = coStops[j]
       dist = (0
-              if coStop['name_tc'] == gtfsStop['stopName'][co]
+              if coStop['name_tc'] in coNames
               else haversine(
                   (float(coStop['lat']), float(coStop['long'])),
                   (gtfsStop['lat'], gtfsStop['lng'])

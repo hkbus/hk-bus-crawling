@@ -11,6 +11,19 @@ import re
 from crawl_utils import emitRequest, store_version
 
 
+# GTFS files these under an agency or route number no operator open data uses
+ROUTE_ALIAS = {
+    ('KMB', 'K12'): ('LRTFeeder', 'K12'),
+    ('KMB', 'K14'): ('LRTFeeder', 'K14'),
+    ('KMB', 'K17'): ('LRTFeeder', 'K17'),
+    ('KMB', 'K18'): ('LRTFeeder', 'K18'),
+    ('PI', 'NR331'): ('KMB', '331'),
+    ('PI', 'NR331S'): ('KMB', '331S'),
+    ('CTB', 'NR61'): ('CTB', '61R'),
+    ('CTB', 'NR88'): ('CTB', '88R'),
+}
+
+
 def takeFirst(elem):
   return int(elem[0])
 
@@ -42,6 +55,8 @@ async def parseGtfs():
         route_long_name,
         route_type,
             route_url] in reader:
+      key = (agency_id, route_short_name)
+      agency_id, route_short_name = ROUTE_ALIAS.get(key, key)
       routeList[route_id] = {
           'co': agency_id.replace('LWB', 'KMB').lower().split('+'),
           'route': route_short_name,

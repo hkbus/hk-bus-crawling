@@ -10,6 +10,7 @@ on:
 jobs:
   Fetch-Route-Data:
     runs-on: ubuntu-latest
+    timeout-minutes: 180
     permissions:
       actions: write
       contents: write

@@ -72,6 +72,23 @@ async def getRouteStop(co):
 
   stopInfos = list(zip(_stops, await getStopList(_stops)))
   for stopId, stopInfo in stopInfos:
+    # Validate that the stop has parseable lat/long before storing.
+    # The Citybus API sometimes returns empty or incomplete stop records
+    # (e.g. {"data": {}} or missing lat/long fields), which later cause
+    # float() conversion failures in mergeRoutes.py.
+    if not stopInfo:
+      stopList.pop(stopId, None)
+      logger.warning(f"Stop {stopId} has empty data, skipping")
+      continue
+    try:
+      float(stopInfo.get('lat', ''))
+      float(stopInfo.get('long', ''))
+    except (ValueError, TypeError):
+      stopList.pop(stopId, None)
+      logger.warning(
+          "Stop %s has invalid lat/long: lat=%s, long=%s, skipping",
+          stopId, stopInfo.get('lat'), stopInfo.get('long'))
+      continue
     stopList[stopId] = stopInfo
 
   _routeList = []
@@ -80,7 +97,10 @@ async def getRouteStop(co):
       _routeList.append(route)
       continue
     for bound in ['inbound', 'outbound']:
-      if len(route['stops'][bound]) > 0:
+      stops = [
+          stopId for stopId in route['stops'][bound]
+          if stopId in stopList and bool(stopList[stopId])]
+      if len(stops) > 0:
         _routeList.append({
             'co': co,
             'route': route['route'],
@@ -89,7 +109,7 @@ async def getRouteStop(co):
             'orig_tc': route['orig_tc'] if bound == 'outbound' else route['dest_tc'],
             'dest_en': route['dest_en'] if bound == 'outbound' else route['orig_en'],
             'dest_tc': route['dest_tc'] if bound == 'outbound' else route['orig_tc'],
-            'stops': list(filter(lambda stopId: bool(stopList[stopId]), route['stops'][bound])),
+            'stops': stops,
             'serviceType': 0
         })
 

@@ -3,12 +3,16 @@ import json
 import logging
 from pathlib import Path
 
+import httpx
+
 try:
     from .crawl_utils import dump_provider_data
     from .ctb_crawl import (
         RAW_ROUTE_LIST,
         RAW_ROUTE_STOP_LIST,
         RAW_STOP_LIST,
+        notify_route_field_warnings,
+        validate_route_list_fields,
     )
     from .schemas import ProviderRoute, ProviderStop
 except ImportError:
@@ -17,6 +21,8 @@ except ImportError:
         RAW_ROUTE_LIST,
         RAW_ROUTE_STOP_LIST,
         RAW_STOP_LIST,
+        notify_route_field_warnings,
+        validate_route_list_fields,
     )
     from schemas import ProviderRoute, ProviderStop
 
@@ -69,6 +75,19 @@ async def prepare_data():
     stop_list_raw = load_raw_json(RAW_STOP_LIST)
 
     logger.info("Preparing data of ctb")
+
+    # route_list may come from a stale/cached raw file (e.g. downloaded from
+    # S3) that ctb_crawl.py never validated in this run, so check it again
+    # here where it's actually consumed.
+    field_warnings = validate_route_list_fields(route_list)
+    if field_warnings:
+        Path(RAW_ROUTE_LIST).write_text(
+            json.dumps(route_list, ensure_ascii=False), encoding="UTF-8"
+        )
+        async with httpx.AsyncClient(
+            timeout=httpx.Timeout(30.0, pool=None)
+        ) as a_client:
+            await notify_route_field_warnings(field_warnings, a_client)
 
     _stop_ids = build_route_stop_ids(route_list, route_stop_list)
     stop_list: dict[str, ProviderStop] = {}

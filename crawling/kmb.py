@@ -30,8 +30,7 @@ async def getRouteStop():
   def isStopExist(stopId):
     if stopId not in stopList:
       print("Not exist stop: ", stopId, file=sys.stderr)
-      # Create a placeholder entry for non-existent stops
-      # Location is near Hong Kong (not Null Island) as per issue #67
+      # placeholder near Hong Kong, not Null Island, so the stop stays in place
       stopList[stopId] = {
           'stop': stopId,
           'name_tc': '沒有車站資料',

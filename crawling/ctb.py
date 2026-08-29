@@ -72,10 +72,7 @@ async def getRouteStop(co):
 
   stopInfos = list(zip(_stops, await getStopList(_stops)))
   for stopId, stopInfo in stopInfos:
-    # Validate that the stop has parseable lat/long before storing.
-    # The Citybus API sometimes returns empty or incomplete stop records
-    # (e.g. {"data": {}} or missing lat/long fields), which later cause
-    # float() conversion failures in mergeRoutes.py.
+    # incomplete records (e.g. {"data": {}}) later break float() in mergeRoutes
     if not stopInfo:
       stopList.pop(stopId, None)
       logger.warning(f"Stop {stopId} has empty data, skipping")

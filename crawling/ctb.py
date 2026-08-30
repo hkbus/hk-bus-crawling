@@ -83,8 +83,8 @@ async def getRouteStop(co):
     except (ValueError, TypeError):
       stopList.pop(stopId, None)
       logger.warning(
-          "Stop %s has invalid lat/long: lat=%s, long=%s, skipping",
-          stopId, stopInfo.get('lat'), stopInfo.get('long'))
+          f"Stop {stopId} has invalid lat/long: "
+          f"lat={stopInfo.get('lat')}, long={stopInfo.get('long')}, skipping")
       continue
     stopList[stopId] = stopInfo
 

@@ -12,7 +12,7 @@ from typing import List
 from crawl_utils import emitRequest
 
 # List of Circular Routes
-circularRoutes = ("705", "706")
+circularRoutes = ("610P*","705", "706")
 
 
 def getBound(route, bound):

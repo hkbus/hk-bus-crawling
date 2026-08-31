@@ -27,10 +27,17 @@ async def getRouteStop():
     for stop in _stopList:
       stopList[stop['stop']] = stop
 
-  def isStopExist(stopId):
+  def addPlaceholderStop(stopId):
     if stopId not in stopList:
       print("Not exist stop: ", stopId, file=sys.stderr)
-    return stopId in stopList
+      # placeholder near Hong Kong, not Null Island, so the stop stays in place
+      stopList[stopId] = {
+          'stop': stopId,
+          'name_tc': '沒有車站資料',
+          'name_en': 'Stop information not available',
+          'lat': '22.30000',
+          'long': '114.17000'
+      }
 
   # load route list and stop list if exist
   routeList = {}
@@ -63,8 +70,9 @@ async def getRouteStop():
     for routeKey in routeList.keys():
       stops = [routeList[routeKey]['stops'][seq]
                for seq in sorted(routeList[routeKey]['stops'].keys())]
-      # filter non-exist stops
-      stops = list(filter(isStopExist, stops))
+      # keep stops KMB does not publish, with a placeholder entry
+      for stopId in stops:
+        addPlaceholderStop(stopId)
       routeList[routeKey]['stops'] = stops
 
     # flatten the routeList back to array

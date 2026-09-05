@@ -99,13 +99,7 @@ async def getRouteStop(co="lightRail"):
 
         if lightRailId not in stopList:
 
-            station_chn = chn if chn != "海皇路" else "屯門泳池"
-            feature = stations[station_chn]
-
-            if "海皇路" in stations:
-                raise Exception(
-                    "海皇路 is now available in iGeoCom, remove the conversion to 屯門泳池"
-                )
+            feature = stations[chn]
 
             lng, lat = feature["geometry"]["coordinates"]
             stopList[lightRailId] = {

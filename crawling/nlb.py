@@ -80,6 +80,10 @@ async def getRouteStop(co):
 
   await getRouteStopList()
 
+  if not routeList or not stopList:
+    raise Exception(f"empty payload: {len(routeList)} routes, "
+                    f"{len(stopList)} stops")
+
   with open(ROUTE_LIST, 'w', encoding='UTF-8') as rf, open(STOP_LIST, 'w', encoding='UTF-8') as sf:
     json.dump(routeList, rf, ensure_ascii=False)
     json.dump(stopList, sf, ensure_ascii=False)

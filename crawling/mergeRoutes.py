@@ -9,7 +9,7 @@ from haversine import haversine, Unit
 # through that corridor (107, 107P, 170, 171, 171A, 171P, 671, 671X, N170,
 # N171). Among routes that do merge, the worst pair is 171m, so 400m separates
 # the two populations with room to spare.
-MAX_MERGE_STOP_DIST = 400
+MAX_MERGE_STOP_DIST = 300
 
 routeList = []
 stopList = {}

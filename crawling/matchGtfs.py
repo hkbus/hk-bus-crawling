@@ -129,6 +129,9 @@ def matchRoutes(co):
     stopList = json.load(f)
 
   routeCandidates = []
+  # a virtual circular route is built from the two real one-way routes of the
+  # same number, so its match is also theirs; keep the closest of several.
+  circularGtfs = {}
   # one pass to find matches of co vs gtfs by DP
   for gtfsId, gtfsRoute in gtfsRoutes.items():
     debug = False and gtfsId == '1047' and gtfsRoute['orig']['zh'] == '沙田站'
@@ -201,6 +204,10 @@ def matchRoutes(co):
             routeCandidate['gtfs'] = [gtfsId]
             # mark the route has mapped to GTFS, mainly for ctb routes
             route['found'] = True
+          if "virtual" in route and (
+                  route['route'] not in circularGtfs
+                  or bestMatch[1] < circularGtfs[route['route']][1]):
+            circularGtfs[route['route']] = (gtfsId, bestMatch[1])
           routeCandidates.append(routeCandidate)
           if '_route' not in gtfsRoute:
             gtfsRoute['_route'] = {}
@@ -215,6 +222,9 @@ def matchRoutes(co):
   for route in routeList:
     if 'gtfs' not in route:
       route['co'] = [co]
+      # this leg is part of the virtual circular route that matched, so same id
+      if route['route'] in circularGtfs:
+        route['gtfs'] = [circularGtfs[route['route']][0]]
 
   print(co,
         len([route for route in routeList if 'gtfs' not in route]),

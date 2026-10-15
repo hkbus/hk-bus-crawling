@@ -122464,12 +122464,12 @@
                     "E99D3F96A9F7B5EB",
                     "7210357910C44570",
                     "3D717F0365D5505B",
+                    "811D4A91C1134CEA",
                     "100E6F60BAC1BDEB",
                     "F60097D67F33DC0C",
                     "5B49CF04EAB59906",
                     "921C19F6147C74A6",
-                    "47C3597662B81B47",
-                    "BA95025DE2FB9878"
+                    "47C3597662B81B47"
                 ]
             }
         },
@@ -125608,14 +125608,14 @@
                     "B0DDF2CD704116C8",
                     "6C1DEF32B8CB92C4",
                     "7210357910C44570",
+                    "811D4A91C1134CEA",
                     "100E6F60BAC1BDEB",
                     "F60097D67F33DC0C",
                     "5B49CF04EAB59906",
                     "59FF8DDFC4405C0D",
                     "DE60928B8CFD9E7C",
                     "6557A31762F5311F",
-                    "90ED381AD3BAE4F9",
-                    "534DB02642325617"
+                    "90ED381AD3BAE4F9"
                 ]
             }
         },
@@ -361796,16 +361796,16 @@
                 ]
             }
         },
-        "B14+1+Huanggang Port+Kai Tak Olympic Avenue (via Sung Wong Toi Station)": {
+        "B14+1+Huanggang Port+Kai Tak (Olympic Avenue)": {
             "bound": {
-                "ctb": "O"
+                "ctb": "OI"
             },
             "co": [
                 "ctb"
             ],
             "dest": {
-                "en": "Kai Tak Olympic Avenue (via Sung Wong Toi Station)",
-                "zh": "\u555f\u5fb7\u4e16\u904b\u9053 (\u7d93 \u5b8b\u7687\u81fa\u7ad9)"
+                "en": "Kai Tak (Olympic Avenue)",
+                "zh": "\u555f\u5fb7(\u4e16\u904b\u9053)"
             },
             "fares": [
                 "20.8",
@@ -361843,6 +361843,41 @@
                     "001973",
                     "003911",
                     "003932",
+                    "003934",
+                    "003934"
+                ]
+            }
+        },
+        "B14+1+Huanggang Port+Kai Tak Olympic Avenue (via Sung Wong Toi Station)": {
+            "bound": {
+                "ctb": "O"
+            },
+            "co": [
+                "ctb"
+            ],
+            "dest": {
+                "en": "Kai Tak Olympic Avenue (via Sung Wong Toi Station)",
+                "zh": "\u555f\u5fb7\u4e16\u904b\u9053 (\u7d93 \u5b8b\u7687\u81fa\u7ad9)"
+            },
+            "fares": null,
+            "faresHoliday": null,
+            "freq": null,
+            "gtfsId": null,
+            "jt": null,
+            "nlbId": null,
+            "orig": {
+                "en": "Huanggang Port",
+                "zh": "\u7687\u5d17\u53e3\u5cb8"
+            },
+            "route": "B14",
+            "seq": 6,
+            "serviceType": 1,
+            "stops": {
+                "ctb": [
+                    "003939",
+                    "001973",
+                    "003911",
+                    "003932",
                     "003933",
                     "003934"
                 ]
@@ -361851,6 +361886,40 @@
         "B14+1+Kai Tak Olympic Avenue (via Sung Wong Toi Station)+Huanggang Port": {
             "bound": {
                 "ctb": "I"
+            },
+            "co": [
+                "ctb"
+            ],
+            "dest": {
+                "en": "Huanggang Port",
+                "zh": "\u7687\u5d17\u53e3\u5cb8"
+            },
+            "fares": null,
+            "faresHoliday": null,
+            "freq": null,
+            "gtfsId": null,
+            "jt": null,
+            "nlbId": null,
+            "orig": {
+                "en": "Kai Tak Olympic Avenue (via Sung Wong Toi Station)",
+                "zh": "\u555f\u5fb7\u4e16\u904b\u9053 (\u7d93 \u5b8b\u7687\u81fa\u7ad9)"
+            },
+            "route": "B14",
+            "seq": 5,
+            "serviceType": 1,
+            "stops": {
+                "ctb": [
+                    "003934",
+                    "003935",
+                    "003708",
+                    "001972",
+                    "003939"
+                ]
+            }
+        },
+        "B14+2+Kai Tak Light Public Housing, Olympic Avenue+Huanggang Port": {
+            "bound": {
+                "ctb": "OI"
             },
             "co": [
                 "ctb"
@@ -361882,15 +361951,15 @@
             "jt": "44",
             "nlbId": null,
             "orig": {
-                "en": "Kai Tak Olympic Avenue (via Sung Wong Toi Station)",
-                "zh": "\u555f\u5fb7\u4e16\u904b\u9053 (\u7d93 \u5b8b\u7687\u81fa\u7ad9)"
+                "en": "Kai Tak Light Public Housing, Olympic Avenue",
+                "zh": "\u555f\u5fb7\u7c21\u7d04\u516c\u5c4b, \u4e16\u904b\u9053"
             },
             "route": "B14",
             "seq": 5,
-            "serviceType": 1,
+            "serviceType": 2,
             "stops": {
                 "ctb": [
-                    "003934",
+                    "003933",
                     "003935",
                     "003708",
                     "001972",
@@ -407091,102 +407160,6 @@
                 ]
             }
         },
-        "N276+1+SAN TIN PUBLIC TRANSPORT INTERCHANGE+TIN TSZ": {
-            "bound": {
-                "kmb": "I"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "TIN TSZ",
-                "zh": "\u5929\u6148"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "SAN TIN PUBLIC TRANSPORT INTERCHANGE",
-                "zh": "\u65b0\u7530\u904b\u8f38\u4ea4\u532f\u8655"
-            },
-            "route": "N276",
-            "seq": 19,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "FFFB0F940CA7BEA7",
-                    "14157BA5C06B0B6B",
-                    "F63C4B8B958E9830",
-                    "74C51A8A3D783F40",
-                    "D9CE618F99BAC2B6",
-                    "A010FE2C473103A8",
-                    "70FEB409760C77EE",
-                    "A1A1B10F5CE291AC",
-                    "A2C36DF7152EE93F",
-                    "60A4F4A41CD61FAC",
-                    "8F6C8CEB9F17D97D",
-                    "B09E18636F184247",
-                    "2FA997A1BE419A52",
-                    "023F856BE4F830F2",
-                    "5CAF0B805C12DDD9",
-                    "86C5B251AF5F68BF",
-                    "6A90A40248059768",
-                    "A6F5C93F89B0969B",
-                    "868AEC6A9B5704FB"
-                ]
-            }
-        },
-        "N276+1+TIN TSZ+SAN TIN PUBLIC TRANSPORT INTERCHANGE": {
-            "bound": {
-                "kmb": "O"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "SAN TIN PUBLIC TRANSPORT INTERCHANGE",
-                "zh": "\u65b0\u7530\u904b\u8f38\u4ea4\u532f\u8655"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "TIN TSZ",
-                "zh": "\u5929\u6148"
-            },
-            "route": "N276",
-            "seq": 19,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "868AEC6A9B5704FB",
-                    "7898B605E39613A8",
-                    "4BE4E6D4F5A06A51",
-                    "71C5FC4FF2FDE0CA",
-                    "EE642EBB8CAD513D",
-                    "A856593C105D479B",
-                    "55E3A1A6E995A9CB",
-                    "AC1A0FA3D0743FCC",
-                    "5F616585205DDDF9",
-                    "147D513A708AA741",
-                    "B88640E0CA83F12C",
-                    "A8482B15AD6E89A3",
-                    "BCC6E5BA6810FED6",
-                    "6E85D42922E5A10C",
-                    "D747ADD80335605C",
-                    "445B2A02DB891CA9",
-                    "4E2EC89B41600D7E",
-                    "591FA32FB4B53682",
-                    "FFFB0F940CA7BEA7"
-                ]
-            }
-        },
         "N281+1+HUNG HOM STATION+KAM YING COURT": {
             "bound": {
                 "kmb": "I"
@@ -446050,7 +446023,7 @@
         },
         "002392": {
             "location": {
-                "lat": 22.262,
+                "lat": 22.26199,
                 "lng": 114.13067
             },
             "name": {
@@ -456350,8 +456323,8 @@
         },
         "003623": {
             "location": {
-                "lat": 22.50301,
-                "lng": 114.08237
+                "lat": 22.50309,
+                "lng": 114.08206
             },
             "name": {
                 "en": "San Tin",
@@ -458764,8 +458737,8 @@
                 "lng": 114.19431
             },
             "name": {
-                "en": "Kai Tak (Olympic Avenue)",
-                "zh": "\u555f\u5fb7(\u4e16\u904b\u9053)"
+                "en": "Kai Tak Light Public Housing, Olympic Avenue",
+                "zh": "\u555f\u5fb7\u7c21\u7d04\u516c\u5c4b, \u4e16\u904b\u9053"
             }
         },
         "003934": {
@@ -458774,8 +458747,8 @@
                 "lng": 114.19479
             },
             "name": {
-                "en": "Kai Tak Light Public Housing, Olympic Avenue",
-                "zh": "\u555f\u5fb7\u7c21\u7d04\u516c\u5c4b, \u4e16\u904b\u9053"
+                "en": "Kai Tak (Olympic Avenue)",
+                "zh": "\u555f\u5fb7(\u4e16\u904b\u9053)"
             }
         },
         "003935": {
@@ -616032,8 +616005,20 @@
                 "20001406"
             ],
             [
+                "gmb",
+                "20015418"
+            ],
+            [
+                "gmb",
+                "20015422"
+            ],
+            [
                 "nlb",
                 "370"
+            ],
+            [
+                "kmb",
+                "90EB316DB1182D86"
             ],
             [
                 "kmb",
@@ -616049,19 +616034,7 @@
             ],
             [
                 "gmb",
-                "20015418"
-            ],
-            [
-                "gmb",
-                "20015422"
-            ],
-            [
-                "gmb",
                 "20017719"
-            ],
-            [
-                "kmb",
-                "90EB316DB1182D86"
             ]
         ],
         "003624": [
@@ -623942,6 +623915,10 @@
             [
                 "gmb",
                 "20002749"
+            ],
+            [
+                "kmb",
+                "4BE4E6D4F5A06A51"
             ],
             [
                 "kmb",
@@ -667462,8 +667439,16 @@
         ],
         "20015418": [
             [
+                "ctb",
+                "003623"
+            ],
+            [
                 "kmb",
                 "90EB316DB1182D86"
+            ],
+            [
+                "nlb",
+                "370"
             ],
             [
                 "gmb",
@@ -667477,6 +667462,10 @@
             ]
         ],
         "20015422": [
+            [
+                "ctb",
+                "003623"
+            ],
             [
                 "gmb",
                 "20001406"
@@ -667492,10 +667481,6 @@
             [
                 "kmb",
                 "FFFB0F940CA7BEA7"
-            ],
-            [
-                "ctb",
-                "003623"
             ],
             [
                 "gmb",
@@ -701899,6 +701884,10 @@
             ],
             [
                 "kmb",
+                "0BC0F64B076ED373"
+            ],
+            [
+                "kmb",
                 "14380311740FE44A"
             ],
             [
@@ -701912,6 +701901,10 @@
             [
                 "kmb",
                 "8C8037479F88F500"
+            ],
+            [
+                "kmb",
+                "CB853E4BCBB13F30"
             ],
             [
                 "lrtfeeder",
@@ -705191,10 +705184,6 @@
             ]
         ],
         "5179E67B2DFAD895": [
-            [
-                "kmb",
-                "868AEC6A9B5704FB"
-            ],
             [
                 "kmb",
                 "A131EEC027755D72"
@@ -728254,14 +728243,6 @@
             [
                 "nlb",
                 "203"
-            ],
-            [
-                "kmb",
-                "5179E67B2DFAD895"
-            ],
-            [
-                "kmb",
-                "A131EEC027755D72"
             ]
         ],
         "86916B1ED459ED05": [
@@ -732528,12 +732509,20 @@
         ],
         "90EB316DB1182D86": [
             [
+                "ctb",
+                "003623"
+            ],
+            [
                 "gmb",
                 "20015418"
             ],
             [
                 "gmb",
                 "20017719"
+            ],
+            [
+                "nlb",
+                "370"
             ]
         ],
         "90ED381AD3BAE4F9": [
@@ -739540,10 +739529,6 @@
             [
                 "kmb",
                 "5179E67B2DFAD895"
-            ],
-            [
-                "kmb",
-                "868AEC6A9B5704FB"
             ]
         ],
         "A13C2C1D5D3EE0D7": [
@@ -757540,6 +757525,10 @@
             [
                 "gmb",
                 "20002749"
+            ],
+            [
+                "kmb",
+                "4BE4E6D4F5A06A51"
             ],
             [
                 "kmb",

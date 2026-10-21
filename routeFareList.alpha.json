@@ -220166,73 +220166,6 @@
                 ]
             }
         },
-        "61S+1+TUEN MUN CENTRAL+WO HOP SHEK": {
-            "bound": {
-                "kmb": "O"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "WO HOP SHEK",
-                "zh": "\u548c\u5408\u77f3"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "TUEN MUN CENTRAL",
-                "zh": "\u5c6f\u9580\u5dff\u4e2d\u5fc3"
-            },
-            "route": "61S",
-            "seq": 5,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "8660BDF2C013FAC2",
-                    "EC49B6F5634BC0C2",
-                    "7AC6625D894BA101",
-                    "CBE54DB551C24A02",
-                    "AA5CBDB0758443A9"
-                ]
-            }
-        },
-        "61S+1+WO HOP SHEK+TUEN MUN CENTRAL": {
-            "bound": {
-                "kmb": "I"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "TUEN MUN CENTRAL",
-                "zh": "\u5c6f\u9580\u5dff\u4e2d\u5fc3"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "WO HOP SHEK",
-                "zh": "\u548c\u5408\u77f3"
-            },
-            "route": "61S",
-            "seq": 4,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "AA5CBDB0758443A9",
-                    "6FB7BC1E5BC1E4EE",
-                    "5238463F47B490D6",
-                    "8660BDF2C013FAC2"
-                ]
-            }
-        },
         "61X+1+KOWLOON CITY FERRY+TUEN MUN CENTRAL": {
             "bound": {
                 "kmb": "I"
@@ -728149,10 +728082,6 @@
                 "F490C6051AA2E1F3"
             ],
             [
-                "lrtfeeder",
-                "K54-U070"
-            ],
-            [
                 "gmb",
                 "20001314"
             ],
@@ -728167,30 +728096,6 @@
             [
                 "lightRail",
                 "LR280"
-            ],
-            [
-                "kmb",
-                "4521D614AE85C1A5"
-            ],
-            [
-                "kmb",
-                "818F12340BA8CA4B"
-            ],
-            [
-                "lrtfeeder",
-                "K51-D200"
-            ],
-            [
-                "lrtfeeder",
-                "K51A-D180"
-            ],
-            [
-                "ctb",
-                "003198"
-            ],
-            [
-                "gmb",
-                "20001319"
             ]
         ],
         "8667AD096EEED0A8": [
@@ -786715,10 +786620,6 @@
             [
                 "ctb",
                 "003219"
-            ],
-            [
-                "kmb",
-                "8660BDF2C013FAC2"
             ]
         ],
         "K54A-D010": [

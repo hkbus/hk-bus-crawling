@@ -96366,6 +96366,40 @@
                 "en": "TSUI LAI GARDEN",
                 "zh": "\u7fe0\u9e97\u82b1\u5712"
             },
+            "fares": null,
+            "faresHoliday": null,
+            "freq": null,
+            "gtfsId": null,
+            "jt": null,
+            "nlbId": null,
+            "orig": {
+                "en": "SHEUNG SHUI (TIN PING)",
+                "zh": "\u4e0a\u6c34(\u5929\u5e73)"
+            },
+            "route": "270",
+            "seq": 5,
+            "serviceType": "2",
+            "stops": {
+                "kmb": [
+                    "EBE1766B508217AF",
+                    "D876A83244ECB838",
+                    "F118B7D39DA9A9C3",
+                    "11B894BF379B1BFC",
+                    "DE9F24A5FF5A89E9"
+                ]
+            }
+        },
+        "270+2+TIN PING ESTATE BUS TERMINUS (ND951)+TSUI LAI GARDEN (ND945)": {
+            "bound": {
+                "kmb": "O"
+            },
+            "co": [
+                "kmb"
+            ],
+            "dest": {
+                "en": "TSUI LAI GARDEN (ND945)",
+                "zh": "\u7fe0\u9e97\u82b1\u5712 (ND945)"
+            },
             "fares": [
                 "4.3",
                 "4.3",
@@ -96385,8 +96419,8 @@
             "jt": "14",
             "nlbId": null,
             "orig": {
-                "en": "SHEUNG SHUI (TIN PING)",
-                "zh": "\u4e0a\u6c34(\u5929\u5e73)"
+                "en": "TIN PING ESTATE BUS TERMINUS (ND951)",
+                "zh": "\u5929\u5e73\u90a8\u7e3d\u7ad9 (ND951)"
             },
             "route": "270",
             "seq": 8,
@@ -424436,6 +424470,69 @@
                 ]
             }
         },
+        "SP12+1+Kai Tak Sports Park+Huanggang Port": {
+            "bound": {
+                "ctb": "O"
+            },
+            "co": [
+                "ctb"
+            ],
+            "dest": {
+                "en": "Huanggang Port",
+                "zh": "\u7687\u5d17\u53e3\u5cb8"
+            },
+            "fares": null,
+            "faresHoliday": null,
+            "freq": null,
+            "gtfsId": null,
+            "jt": null,
+            "nlbId": null,
+            "orig": {
+                "en": "Kai Tak Sports Park",
+                "zh": "\u555f\u5fb7\u9ad4\u80b2\u5712"
+            },
+            "route": "SP12",
+            "seq": 2,
+            "serviceType": 1,
+            "stops": {
+                "ctb": [
+                    "003874",
+                    "003939"
+                ]
+            }
+        },
+        "SP2+1+Kai Tak Sports Park+Mong Kok": {
+            "bound": {
+                "ctb": "O"
+            },
+            "co": [
+                "ctb"
+            ],
+            "dest": {
+                "en": "Mong Kok",
+                "zh": "\u65fa\u89d2"
+            },
+            "fares": null,
+            "faresHoliday": null,
+            "freq": null,
+            "gtfsId": null,
+            "jt": null,
+            "nlbId": null,
+            "orig": {
+                "en": "Kai Tak Sports Park",
+                "zh": "\u555f\u5fb7\u9ad4\u80b2\u5712"
+            },
+            "route": "SP2",
+            "seq": 3,
+            "serviceType": 1,
+            "stops": {
+                "ctb": [
+                    "003874",
+                    "003692",
+                    "001559"
+                ]
+            }
+        },
         "SP2A+1+Kai Tak Sports Park+Tsim Sha Tsui": {
             "bound": {
                 "ctb": "O"
@@ -528372,6 +528469,16 @@
                 "zh": "\u70cf\u86df\u9a30\u7e3d\u7ad9 (TP880)"
             }
         },
+        "4594DE819A18CA80": {
+            "location": {
+                "lat": 22.054778,
+                "lng": 114.131439
+            },
+            "name": {
+                "en": "TIN YEE HOUSE TIN PING ESTATE (ND335)",
+                "zh": "\u5929\u5e73\u90a8\u5929\u6021\u6a13 (ND335)"
+            }
+        },
         "459BE083B86A8337": {
             "location": {
                 "lat": 22.387441,
@@ -537060,6 +537167,16 @@
             "name": {
                 "en": "LABOUR TRIBUNAL (YT330)",
                 "zh": "\u52de\u8cc7\u5be9\u88c1\u8655 (YT330)"
+            }
+        },
+        "64ECC536B1725CBE": {
+            "location": {
+                "lat": 22.503073,
+                "lng": 114.129594
+            },
+            "name": {
+                "en": "LUNG FUNG GARDEN (ND336)",
+                "zh": "\u9f8d\u8c50\u82b1\u5712 (ND336)"
             }
         },
         "64FBF17E3209D217": {
@@ -549340,6 +549457,16 @@
             "name": {
                 "en": "CHOI YUEN BUS TERMINUS (ND920)",
                 "zh": "\u5f69\u5712\u7e3d\u7ad9 (ND920)"
+            }
+        },
+        "945D74B7F76C0FAD": {
+            "location": {
+                "lat": 22.505047,
+                "lng": 114.131189
+            },
+            "name": {
+                "en": "LUNG SUM AVENUE SPORTS CENTRE (ND231)",
+                "zh": "\u9f8d\u741b\u8def\u9ad4\u80b2\u9928 (ND231)"
             }
         },
         "94612276CB142F93": {
@@ -573960,6 +574087,16 @@
             "name": {
                 "en": "TSZ TONG TSUEN (YL655)",
                 "zh": "\u7960\u5802\u6751 (YL655)"
+            }
+        },
+        "F118B7D39DA9A9C3": {
+            "location": {
+                "lat": 22.50362,
+                "lng": 114.129768
+            },
+            "name": {
+                "en": "SAN SHING AVENUE SHEUNG SHUI (ND230)",
+                "zh": "\u4e0a\u6c34\u65b0\u6210\u8def (ND230)"
             }
         },
         "F11DEDBBCD090BCC": {
@@ -617610,6 +617747,10 @@
             [
                 "kmb",
                 "9170FC8FFFD12204"
+            ],
+            [
+                "kmb",
+                "F118B7D39DA9A9C3"
             ]
         ],
         "003765": [
@@ -641256,6 +641397,10 @@
             [
                 "kmb",
                 "9170FC8FFFD12204"
+            ],
+            [
+                "kmb",
+                "F118B7D39DA9A9C3"
             ]
         ],
         "20001474": [
@@ -714092,6 +714237,20 @@
                 "B0668BFF6178BA0B"
             ]
         ],
+        "64ECC536B1725CBE": [
+            [
+                "ctb",
+                "003768"
+            ],
+            [
+                "gmb",
+                "20007293"
+            ],
+            [
+                "kmb",
+                "D417A444017171C6"
+            ]
+        ],
         "64FBF17E3209D217": [
             [
                 "ctb",
@@ -732640,6 +732799,10 @@
             [
                 "gmb",
                 "20001473"
+            ],
+            [
+                "kmb",
+                "F118B7D39DA9A9C3"
             ]
         ],
         "9179E2F718D0F436": [
@@ -734238,6 +734401,32 @@
             [
                 "kmb",
                 "26A1D2969A15C3AF"
+            ]
+        ],
+        "945D74B7F76C0FAD": [
+            [
+                "ctb",
+                "003719"
+            ],
+            [
+                "gmb",
+                "20012124"
+            ],
+            [
+                "gmb",
+                "20012127"
+            ],
+            [
+                "kmb",
+                "D2C1DACCC74B69C5"
+            ],
+            [
+                "kmb",
+                "EE775A73D626A46E"
+            ],
+            [
+                "ctb",
+                "003765"
             ]
         ],
         "946516353F8828E9": [
@@ -765602,6 +765791,12 @@
                 "K58-D120"
             ]
         ],
+        "DF0C4F9561000773": [
+            [
+                "kmb",
+                "EBE1766B508217AF"
+            ]
+        ],
         "DF0F8F9667BADA6A": [
             [
                 "kmb",
@@ -770572,6 +770767,10 @@
             [
                 "kmb",
                 "4442A9A5E7FABAB8"
+            ],
+            [
+                "kmb",
+                "DF0C4F9561000773"
             ]
         ],
         "EBE72869FC78A62D": [
@@ -772918,6 +773117,20 @@
             [
                 "kmb",
                 "527795AF6DEC209C"
+            ]
+        ],
+        "F118B7D39DA9A9C3": [
+            [
+                "ctb",
+                "003764"
+            ],
+            [
+                "gmb",
+                "20001473"
+            ],
+            [
+                "kmb",
+                "9170FC8FFFD12204"
             ]
         ],
         "F11DEDBBCD090BCC": [

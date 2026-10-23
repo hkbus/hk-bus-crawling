@@ -424439,37 +424439,6 @@
                 ]
             }
         },
-        "SP12+1+KAI TAK SPORTS PARK+LOK MA CHAU": {
-            "bound": {
-                "kmb": "O"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "LOK MA CHAU",
-                "zh": "\u843d\u99ac\u6d32"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "KAI TAK SPORTS PARK",
-                "zh": "\u555f\u5fb7\u9ad4\u80b2\u5712"
-            },
-            "route": "SP12",
-            "seq": 2,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "414AD39F5040C30F",
-                    "3106E04BB81D74A8"
-                ]
-            }
-        },
         "SP12+1+Kai Tak Sports Park+Huanggang Port": {
             "bound": {
                 "ctb": "O"
@@ -454795,8 +454764,8 @@
                 "lng": 113.95333719053
             },
             "name": {
-                "en": "Ying Tung Estate, Ying Tung Road",
-                "zh": "\u8fce\u6771\u90a8, \u8fce\u6771\u8def"
+                "en": "Cheung Yat House Cheung Tung Estate, Ying Tung Road",
+                "zh": "\u7fd4\u6771\u90a8\u7fd4\u65e5\u6a13, \u8fce\u6771\u8def"
             }
         },
         "003454": {

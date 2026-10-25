@@ -135,9 +135,10 @@ def matchRoutes(co):
     if co == 'gmb' and co in gtfsRoute['co']:  # handle for gmb
       for route in routeList:
         if route['gtfsId'] == gtfsId:
-          fares = gtfsRoute['fares'].get(
-              '1' if route['bound'] == 'O' else '2', [])
-          route['fares'] = fares if len(fares) == len(route['stops']) - 1 else [
+          bound = '1' if route['bound'] == 'O' else '2'
+          fares = gtfsRoute['fares'].get(bound, [])
+          route['fares'] = fares if gtfsRoute['stops'].get(bound) == route['stops'] and len(
+              fares) == len(route['stops']) - 1 else [
               gtfsRoute['fares']['1'][0] for i in range(len(route['stops']) - 1)]
     elif (co == "sunferry" or co == "fortuneferry") and "ferry" in gtfsRoute['co']:
       for route in routeList:

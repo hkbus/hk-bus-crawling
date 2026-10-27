@@ -26,7 +26,7 @@ async def getRouteStop(co):
     r = await emitRequest('https://rt.data.gov.hk/v2/transport/nlb/route.php?action=list', a_client)
     for route in r.json()['routes']:
       routeList.append({
-          "id": route['routeId'],
+          "id": str(route['routeId']),
           "route": route['routeNo'],
           "bound": "O",
           "orig_en": route['routeName_e'].split(' > ')[0],

@@ -58,15 +58,16 @@ async def getRouteStop(co):
     fares = []
     faresHoliday = []
     for stop in stops:
-      if stop['stopId'] not in stopList:
-        stopList[stop['stopId']] = {
-            'stop': stop['stopId'],
+      stopId = str(stop['stopId'])
+      if stopId not in stopList:
+        stopList[stopId] = {
+            'stop': stopId,
             'name_en': stop['stopName_e'],
             'name_tc': stop['stopName_c'],
             'lat': stop['latitude'],
             'long': stop['longitude']
         }
-      stopIds.append(stop['stopId'])
+      stopIds.append(stopId)
       fares.append(stop['fare'])
       faresHoliday.append(stop['fareHoliday'])
     route['stops'] = stopIds

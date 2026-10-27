@@ -26,7 +26,7 @@ async def getRouteStop(co):
     r = await emitRequest('https://rt.data.gov.hk/v2/transport/nlb/route.php?action=list', a_client)
     for route in r.json()['routes']:
       routeList.append({
-          "id": route['routeId'],
+          "id": str(route['routeId']),
           "route": route['routeNo'],
           "bound": "O",
           "orig_en": route['routeName_e'].split(' > ')[0],
@@ -58,15 +58,16 @@ async def getRouteStop(co):
     fares = []
     faresHoliday = []
     for stop in stops:
-      if stop['stopId'] not in stopList:
-        stopList[stop['stopId']] = {
-            'stop': stop['stopId'],
+      stopId = str(stop['stopId'])
+      if stopId not in stopList:
+        stopList[stopId] = {
+            'stop': stopId,
             'name_en': stop['stopName_e'],
             'name_tc': stop['stopName_c'],
             'lat': stop['latitude'],
             'long': stop['longitude']
         }
-      stopIds.append(stop['stopId'])
+      stopIds.append(stopId)
       fares.append(stop['fare'])
       faresHoliday.append(stop['fareHoliday'])
     route['stops'] = stopIds

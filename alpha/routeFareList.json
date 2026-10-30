@@ -67384,7 +67384,7 @@
                 "zh": "\u555f\u5fb7-AIRSIDE (\u7d93\u5b8b\u7687\u81fa\u7ad9)"
             },
             "route": "22S",
-            "seq": 11,
+            "seq": 15,
             "serviceType": 1,
             "stops": {
                 "ctb": [
@@ -67398,7 +67398,11 @@
                     "003534",
                     "003535",
                     "003907",
-                    "003519"
+                    "003519",
+                    "003790",
+                    "003520",
+                    "003890",
+                    "003877"
                 ]
             }
         },
@@ -361623,6 +361627,40 @@
                 ]
             }
         },
+        "B13S+1+Central (Statue Square)+Huanggang Port": {
+            "bound": {
+                "ctb": "O"
+            },
+            "co": [
+                "ctb"
+            ],
+            "dest": {
+                "en": "Huanggang Port",
+                "zh": "\u7687\u5d17\u53e3\u5cb8"
+            },
+            "fares": null,
+            "faresHoliday": null,
+            "freq": null,
+            "gtfsId": null,
+            "jt": null,
+            "nlbId": null,
+            "orig": {
+                "en": "Central (Statue Square)",
+                "zh": "\u4e2d\u74b0(\u7687\u540e\u50cf\u5ee3\u5834)"
+            },
+            "route": "B13S",
+            "seq": 5,
+            "serviceType": 1,
+            "stops": {
+                "ctb": [
+                    "001034",
+                    "001036",
+                    "001038",
+                    "001628",
+                    "003939"
+                ]
+            }
+        },
         "B14+1+Huanggang Port+Kai Tak (Olympic Avenue)": {
             "bound": {
                 "ctb": "OI"
@@ -542914,7 +542952,7 @@
                 "lng": 114.03604
             },
             "name": {
-                "en": "YOHO MALL (YL241)",
+                "en": "YOHO MALL I (YL241)",
                 "zh": "\u5f62\u9ede I (YL241)"
             }
         },

@@ -408526,70 +408526,6 @@
                 ]
             }
         },
-        "N368+2+CENTRAL (MACAU FERRY)+YUEN LONG (WEST)": {
-            "bound": {
-                "kmb": "I"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "YUEN LONG (WEST)",
-                "zh": "\u5143\u6717(\u897f)"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "CENTRAL (MACAU FERRY)",
-                "zh": "\u4e2d\u74b0(\u6e2f\u6fb3\u78bc\u982d)"
-            },
-            "route": "N368",
-            "seq": 35,
-            "serviceType": "2",
-            "stops": {
-                "kmb": [
-                    "28B264A688848238",
-                    "25D811895B82ABCA",
-                    "5FEC91F62EE33DA1",
-                    "4328371AE3AD16B9",
-                    "46CB01C7F12428A3",
-                    "D5FEF340EE98A7E8",
-                    "3FCC00D1D01ACD28",
-                    "AD1B202B678A3B56",
-                    "C88DEC0AF0D1102B",
-                    "4C333C4D4E80902B",
-                    "F1A22B170518051B",
-                    "3DB9E473F29FCDEE",
-                    "17B98BD1165A7B92",
-                    "42E86F97FAC8F719",
-                    "F948129B464BB963",
-                    "79AFB35F9DBD485A",
-                    "893BBB901005C3E6",
-                    "B046BFB6CCD3E7CE",
-                    "FC46B100B69573B7",
-                    "4A1CFF0BEA83DE78",
-                    "221A18C37331E6FD",
-                    "7ADC6D521E6BECE6",
-                    "6E764374E3F36BBB",
-                    "0CC9C5E5DBB3FF89",
-                    "643D73028E9E8490",
-                    "52241C2AEB38627B",
-                    "BFCFEBF6F5C35402",
-                    "F8B3A5C8D0D3CED7",
-                    "3D5F826FD00C0529",
-                    "876CF2E8C375F78B",
-                    "6386333EDAC64C96",
-                    "6A4B371546D489BF",
-                    "AC935792C88AF135",
-                    "43E5D3A445382F82",
-                    "41D1C16D44F410F1"
-                ]
-            }
-        },
         "N37+3+Ying Tung Estate+Tung Chung Station Bus Terminus (Circular)": {
             "bound": {
                 "nlb": "O"
@@ -535133,7 +535069,7 @@
                 "lng": 114.230667
             },
             "name": {
-                "en": "KAM TAI HOUSE, ON TAT ESTATE (AN205)",
+                "en": "KAM TAI HOUSE, ON TAI ESTATE (AN205)",
                 "zh": "\u5b89\u6cf0\u90a8\u9326\u6cf0\u6a13 (AN205)"
             }
         },

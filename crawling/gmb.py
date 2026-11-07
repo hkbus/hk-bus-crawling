@@ -42,10 +42,13 @@ async def getRouteStop(co):
       service_id = mapServiceId(headway['weekdays'], serviceIdMap_a)
       if service_id not in freq:
         freq[service_id] = {}
+      # a zero-length window is a single departure, not a headway
+      hasHeadway = (headway['frequency'] is not None
+                    and headway['start_time'] != headway['end_time'])
       freq[service_id][headway['start_time'].replace(':', '')[:4]] = [
           headway['end_time'].replace(':', '')[:4],
           str(headway['frequency'] * 60)
-      ] if headway['frequency'] is not None else None
+      ] if hasHeadway else None
     return freq
 
   routeList = []

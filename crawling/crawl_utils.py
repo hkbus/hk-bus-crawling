@@ -3,15 +3,19 @@ import httpx
 import asyncio
 import logging
 import os
+import time
 
 logger = logging.getLogger(__name__)
+
+RETRY_DEADLINE = 900
 
 
 async def emitRequest(url: str, client: httpx.AsyncClient, headers={}):
   RETRY_TIMEOUT_MAX = 300
   retry_timeout = 1
+  deadline = time.monotonic() + RETRY_DEADLINE
   # retry if "Too many request (429)"
-  while True:
+  while time.monotonic() < deadline:
     try:
       r = await client.get(url, headers=headers)
       if r.status_code == 200:
@@ -29,6 +33,7 @@ async def emitRequest(url: str, client: httpx.AsyncClient, headers={}):
           f"Exception {repr(e)} occurred, wait {retry_timeout} and retry. URL={url}")
       await asyncio.sleep(retry_timeout)
       retry_timeout = min(retry_timeout * 2, RETRY_TIMEOUT_MAX)
+  raise TimeoutError(f"retried {RETRY_DEADLINE}s, giving up. URL={url}")
 
 
 def get_request_limit():

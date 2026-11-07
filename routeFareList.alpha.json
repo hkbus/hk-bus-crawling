@@ -419554,6 +419554,68 @@
                 ]
             }
         },
+        "PBPN+1+GO PARK+UNIVERSITY STATION": {
+            "bound": {
+                "kmb": "I"
+            },
+            "co": [
+                "kmb"
+            ],
+            "dest": {
+                "en": "UNIVERSITY STATION",
+                "zh": "\u5927\u5b78\u7ad9"
+            },
+            "fares": null,
+            "faresHoliday": null,
+            "freq": null,
+            "gtfsId": null,
+            "jt": null,
+            "nlbId": null,
+            "orig": {
+                "en": "GO PARK",
+                "zh": "\u897f\u6c99 GO PARK"
+            },
+            "route": "PBPN",
+            "seq": 2,
+            "serviceType": "1",
+            "stops": {
+                "kmb": [
+                    "8B9E121BB71771F4",
+                    "67A59CDA512CF152"
+                ]
+            }
+        },
+        "PBPN+1+UNIVERSITY STATION+GO PARK": {
+            "bound": {
+                "kmb": "O"
+            },
+            "co": [
+                "kmb"
+            ],
+            "dest": {
+                "en": "GO PARK",
+                "zh": "\u897f\u6c99 GO PARK"
+            },
+            "fares": null,
+            "faresHoliday": null,
+            "freq": null,
+            "gtfsId": null,
+            "jt": null,
+            "nlbId": null,
+            "orig": {
+                "en": "UNIVERSITY STATION",
+                "zh": "\u5927\u5b78\u7ad9"
+            },
+            "route": "PBPN",
+            "seq": 2,
+            "serviceType": "1",
+            "stops": {
+                "kmb": [
+                    "67A59CDA512CF152",
+                    "8B9E121BB71771F4"
+                ]
+            }
+        },
         "R108+1+KAI YIP+CAUSEWAY BAY (VICTORIA PARK)": {
             "bound": {
                 "kmb": "O"
@@ -426775,49 +426837,6 @@
                     "5D8FCEF2915882FD",
                     "C2605DED84199B84",
                     "BF8E440F5584D39D"
-                ]
-            }
-        },
-        "X9+1+Central (Star Ferry)+Shek O": {
-            "bound": {
-                "ctb": "O"
-            },
-            "co": [
-                "ctb"
-            ],
-            "dest": {
-                "en": "Shek O",
-                "zh": "\u77f3\u6fb3"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "Central (Star Ferry)",
-                "zh": "\u4e2d\u74b0 (\u5929\u661f\u78bc\u982d)"
-            },
-            "route": "X9",
-            "seq": 14,
-            "serviceType": 1,
-            "stops": {
-                "ctb": [
-                    "001027",
-                    "001170",
-                    "001195",
-                    "001171",
-                    "001032",
-                    "001030",
-                    "002423",
-                    "002450",
-                    "001264",
-                    "002770",
-                    "001216",
-                    "002940",
-                    "002941",
-                    "002939"
                 ]
             }
         },
@@ -445386,16 +445405,6 @@
             "name": {
                 "en": "Anton Street, Hennessy Road",
                 "zh": "\u664f\u9813\u8857, \u8ed2\u5c3c\u8a69\u9053"
-            }
-        },
-        "002450": {
-            "location": {
-                "lat": 22.28188,
-                "lng": 114.17571
-            },
-            "name": {
-                "en": "Wan Chai Ferry Pier, Hung Hing Road",
-                "zh": "\u7063\u4ed4\u78bc\u982d, \u9d3b\u8208\u9053"
             }
         },
         "002451": {
@@ -536798,6 +536807,16 @@
                 "zh": "\u9280\u5e55\u8857 (ED341)"
             }
         },
+        "67A59CDA512CF152": {
+            "location": {
+                "lat": 22.4126,
+                "lng": 114.21123
+            },
+            "name": {
+                "en": "UNIVERSITY STATION",
+                "zh": "\u5927\u5b78\u7ad9"
+            }
+        },
         "67A9E4B2A537BADD": {
             "location": {
                 "lat": 22.38183,
@@ -603492,20 +603511,6 @@
                 "7AD56B4986828A09"
             ]
         ],
-        "002450": [
-            [
-                "ctb",
-                "002559"
-            ],
-            [
-                "kmb",
-                "ADC51A7EEEE43D6F"
-            ],
-            [
-                "kmb",
-                "F701EA01F9ABEC96"
-            ]
-        ],
         "002451": [
             [
                 "gmb",
@@ -604213,10 +604218,6 @@
             ]
         ],
         "002559": [
-            [
-                "ctb",
-                "002450"
-            ],
             [
                 "kmb",
                 "ADC51A7EEEE43D6F"
@@ -617002,6 +617003,10 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
+            ],
+            [
+                "kmb",
+                "67A59CDA512CF152"
             ],
             [
                 "kmb",
@@ -643728,6 +643733,10 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
+            ],
+            [
+                "kmb",
+                "67A59CDA512CF152"
             ],
             [
                 "kmb",
@@ -694143,6 +694152,10 @@
             ],
             [
                 "kmb",
+                "67A59CDA512CF152"
+            ],
+            [
+                "kmb",
                 "A4384F66C9DD2BDE"
             ],
             [
@@ -705298,6 +705311,10 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
+            ],
+            [
+                "kmb",
+                "67A59CDA512CF152"
             ]
         ],
         "5498C13EB8685C46": [
@@ -713782,6 +713799,44 @@
             [
                 "kmb",
                 "834CC2324AAFB567"
+            ]
+        ],
+        "67A59CDA512CF152": [
+            [
+                "ctb",
+                "003841"
+            ],
+            [
+                "gmb",
+                "20002275"
+            ],
+            [
+                "kmb",
+                "3E10F323161F4ADB"
+            ],
+            [
+                "kmb",
+                "A4384F66C9DD2BDE"
+            ],
+            [
+                "kmb",
+                "9F542D4B6CF41651"
+            ],
+            [
+                "kmb",
+                "888C8A612C998895"
+            ],
+            [
+                "kmb",
+                "548DB838B4673D93"
+            ],
+            [
+                "kmb",
+                "878A6FDD75689A2D"
+            ],
+            [
+                "kmb",
+                "D4D322BE3E5B2A4B"
             ]
         ],
         "67A9E4B2A537BADD": [
@@ -727328,6 +727383,10 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
+            ],
+            [
+                "kmb",
+                "67A59CDA512CF152"
             ]
         ],
         "878E5C4AF6C4B0D4": [
@@ -727674,6 +727733,10 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
+            ],
+            [
+                "kmb",
+                "67A59CDA512CF152"
             ]
         ],
         "889783C98226115D": [
@@ -737182,6 +737245,10 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
+            ],
+            [
+                "kmb",
+                "67A59CDA512CF152"
             ]
         ],
         "9F5B57C2FE7E786D": [
@@ -739296,6 +739363,10 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
+            ],
+            [
+                "kmb",
+                "67A59CDA512CF152"
             ],
             [
                 "kmb",
@@ -743673,10 +743744,6 @@
             ]
         ],
         "ADC51A7EEEE43D6F": [
-            [
-                "ctb",
-                "002450"
-            ],
             [
                 "ctb",
                 "002559"
@@ -759782,6 +759849,10 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
+            ],
+            [
+                "kmb",
+                "67A59CDA512CF152"
             ]
         ],
         "D4D418BAEAC719B0": [
@@ -769414,6 +769485,10 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
+            ],
+            [
+                "kmb",
+                "67A59CDA512CF152"
             ]
         ],
         "EC6FDF2670147F12": [
@@ -774417,10 +774492,6 @@
             ]
         ],
         "F701EA01F9ABEC96": [
-            [
-                "ctb",
-                "002450"
-            ],
             [
                 "kmb",
                 "ADC51A7EEEE43D6F"

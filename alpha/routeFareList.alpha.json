@@ -9408,83 +9408,16 @@
         },
         "103+1+POKFIELD RD+CHUK YUEN ESTATE": {
             "bound": {
+                "ctb": "O",
                 "kmb": "I"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "CHUK YUEN ESTATE",
-                "zh": "\u7af9\u5712\u90a8"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "POKFIELD RD",
-                "zh": "\u84b2\u98db\u8def"
-            },
-            "route": "103",
-            "seq": 39,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "9C4295A3DD992F0E",
-                    "8A8E1370026F639C",
-                    "C904C536EC3E0827",
-                    "1843FAE700FCA5AF",
-                    "65523F89F26B2088",
-                    "6D9F5C463D12461B",
-                    "8BD7CEC6396E46F0",
-                    "54F26831BD4A5EBD",
-                    "65DA1259C72FD22B",
-                    "7D77D56CB708BCED",
-                    "2ECC1DBA0C28E93C",
-                    "CAEFA7D6314535BC",
-                    "D1601C6EDAB39F29",
-                    "4A0CEB0807BAF9B3",
-                    "3007D34FB91FB27E",
-                    "048A87496B30B946",
-                    "A71457854D13E9DE",
-                    "AC1E2BBDC663717F",
-                    "A07CC0A6D462A579",
-                    "9E25CF3DAA0BA0C4",
-                    "9541036143D6CCF1",
-                    "13C75FFFA2BB060D",
-                    "D1D807234805DBF4",
-                    "79AFB35F9DBD485A",
-                    "6F755DD7C8AEB1B4",
-                    "D5DB45916FCE114A",
-                    "5D94D3084F0C3831",
-                    "E907FA24426A9FD6",
-                    "89A4D25AC31A8388",
-                    "6465986EF7824816",
-                    "F21DC659FA565E2F",
-                    "E3EEF07674DE3B98",
-                    "A96BE8855D16BCE0",
-                    "F3753E60F86B0068",
-                    "67C00FA00C878C1A",
-                    "7A899F3009A31F68",
-                    "550A2C52049679A0",
-                    "CEACD1DF9F00EF44",
-                    "6E410E80F8C9915B"
-                ]
-            }
-        },
-        "103+1+Pokfield Road+Chuk Yuen": {
-            "bound": {
-                "ctb": "O"
             },
             "co": [
                 "kmb",
                 "ctb"
             ],
             "dest": {
-                "en": "Chuk Yuen",
-                "zh": "\u7af9\u5712"
+                "en": "CHUK YUEN ESTATE",
+                "zh": "\u7af9\u5712\u90a8"
             },
             "fares": [
                 "12.9",
@@ -9709,12 +9642,12 @@
             "jt": "65",
             "nlbId": null,
             "orig": {
-                "en": "Pokfield Road",
+                "en": "POKFIELD RD",
                 "zh": "\u84b2\u98db\u8def"
             },
             "route": "103",
             "seq": 41,
-            "serviceType": 1,
+            "serviceType": "1",
             "stops": {
                 "ctb": [
                     "001115",
@@ -9758,6 +9691,49 @@
                     "001527",
                     "001454",
                     "001455"
+                ],
+                "kmb": [
+                    "9C4295A3DD992F0E",
+                    "8A8E1370026F639C",
+                    "C904C536EC3E0827",
+                    "1843FAE700FCA5AF",
+                    "65523F89F26B2088",
+                    "6D9F5C463D12461B",
+                    "8BD7CEC6396E46F0",
+                    "54F26831BD4A5EBD",
+                    "65DA1259C72FD22B",
+                    "7D77D56CB708BCED",
+                    "2ECC1DBA0C28E93C",
+                    "CAEFA7D6314535BC",
+                    "D1601C6EDAB39F29",
+                    "4A0CEB0807BAF9B3",
+                    "3007D34FB91FB27E",
+                    "45DD5738BA406D61",
+                    "048A87496B30B946",
+                    "A71457854D13E9DE",
+                    "AC1E2BBDC663717F",
+                    "A07CC0A6D462A579",
+                    "9E25CF3DAA0BA0C4",
+                    "9541036143D6CCF1",
+                    "13C75FFFA2BB060D",
+                    "D1D807234805DBF4",
+                    "79AFB35F9DBD485A",
+                    "6F755DD7C8AEB1B4",
+                    "D5DB45916FCE114A",
+                    "5D94D3084F0C3831",
+                    "E907FA24426A9FD6",
+                    "89A4D25AC31A8388",
+                    "6465986EF7824816",
+                    "F21DC659FA565E2F",
+                    "E3EEF07674DE3B98",
+                    "A96BE8855D16BCE0",
+                    "F3753E60F86B0068",
+                    "67C00FA00C878C1A",
+                    "7A899F3009A31F68",
+                    "550A2C52049679A0",
+                    "CEACD1DF9F00EF44",
+                    "6E410E80F8C9915B",
+                    "2BF46D2A46F5451D"
                 ]
             }
         },
@@ -49231,73 +49207,16 @@
         },
         "182+1+CENTRAL (MACAO FERRY)+YU CHUI COURT": {
             "bound": {
+                "ctb": "O",
                 "kmb": "I"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "YU CHUI COURT",
-                "zh": "\u6109\u7fe0\u82d1"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "CENTRAL (MACAO FERRY)",
-                "zh": "\u4e2d\u74b0(\u6e2f\u6fb3\u78bc\u982d)"
-            },
-            "route": "182",
-            "seq": 29,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "59013D693D2493FE",
-                    "C78818C8285315B3",
-                    "5298A15B8CCAEF42",
-                    "A9069A17B1474D76",
-                    "3007D34FB91FB27E",
-                    "048A87496B30B946",
-                    "FD9F24DFA3090351",
-                    "64FBF17E3209D217",
-                    "4A626ACD36F8ED7A",
-                    "79AFB35F9DBD485A",
-                    "D5DB45916FCE114A",
-                    "5D94D3084F0C3831",
-                    "89A4D25AC31A8388",
-                    "6465986EF7824816",
-                    "C53A00F15DC2DB20",
-                    "48E5A1EED91712EE",
-                    "8FE9357F36300CD7",
-                    "B8E2647E9C5019C9",
-                    "AAECA769A84E2372",
-                    "A66159E033DDEA04",
-                    "C92E80A5D7E0E8EC",
-                    "07ADFF84F3502690",
-                    "B9EE83CA8ABB578B",
-                    "50F2B96452F78F19",
-                    "1AE43A670EACECB1",
-                    "C0D515CA78A56B65",
-                    "3C624F6CB2D5BBEA",
-                    "C1E9F8237EDBBAD2",
-                    "4BFB5F2D496CDA56"
-                ]
-            }
-        },
-        "182+1+Central (Macao Ferry)+Sha Tin (Yu Chui Court)": {
-            "bound": {
-                "ctb": "O"
             },
             "co": [
                 "kmb",
                 "ctb"
             ],
             "dest": {
-                "en": "Sha Tin (Yu Chui Court)",
-                "zh": "\u6c99\u7530 (\u6109\u7fe0\u82d1)"
+                "en": "YU CHUI COURT",
+                "zh": "\u6109\u7fe0\u82d1"
             },
             "fares": [
                 "20.8",
@@ -49404,12 +49323,12 @@
             "jt": "60",
             "nlbId": null,
             "orig": {
-                "en": "Central (Macao Ferry)",
-                "zh": "\u4e2d\u74b0 (\u6e2f\u6fb3\u78bc\u982d)"
+                "en": "CENTRAL (MACAO FERRY)",
+                "zh": "\u4e2d\u74b0(\u6e2f\u6fb3\u78bc\u982d)"
             },
             "route": "182",
             "seq": 31,
-            "serviceType": 1,
+            "serviceType": "1",
             "stops": {
                 "ctb": [
                     "001027",
@@ -49443,6 +49362,39 @@
                     "001941",
                     "002051",
                     "002052"
+                ],
+                "kmb": [
+                    "59013D693D2493FE",
+                    "C78818C8285315B3",
+                    "5298A15B8CCAEF42",
+                    "A9069A17B1474D76",
+                    "3007D34FB91FB27E",
+                    "45DD5738BA406D61",
+                    "048A87496B30B946",
+                    "FD9F24DFA3090351",
+                    "64FBF17E3209D217",
+                    "4A626ACD36F8ED7A",
+                    "79AFB35F9DBD485A",
+                    "D5DB45916FCE114A",
+                    "5D94D3084F0C3831",
+                    "89A4D25AC31A8388",
+                    "6465986EF7824816",
+                    "C53A00F15DC2DB20",
+                    "48E5A1EED91712EE",
+                    "8FE9357F36300CD7",
+                    "B8E2647E9C5019C9",
+                    "AAECA769A84E2372",
+                    "A66159E033DDEA04",
+                    "C92E80A5D7E0E8EC",
+                    "07ADFF84F3502690",
+                    "B9EE83CA8ABB578B",
+                    "50F2B96452F78F19",
+                    "1AE43A670EACECB1",
+                    "C0D515CA78A56B65",
+                    "3C624F6CB2D5BBEA",
+                    "C1E9F8237EDBBAD2",
+                    "4BFB5F2D496CDA56",
+                    "EF15FBC5E8A02ADA"
                 ]
             }
         },
@@ -49628,63 +49580,16 @@
         },
         "182X+1+CENTRAL (MACAO FERRY)+YU CHUI COURT": {
             "bound": {
+                "ctb": "O",
                 "kmb": "O"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "YU CHUI COURT",
-                "zh": "\u6109\u7fe0\u82d1"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "CENTRAL (MACAO FERRY)",
-                "zh": "\u4e2d\u74b0(\u6e2f\u6fb3\u78bc\u982d)"
-            },
-            "route": "182X",
-            "seq": 19,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "59013D693D2493FE",
-                    "C78818C8285315B3",
-                    "5298A15B8CCAEF42",
-                    "A9069A17B1474D76",
-                    "3007D34FB91FB27E",
-                    "048A87496B30B946",
-                    "FD9F24DFA3090351",
-                    "64FBF17E3209D217",
-                    "4A626ACD36F8ED7A",
-                    "B8E2647E9C5019C9",
-                    "AAECA769A84E2372",
-                    "A66159E033DDEA04",
-                    "C92E80A5D7E0E8EC",
-                    "07ADFF84F3502690",
-                    "B9EE83CA8ABB578B",
-                    "B3E11B99D4E4F4AE",
-                    "8EE5AC5D519C140E",
-                    "944A9ADFCA286511",
-                    "808CA5FECCC6646D"
-                ]
-            }
-        },
-        "182X+1+Central (Macao Ferry)+Sha Tin (Yu Chui Court)": {
-            "bound": {
-                "ctb": "O"
             },
             "co": [
                 "kmb",
                 "ctb"
             ],
             "dest": {
-                "en": "Sha Tin (Yu Chui Court)",
-                "zh": "\u6c99\u7530 (\u6109\u7fe0\u82d1)"
+                "en": "YU CHUI COURT",
+                "zh": "\u6109\u7fe0\u82d1"
             },
             "fares": [
                 "20.8",
@@ -49723,12 +49628,12 @@
             "jt": "65",
             "nlbId": null,
             "orig": {
-                "en": "Central (Macao Ferry)",
-                "zh": "\u4e2d\u74b0 (\u6e2f\u6fb3\u78bc\u982d)"
+                "en": "CENTRAL (MACAO FERRY)",
+                "zh": "\u4e2d\u74b0(\u6e2f\u6fb3\u78bc\u982d)"
             },
             "route": "182X",
             "seq": 21,
-            "serviceType": 1,
+            "serviceType": "1",
             "stops": {
                 "ctb": [
                     "001027",
@@ -49752,6 +49657,29 @@
                     "003391",
                     "003613",
                     "002052"
+                ],
+                "kmb": [
+                    "59013D693D2493FE",
+                    "C78818C8285315B3",
+                    "5298A15B8CCAEF42",
+                    "A9069A17B1474D76",
+                    "3007D34FB91FB27E",
+                    "45DD5738BA406D61",
+                    "048A87496B30B946",
+                    "FD9F24DFA3090351",
+                    "64FBF17E3209D217",
+                    "4A626ACD36F8ED7A",
+                    "B8E2647E9C5019C9",
+                    "AAECA769A84E2372",
+                    "A66159E033DDEA04",
+                    "C92E80A5D7E0E8EC",
+                    "07ADFF84F3502690",
+                    "B9EE83CA8ABB578B",
+                    "B3E11B99D4E4F4AE",
+                    "8EE5AC5D519C140E",
+                    "944A9ADFCA286511",
+                    "808CA5FECCC6646D",
+                    "EF15FBC5E8A02ADA"
                 ]
             }
         },
@@ -305167,84 +305095,6 @@
                 ]
             }
         },
-        "8A+1+WHAMPOA GARDEN+TSIM SHA TSUI (CIRCULAR)": {
-            "bound": {
-                "kmb": "O"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "TSIM SHA TSUI (CIRCULAR)",
-                "zh": "\u5c16\u6c99\u5480(\u5faa\u74b0\u7dda)"
-            },
-            "fares": [
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1",
-                "5.1"
-            ],
-            "faresHoliday": null,
-            "freq": {
-                "511": {
-                    "0600": [
-                        "0740",
-                        "1500"
-                    ],
-                    "0740": [
-                        "2340",
-                        "1800"
-                    ]
-                }
-            },
-            "gtfsId": "1390",
-            "jt": "19",
-            "nlbId": null,
-            "orig": {
-                "en": "WHAMPOA GARDEN",
-                "zh": "\u9ec3\u57d4\u82b1\u5712"
-            },
-            "route": "8A",
-            "seq": 19,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "75D6E5952B41E1D2",
-                    "36F7DCE4723C2C44",
-                    "95FAB1D2AD752ECE",
-                    "505D36136FD57784",
-                    "FE2815CBCD21C57C",
-                    "BEEBDDB542A7E709",
-                    "48184733EFE9D3E3",
-                    "8E8DB91C885F1230",
-                    "E507F6160447C129",
-                    "7209CEE65796F4DD",
-                    "5D75A800F823B45D",
-                    "C175ACB534E8C15C",
-                    "F656A38D2A40F77D",
-                    "3D040EE809057C6E",
-                    "842DB57036C4C645",
-                    "3DEB0D13043F4C17",
-                    "97377AA89B45CD34",
-                    "438AFA4E9E76C953",
-                    "75D6E5952B41E1D2"
-                ]
-            }
-        },
         "8H+1+Siu Sai Wan Sports Ground, Siu Sai Wan Road+Tung Wah Eastern Hospital": {
             "bound": {
                 "ctb": "O"
@@ -315664,6 +315514,7 @@
         },
         "914+1+HOI LAI ESTATE+CAUSEWAY BAY (TIN HAU)": {
             "bound": {
+                "ctb": "I",
                 "kmb": "O"
             },
             "co": [
@@ -315690,6 +315541,7 @@
                 "12.2",
                 "12.2",
                 "12.2",
+                "7.7",
                 "7.7",
                 "7.7",
                 "7.7",
@@ -315793,172 +315645,8 @@
                 "zh": "\u6d77\u9e97\u90a8"
             },
             "route": "914",
-            "seq": 25,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "366341F6311738C5",
-                    "1BD82E4312536F0C",
-                    "25215C60B06337AF",
-                    "7B3074F34B2D6D01",
-                    "98AB21EAFF27FE09",
-                    "62A80759AABB1937",
-                    "9A773DDB814933C1",
-                    "C163B1F33533C2A9",
-                    "6A225A9CB16BC4BB",
-                    "F5098BFD784B8FAB",
-                    "1C7C526A52EF9171",
-                    "6085C420AB7E6FF9",
-                    "4AF8DE7DC96BCF83",
-                    "50DAF4168DAE2978",
-                    "466111DE1A3E4656",
-                    "CE1BEC7176C47D52",
-                    "4FCF8ED4A60F9769",
-                    "77D08D8DF5A80932",
-                    "04601C2FB7201CAA",
-                    "85D7313CCE53D396",
-                    "36904A9AD2C13B32",
-                    "1F3870BB293E9DAF",
-                    "DB3C788ACBB6668D",
-                    "DF901EF2F9A46F7B",
-                    "6F206EE9D2AF0838"
-                ]
-            }
-        },
-        "914+1+Hoi Lai Estate+Tin Hau Station": {
-            "bound": {
-                "ctb": "I"
-            },
-            "co": [
-                "kmb",
-                "ctb"
-            ],
-            "dest": {
-                "en": "Tin Hau Station",
-                "zh": "\u5929\u540e\u7ad9"
-            },
-            "fares": [
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "12.2",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7"
-            ],
-            "faresHoliday": null,
-            "freq": {
-                "287": {
-                    "0625": [
-                        "0639",
-                        "840"
-                    ],
-                    "0639": [
-                        "0718",
-                        "780"
-                    ],
-                    "0718": [
-                        "0818",
-                        "1800"
-                    ],
-                    "0818": [
-                        "0838",
-                        "1200"
-                    ],
-                    "0838": [
-                        "0900",
-                        "1320"
-                    ],
-                    "0900": [
-                        "0923",
-                        "1380"
-                    ],
-                    "0923": [
-                        "2211",
-                        "1440"
-                    ],
-                    "2211": [
-                        "2236",
-                        "1500"
-                    ]
-                },
-                "288": {
-                    "0625": [
-                        "0651",
-                        "1560"
-                    ],
-                    "0651": [
-                        "0718",
-                        "1620"
-                    ],
-                    "0718": [
-                        "0838",
-                        "1200"
-                    ],
-                    "0838": [
-                        "0900",
-                        "1320"
-                    ],
-                    "0900": [
-                        "0923",
-                        "1380"
-                    ],
-                    "0923": [
-                        "2211",
-                        "1440"
-                    ],
-                    "2211": [
-                        "2236",
-                        "1500"
-                    ]
-                },
-                "448": {
-                    "0625": [
-                        "0715",
-                        "1500"
-                    ],
-                    "0715": [
-                        "0815",
-                        "1200"
-                    ],
-                    "0815": [
-                        "0836",
-                        "1260"
-                    ],
-                    "0836": [
-                        "2236",
-                        "1440"
-                    ]
-                }
-            },
-            "gtfsId": "1396",
-            "jt": "64",
-            "nlbId": null,
-            "orig": {
-                "en": "Hoi Lai Estate",
-                "zh": "\u6d77\u9e97\u90a8"
-            },
-            "route": "914",
             "seq": 26,
-            "serviceType": 1,
+            "serviceType": "1",
             "stops": {
                 "ctb": [
                     "002891",
@@ -315987,6 +315675,34 @@
                     "002574",
                     "001213",
                     "001363"
+                ],
+                "kmb": [
+                    "366341F6311738C5",
+                    "1BD82E4312536F0C",
+                    "25215C60B06337AF",
+                    "7B3074F34B2D6D01",
+                    "98AB21EAFF27FE09",
+                    "62A80759AABB1937",
+                    "9A773DDB814933C1",
+                    "C163B1F33533C2A9",
+                    "6A225A9CB16BC4BB",
+                    "F5098BFD784B8FAB",
+                    "1C7C526A52EF9171",
+                    "6085C420AB7E6FF9",
+                    "4AF8DE7DC96BCF83",
+                    "50DAF4168DAE2978",
+                    "466111DE1A3E4656",
+                    "CE1BEC7176C47D52",
+                    "4FCF8ED4A60F9769",
+                    "77D08D8DF5A80932",
+                    "04601C2FB7201CAA",
+                    "D28CA51749C67A3D",
+                    "85D7313CCE53D396",
+                    "36904A9AD2C13B32",
+                    "1F3870BB293E9DAF",
+                    "DB3C788ACBB6668D",
+                    "DF901EF2F9A46F7B",
+                    "6F206EE9D2AF0838"
                 ]
             }
         },
@@ -322559,6 +322275,7 @@
         },
         "948+1+TSING YI (CHEUNG ON ESTATE)+CAUSEWAY BAY (TIN HAU)": {
             "bound": {
+                "ctb": "O",
                 "kmb": "O"
             },
             "co": [
@@ -322587,6 +322304,7 @@
                 "20.8",
                 "20.8",
                 "20.8",
+                "7.7",
                 "7.7",
                 "7.7",
                 "7.7",
@@ -322639,126 +322357,8 @@
                 "zh": "\u9752\u8863(\u9577\u5b89\u90a8)"
             },
             "route": "948",
-            "seq": 28,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "00EC5193F83C6F76",
-                    "79842A7E2FC0844F",
-                    "FF5CF18C5510B901",
-                    "7E50BA0974C3B983",
-                    "4E870B220826BEE0",
-                    "5AD2A4D21C226335",
-                    "A454170B2B59B587",
-                    "973EBE6A3543C701",
-                    "AB87BD2749FFEACA",
-                    "D0BE5E470FE2AD0B",
-                    "67F3E54FF145BA65",
-                    "F02CE37AD01DF17E",
-                    "3A9EE9221AB3E27C",
-                    "7192051038B36F08",
-                    "1A37A52F97A04C81",
-                    "CA60760D2303E6D0",
-                    "466111DE1A3E4656",
-                    "CE1BEC7176C47D52",
-                    "C93D9BCDD63A360F",
-                    "ECA27B00E599556A",
-                    "D0C67A916767F79B",
-                    "04601C2FB7201CAA",
-                    "85D7313CCE53D396",
-                    "36904A9AD2C13B32",
-                    "1F3870BB293E9DAF",
-                    "DB3C788ACBB6668D",
-                    "DF901EF2F9A46F7B",
-                    "6F206EE9D2AF0838"
-                ]
-            }
-        },
-        "948+1+Tsing Yi (Cheung On Estate)+Tin Hau Station": {
-            "bound": {
-                "ctb": "O"
-            },
-            "co": [
-                "kmb",
-                "ctb"
-            ],
-            "dest": {
-                "en": "Tin Hau Station",
-                "zh": "\u5929\u540e\u7ad9"
-            },
-            "fares": [
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7"
-            ],
-            "faresHoliday": null,
-            "freq": {
-                "287": {
-                    "0830": [
-                        "1800",
-                        "1800"
-                    ]
-                },
-                "288": {
-                    "0820": [
-                        "1300",
-                        "1200"
-                    ],
-                    "1300": [
-                        "1900",
-                        "1800"
-                    ]
-                },
-                "448": {
-                    "0830": [
-                        "0900",
-                        "1800"
-                    ],
-                    "0900": [
-                        "1300",
-                        "1200"
-                    ],
-                    "1300": [
-                        "1900",
-                        "1800"
-                    ]
-                }
-            },
-            "gtfsId": "1790",
-            "jt": "76",
-            "nlbId": null,
-            "orig": {
-                "en": "Tsing Yi (Cheung On Estate)",
-                "zh": "\u9752\u8863 (\u9577\u5b89\u90a8)"
-            },
-            "route": "948",
             "seq": 29,
-            "serviceType": 1,
+            "serviceType": "1",
             "stops": {
                 "ctb": [
                     "003108",
@@ -322790,117 +322390,43 @@
                     "002574",
                     "001213",
                     "001363"
-                ]
-            }
-        },
-        "948A+1+Cheung On Estate+Tin Hau Station": {
-            "bound": {
-                "ctb": "O"
-            },
-            "co": [
-                "kmb",
-                "ctb"
-            ],
-            "dest": {
-                "en": "Tin Hau Station",
-                "zh": "\u5929\u540e\u7ad9"
-            },
-            "fares": [
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7"
-            ],
-            "faresHoliday": null,
-            "freq": {
-                "287": {
-                    "0640": null,
-                    "0700": null,
-                    "0715": null,
-                    "0721": null,
-                    "0728": null,
-                    "0734": null,
-                    "0740": null,
-                    "0746": null,
-                    "0753": null,
-                    "0800": null,
-                    "0805": null,
-                    "0810": null,
-                    "0820": null
-                },
-                "288": {
-                    "0640": null,
-                    "0700": null,
-                    "0730": null,
-                    "0738": null,
-                    "0754": null,
-                    "0810": null
-                }
-            },
-            "gtfsId": "8367",
-            "jt": "67",
-            "nlbId": null,
-            "orig": {
-                "en": "Cheung On Estate",
-                "zh": "\u9577\u5b89\u90a8"
-            },
-            "route": "948A",
-            "seq": 26,
-            "serviceType": 1,
-            "stops": {
-                "ctb": [
-                    "003108",
-                    "003109",
-                    "003110",
-                    "003111",
-                    "003112",
-                    "003113",
-                    "003114",
-                    "003115",
-                    "003116",
-                    "003117",
-                    "003118",
-                    "003119",
-                    "003138",
-                    "001629",
-                    "001028",
-                    "001107",
-                    "001170",
-                    "001180",
-                    "001174",
-                    "002430",
-                    "002432",
-                    "002572",
-                    "002437",
-                    "002574",
-                    "001213",
-                    "001363"
+                ],
+                "kmb": [
+                    "00EC5193F83C6F76",
+                    "79842A7E2FC0844F",
+                    "FF5CF18C5510B901",
+                    "7E50BA0974C3B983",
+                    "4E870B220826BEE0",
+                    "5AD2A4D21C226335",
+                    "A454170B2B59B587",
+                    "973EBE6A3543C701",
+                    "AB87BD2749FFEACA",
+                    "D0BE5E470FE2AD0B",
+                    "67F3E54FF145BA65",
+                    "F02CE37AD01DF17E",
+                    "3A9EE9221AB3E27C",
+                    "7192051038B36F08",
+                    "1A37A52F97A04C81",
+                    "CA60760D2303E6D0",
+                    "466111DE1A3E4656",
+                    "CE1BEC7176C47D52",
+                    "C93D9BCDD63A360F",
+                    "ECA27B00E599556A",
+                    "D0C67A916767F79B",
+                    "04601C2FB7201CAA",
+                    "D28CA51749C67A3D",
+                    "85D7313CCE53D396",
+                    "36904A9AD2C13B32",
+                    "1F3870BB293E9DAF",
+                    "DB3C788ACBB6668D",
+                    "DF901EF2F9A46F7B",
+                    "6F206EE9D2AF0838"
                 ]
             }
         },
         "948A+1+TSING YI (CHEUNG ON ESTATE)+CAUSEWAY BAY (TIN HAU)": {
             "bound": {
+                "ctb": "O",
                 "kmb": "O"
             },
             "co": [
@@ -322926,6 +322452,7 @@
                 "20.8",
                 "20.8",
                 "20.8",
+                "7.7",
                 "7.7",
                 "7.7",
                 "7.7",
@@ -322971,9 +322498,37 @@
                 "zh": "\u9752\u8863(\u9577\u5b89\u90a8)"
             },
             "route": "948A",
-            "seq": 25,
+            "seq": 26,
             "serviceType": "1",
             "stops": {
+                "ctb": [
+                    "003108",
+                    "003109",
+                    "003110",
+                    "003111",
+                    "003112",
+                    "003113",
+                    "003114",
+                    "003115",
+                    "003116",
+                    "003117",
+                    "003118",
+                    "003119",
+                    "003138",
+                    "001629",
+                    "001028",
+                    "001107",
+                    "001170",
+                    "001180",
+                    "001174",
+                    "002430",
+                    "002432",
+                    "002572",
+                    "002437",
+                    "002574",
+                    "001213",
+                    "001363"
+                ],
                 "kmb": [
                     "8013D41156BC24BD",
                     "4E870B220826BEE0",
@@ -322994,6 +322549,7 @@
                     "ECA27B00E599556A",
                     "D0C67A916767F79B",
                     "04601C2FB7201CAA",
+                    "D28CA51749C67A3D",
                     "85D7313CCE53D396",
                     "36904A9AD2C13B32",
                     "1F3870BB293E9DAF",
@@ -323005,6 +322561,7 @@
         },
         "948B+1+GREENFIELD GARDEN+CAUSEWAY BAY (TIN HAU)": {
             "bound": {
+                "ctb": "O",
                 "kmb": "O"
             },
             "co": [
@@ -323036,6 +322593,7 @@
                 "7.7",
                 "7.7",
                 "7.7",
+                "7.7",
                 "7.7"
             ],
             "faresHoliday": null,
@@ -323053,88 +322611,8 @@
                 "zh": "\u7fe0\u6021\u82b1\u5712"
             },
             "route": "948B",
-            "seq": 22,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "973EBE6A3543C701",
-                    "AB87BD2749FFEACA",
-                    "D0BE5E470FE2AD0B",
-                    "67F3E54FF145BA65",
-                    "F02CE37AD01DF17E",
-                    "3A9EE9221AB3E27C",
-                    "7192051038B36F08",
-                    "1A37A52F97A04C81",
-                    "07F45B3B36DFDDAE",
-                    "CA60760D2303E6D0",
-                    "466111DE1A3E4656",
-                    "CE1BEC7176C47D52",
-                    "C93D9BCDD63A360F",
-                    "ECA27B00E599556A",
-                    "D0C67A916767F79B",
-                    "04601C2FB7201CAA",
-                    "85D7313CCE53D396",
-                    "36904A9AD2C13B32",
-                    "1F3870BB293E9DAF",
-                    "DB3C788ACBB6668D",
-                    "DF901EF2F9A46F7B",
-                    "6F206EE9D2AF0838"
-                ]
-            }
-        },
-        "948B+1+Tsing Yi (Greenfield Garden)+Tin Hau Station": {
-            "bound": {
-                "ctb": "O"
-            },
-            "co": [
-                "kmb",
-                "ctb"
-            ],
-            "dest": {
-                "en": "Tin Hau Station",
-                "zh": "\u5929\u540e\u7ad9"
-            },
-            "fares": [
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7"
-            ],
-            "faresHoliday": null,
-            "freq": {
-                "287": {
-                    "0804": null,
-                    "0815": null
-                }
-            },
-            "gtfsId": "8685",
-            "jt": "63",
-            "nlbId": null,
-            "orig": {
-                "en": "Tsing Yi (Greenfield Garden)",
-                "zh": "\u9752\u8863 (\u7fe0\u6021\u82b1\u5712)"
-            },
-            "route": "948B",
             "seq": 23,
-            "serviceType": 1,
+            "serviceType": "1",
             "stops": {
                 "ctb": [
                     "003112",
@@ -323160,6 +322638,31 @@
                     "002574",
                     "001213",
                     "001363"
+                ],
+                "kmb": [
+                    "973EBE6A3543C701",
+                    "AB87BD2749FFEACA",
+                    "D0BE5E470FE2AD0B",
+                    "67F3E54FF145BA65",
+                    "F02CE37AD01DF17E",
+                    "3A9EE9221AB3E27C",
+                    "7192051038B36F08",
+                    "1A37A52F97A04C81",
+                    "07F45B3B36DFDDAE",
+                    "CA60760D2303E6D0",
+                    "466111DE1A3E4656",
+                    "CE1BEC7176C47D52",
+                    "C93D9BCDD63A360F",
+                    "ECA27B00E599556A",
+                    "D0C67A916767F79B",
+                    "04601C2FB7201CAA",
+                    "D28CA51749C67A3D",
+                    "85D7313CCE53D396",
+                    "36904A9AD2C13B32",
+                    "1F3870BB293E9DAF",
+                    "DB3C788ACBB6668D",
+                    "DF901EF2F9A46F7B",
+                    "6F206EE9D2AF0838"
                 ]
             }
         },
@@ -323372,86 +322875,9 @@
                 ]
             }
         },
-        "948P+1+Cheung On Estate+Tin Hau Station": {
-            "bound": {
-                "ctb": "O"
-            },
-            "co": [
-                "kmb",
-                "ctb"
-            ],
-            "dest": {
-                "en": "Tin Hau Station",
-                "zh": "\u5929\u540e\u7ad9"
-            },
-            "fares": [
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7"
-            ],
-            "faresHoliday": null,
-            "freq": {
-                "287": {
-                    "0730": null,
-                    "0740": null,
-                    "0750": null,
-                    "0800": null,
-                    "0810": null
-                },
-                "288": {
-                    "0746": null,
-                    "0802": null
-                }
-            },
-            "gtfsId": "1407",
-            "jt": "51",
-            "nlbId": null,
-            "orig": {
-                "en": "Cheung On Estate",
-                "zh": "\u9577\u5b89\u90a8"
-            },
-            "route": "948P",
-            "seq": 18,
-            "serviceType": 1,
-            "stops": {
-                "ctb": [
-                    "003108",
-                    "003109",
-                    "003110",
-                    "003111",
-                    "003112",
-                    "003321",
-                    "001629",
-                    "001028",
-                    "001029",
-                    "001030",
-                    "001174",
-                    "002430",
-                    "002432",
-                    "002572",
-                    "002437",
-                    "002574",
-                    "001213",
-                    "001363"
-                ]
-            }
-        },
         "948P+1+TSING YI (CHEUNG ON ESTATE)+CAUSEWAY BAY (TIN HAU)": {
             "bound": {
+                "ctb": "O",
                 "kmb": "O"
             },
             "co": [
@@ -323470,6 +322896,7 @@
                 "20.8",
                 "20.8",
                 "20.8",
+                "7.7",
                 "7.7",
                 "7.7",
                 "7.7",
@@ -323502,93 +322929,16 @@
                 "zh": "\u9752\u8863(\u9577\u5b89\u90a8)"
             },
             "route": "948P",
-            "seq": 17,
+            "seq": 18,
             "serviceType": "1",
             "stops": {
-                "kmb": [
-                    "8013D41156BC24BD",
-                    "4E870B220826BEE0",
-                    "5AD2A4D21C226335",
-                    "A454170B2B59B587",
-                    "973EBE6A3543C701",
-                    "21A1859E80CD542A",
-                    "466111DE1A3E4656",
-                    "CE1BEC7176C47D52",
-                    "4FCF8ED4A60F9769",
-                    "77D08D8DF5A80932",
-                    "04601C2FB7201CAA",
-                    "85D7313CCE53D396",
-                    "36904A9AD2C13B32",
-                    "1F3870BB293E9DAF",
-                    "DB3C788ACBB6668D",
-                    "DF901EF2F9A46F7B",
-                    "6F206EE9D2AF0838"
-                ]
-            }
-        },
-        "948X+1+Cheung Wang Estate+Tin Hau Station": {
-            "bound": {
-                "ctb": "O"
-            },
-            "co": [
-                "kmb",
-                "ctb"
-            ],
-            "dest": {
-                "en": "Tin Hau Station",
-                "zh": "\u5929\u540e\u7ad9"
-            },
-            "fares": [
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "20.8",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7",
-                "7.7"
-            ],
-            "faresHoliday": null,
-            "freq": {
-                "287": {
-                    "0730": null,
-                    "0740": null,
-                    "0750": null,
-                    "0800": null,
-                    "0810": null
-                },
-                "288": {
-                    "0750": null,
-                    "0805": null
-                }
-            },
-            "gtfsId": "1791",
-            "jt": "57",
-            "nlbId": null,
-            "orig": {
-                "en": "Cheung Wang Estate",
-                "zh": "\u9577\u5b8f\u90a8"
-            },
-            "route": "948X",
-            "seq": 18,
-            "serviceType": 1,
-            "stops": {
                 "ctb": [
-                    "003319",
-                    "003320",
-                    "003117",
-                    "003118",
-                    "003119",
-                    "003138",
+                    "003108",
+                    "003109",
+                    "003110",
+                    "003111",
+                    "003112",
+                    "003321",
                     "001629",
                     "001028",
                     "001029",
@@ -323601,11 +322951,32 @@
                     "002574",
                     "001213",
                     "001363"
+                ],
+                "kmb": [
+                    "8013D41156BC24BD",
+                    "4E870B220826BEE0",
+                    "5AD2A4D21C226335",
+                    "A454170B2B59B587",
+                    "973EBE6A3543C701",
+                    "21A1859E80CD542A",
+                    "466111DE1A3E4656",
+                    "CE1BEC7176C47D52",
+                    "4FCF8ED4A60F9769",
+                    "77D08D8DF5A80932",
+                    "04601C2FB7201CAA",
+                    "D28CA51749C67A3D",
+                    "85D7313CCE53D396",
+                    "36904A9AD2C13B32",
+                    "1F3870BB293E9DAF",
+                    "DB3C788ACBB6668D",
+                    "DF901EF2F9A46F7B",
+                    "6F206EE9D2AF0838"
                 ]
             }
         },
         "948X+1+TSING YI (CHEUNG WANG ESTATE)+CAUSEWAY BAY (TIN HAU)": {
             "bound": {
+                "ctb": "O",
                 "kmb": "O"
             },
             "co": [
@@ -323624,6 +322995,7 @@
                 "20.8",
                 "20.8",
                 "20.8",
+                "7.7",
                 "7.7",
                 "7.7",
                 "7.7",
@@ -323656,9 +323028,29 @@
                 "zh": "\u9752\u8863(\u9577\u5b8f\u90a8)"
             },
             "route": "948X",
-            "seq": 17,
+            "seq": 18,
             "serviceType": "1",
             "stops": {
+                "ctb": [
+                    "003319",
+                    "003320",
+                    "003117",
+                    "003118",
+                    "003119",
+                    "003138",
+                    "001629",
+                    "001028",
+                    "001029",
+                    "001030",
+                    "001174",
+                    "002430",
+                    "002432",
+                    "002572",
+                    "002437",
+                    "002574",
+                    "001213",
+                    "001363"
+                ],
                 "kmb": [
                     "26AC2D471648CA0C",
                     "FF5CF18C5510B901",
@@ -323671,6 +323063,7 @@
                     "4FCF8ED4A60F9769",
                     "77D08D8DF5A80932",
                     "04601C2FB7201CAA",
+                    "D28CA51749C67A3D",
                     "85D7313CCE53D396",
                     "36904A9AD2C13B32",
                     "1F3870BB293E9DAF",
@@ -402929,84 +402322,16 @@
         },
         "N182+1+CENTRAL (MACAO FERRY)+KWONG YUEN": {
             "bound": {
+                "ctb": "O",
                 "kmb": "I"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "KWONG YUEN",
-                "zh": "\u5ee3\u6e90"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "CENTRAL (MACAO FERRY)",
-                "zh": "\u4e2d\u74b0(\u6e2f\u6fb3\u78bc\u982d)"
-            },
-            "route": "N182",
-            "seq": 40,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "59013D693D2493FE",
-                    "C8811A27E4B64581",
-                    "C78818C8285315B3",
-                    "5298A15B8CCAEF42",
-                    "A9069A17B1474D76",
-                    "08446B39CF34C8FD",
-                    "3007D34FB91FB27E",
-                    "048A87496B30B946",
-                    "A71457854D13E9DE",
-                    "AC1E2BBDC663717F",
-                    "A07CC0A6D462A579",
-                    "9E25CF3DAA0BA0C4",
-                    "5BD1D1453F3EFA85",
-                    "D1D807234805DBF4",
-                    "79AFB35F9DBD485A",
-                    "D5DB45916FCE114A",
-                    "5D94D3084F0C3831",
-                    "89A4D25AC31A8388",
-                    "6465986EF7824816",
-                    "C53A00F15DC2DB20",
-                    "48E5A1EED91712EE",
-                    "8FE9357F36300CD7",
-                    "45D0CFA28B3FEFE5",
-                    "B8E2647E9C5019C9",
-                    "AAECA769A84E2372",
-                    "A66159E033DDEA04",
-                    "C92E80A5D7E0E8EC",
-                    "07ADFF84F3502690",
-                    "B9EE83CA8ABB578B",
-                    "50F2B96452F78F19",
-                    "1AE43A670EACECB1",
-                    "C0D515CA78A56B65",
-                    "3C624F6CB2D5BBEA",
-                    "C1E9F8237EDBBAD2",
-                    "4BFB5F2D496CDA56",
-                    "51FCE282462E418B",
-                    "F8BB84BC801E4C85",
-                    "BC39BFC3C7BC3009",
-                    "2FABE52A66DF7482",
-                    "C1E1199805BCC92D"
-                ]
-            }
-        },
-        "N182+1+Central (Macao Ferry)+Sha Tin (Kwong Yuen)": {
-            "bound": {
-                "ctb": "O"
             },
             "co": [
                 "kmb",
                 "ctb"
             ],
             "dest": {
-                "en": "Sha Tin (Kwong Yuen)",
-                "zh": "\u6c99\u7530 (\u5ee3\u6e90)"
+                "en": "KWONG YUEN",
+                "zh": "\u5ee3\u6e90"
             },
             "fares": [
                 "31.2",
@@ -403064,12 +402389,12 @@
             "jt": "64",
             "nlbId": null,
             "orig": {
-                "en": "Central (Macao Ferry)",
-                "zh": "\u4e2d\u74b0 (\u6e2f\u6fb3\u78bc\u982d)"
+                "en": "CENTRAL (MACAO FERRY)",
+                "zh": "\u4e2d\u74b0(\u6e2f\u6fb3\u78bc\u982d)"
             },
             "route": "N182",
             "seq": 42,
-            "serviceType": 1,
+            "serviceType": "1",
             "stops": {
                 "ctb": [
                     "001027",
@@ -403114,6 +402439,50 @@
                     "002081",
                     "002082",
                     "002083"
+                ],
+                "kmb": [
+                    "59013D693D2493FE",
+                    "C8811A27E4B64581",
+                    "C78818C8285315B3",
+                    "5298A15B8CCAEF42",
+                    "A9069A17B1474D76",
+                    "08446B39CF34C8FD",
+                    "3007D34FB91FB27E",
+                    "45DD5738BA406D61",
+                    "048A87496B30B946",
+                    "A71457854D13E9DE",
+                    "AC1E2BBDC663717F",
+                    "A07CC0A6D462A579",
+                    "9E25CF3DAA0BA0C4",
+                    "5BD1D1453F3EFA85",
+                    "D1D807234805DBF4",
+                    "79AFB35F9DBD485A",
+                    "D5DB45916FCE114A",
+                    "5D94D3084F0C3831",
+                    "89A4D25AC31A8388",
+                    "6465986EF7824816",
+                    "C53A00F15DC2DB20",
+                    "48E5A1EED91712EE",
+                    "8FE9357F36300CD7",
+                    "45D0CFA28B3FEFE5",
+                    "B8E2647E9C5019C9",
+                    "AAECA769A84E2372",
+                    "A66159E033DDEA04",
+                    "C92E80A5D7E0E8EC",
+                    "07ADFF84F3502690",
+                    "B9EE83CA8ABB578B",
+                    "50F2B96452F78F19",
+                    "1AE43A670EACECB1",
+                    "C0D515CA78A56B65",
+                    "3C624F6CB2D5BBEA",
+                    "C1E9F8237EDBBAD2",
+                    "4BFB5F2D496CDA56",
+                    "51FCE282462E418B",
+                    "F8BB84BC801E4C85",
+                    "BC39BFC3C7BC3009",
+                    "2FABE52A66DF7482",
+                    "C1E1199805BCC92D",
+                    "EAA44CDBC231DB8C"
                 ]
             }
         },
@@ -407697,68 +407066,15 @@
         },
         "N307+1+CENTRAL (MACAU FERRY)+TAI WO": {
             "bound": {
+                "ctb": "O",
                 "kmb": "I"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "TAI WO",
-                "zh": "\u592a\u548c"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "CENTRAL (MACAU FERRY)",
-                "zh": "\u4e2d\u74b0(\u6e2f\u6fb3\u78bc\u982d)"
-            },
-            "route": "N307",
-            "seq": 25,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "CE1BEC7176C47D52",
-                    "BD9D7DAC7CD2F537",
-                    "AD2AE1E443FB8908",
-                    "59073C1C6D8BB1F7",
-                    "A9069A17B1474D76",
-                    "3007D34FB91FB27E",
-                    "E74202351AF7F37D",
-                    "9DA98A5E3914E2E3",
-                    "36904A9AD2C13B32",
-                    "CCBCD7F613287BC8",
-                    "B4372FB3544677BB",
-                    "913E96996F3B7E3A",
-                    "328C9939240A94CA",
-                    "58C47FBFFF12E65F",
-                    "4AEB8A22E18AB111",
-                    "AE4423E551C360BF",
-                    "9DE043DB23CEDAA8",
-                    "991E47DBD416B908",
-                    "9274EF6791CA3ED8",
-                    "CDB292D507E4302D",
-                    "05485C36CA334A81",
-                    "530F970BB56D778D",
-                    "6716018C3EE42733",
-                    "09DFD305F09C558E",
-                    "1A0BF02F827F6A20"
-                ]
-            }
-        },
-        "N307+1+Sheung Wan+Tai Wo": {
-            "bound": {
-                "ctb": "O"
             },
             "co": [
                 "kmb",
                 "ctb"
             ],
             "dest": {
-                "en": "Tai Wo",
+                "en": "TAI WO",
                 "zh": "\u592a\u548c"
             },
             "fares": [
@@ -407800,12 +407116,12 @@
             "jt": "82",
             "nlbId": null,
             "orig": {
-                "en": "Sheung Wan",
-                "zh": "\u4e0a\u74b0"
+                "en": "CENTRAL (MACAU FERRY)",
+                "zh": "\u4e2d\u74b0(\u6e2f\u6fb3\u78bc\u982d)"
             },
             "route": "N307",
             "seq": 27,
-            "serviceType": 1,
+            "serviceType": "1",
             "stops": {
                 "ctb": [
                     "001028",
@@ -407835,6 +407151,35 @@
                     "002021",
                     "003243",
                     "003244"
+                ],
+                "kmb": [
+                    "CE1BEC7176C47D52",
+                    "BD9D7DAC7CD2F537",
+                    "AD2AE1E443FB8908",
+                    "59073C1C6D8BB1F7",
+                    "A9069A17B1474D76",
+                    "3007D34FB91FB27E",
+                    "45DD5738BA406D61",
+                    "E74202351AF7F37D",
+                    "9DA98A5E3914E2E3",
+                    "36904A9AD2C13B32",
+                    "CCBCD7F613287BC8",
+                    "B4372FB3544677BB",
+                    "913E96996F3B7E3A",
+                    "328C9939240A94CA",
+                    "58C47FBFFF12E65F",
+                    "4AEB8A22E18AB111",
+                    "AE4423E551C360BF",
+                    "9DE043DB23CEDAA8",
+                    "991E47DBD416B908",
+                    "9274EF6791CA3ED8",
+                    "CDB292D507E4302D",
+                    "05485C36CA334A81",
+                    "530F970BB56D778D",
+                    "6716018C3EE42733",
+                    "09DFD305F09C558E",
+                    "1A0BF02F827F6A20",
+                    "9FDEEC09AD1B601B"
                 ]
             }
         },
@@ -516977,16 +516322,6 @@
                 "zh": "\u6563\u77f3\u7063\u8ff4\u65cb\u8655"
             }
         },
-        "255401DABB64289D": {
-            "location": {
-                "lat": 22.27772,
-                "lng": 114.1711
-            },
-            "name": {
-                "en": "LUARD ROAD",
-                "zh": "\u76e7\u62bc\u9053"
-            }
-        },
         "255CE76A95FC1A80": {
             "location": {
                 "lat": 22.28698,
@@ -527375,6 +526710,16 @@
             "name": {
                 "en": "CHIK TAK LANE (TA745)",
                 "zh": "\u7a4d\u5fb7\u91cc (TA745)"
+            }
+        },
+        "45DD5738BA406D61": {
+            "location": {
+                "lat": 22.27783,
+                "lng": 114.16947
+            },
+            "name": {
+                "en": "ARSENAL STREET",
+                "zh": "\u8ecd\u5668\u5ee0\u8857"
             }
         },
         "45E245505155AFF3": {
@@ -564665,6 +564010,16 @@
             "name": {
                 "en": "FARM ROAD (KC188)",
                 "zh": "\u8fb2\u5703\u9053 (KC188)"
+            }
+        },
+        "D28CA51749C67A3D": {
+            "location": {
+                "lat": 22.27768,
+                "lng": 114.17107
+            },
+            "name": {
+                "en": "LUARD ROAD",
+                "zh": "\u76e7\u62bc\u9053"
             }
         },
         "D28FBFA4FB62E93C": {
@@ -603124,6 +602479,10 @@
             ],
             [
                 "kmb",
+                "45DD5738BA406D61"
+            ],
+            [
+                "kmb",
                 "60012869923EEE68"
             ],
             [
@@ -603135,6 +602494,10 @@
             [
                 "kmb",
                 "A056B01075AF64CD"
+            ],
+            [
+                "kmb",
+                "D28CA51749C67A3D"
             ],
             [
                 "kmb",
@@ -630642,6 +630005,10 @@
             ],
             [
                 "kmb",
+                "45DD5738BA406D61"
+            ],
+            [
+                "kmb",
                 "60012869923EEE68"
             ],
             [
@@ -647943,12 +647310,6 @@
                 "97B7EC0354E020B7"
             ]
         ],
-        "20006074": [
-            [
-                "kmb",
-                "95FAB1D2AD752ECE"
-            ]
-        ],
         "20006076": [
             [
                 "ctb",
@@ -663308,6 +662669,10 @@
             ],
             [
                 "kmb",
+                "45DD5738BA406D61"
+            ],
+            [
+                "kmb",
                 "60012869923EEE68"
             ],
             [
@@ -663413,6 +662778,10 @@
             [
                 "kmb",
                 "BE5555129B3758C5"
+            ],
+            [
+                "kmb",
+                "45DD5738BA406D61"
             ],
             [
                 "kmb",
@@ -681995,32 +681364,6 @@
                 "001809"
             ]
         ],
-        "255401DABB64289D": [
-            [
-                "ctb",
-                "002430"
-            ],
-            [
-                "ctb",
-                "002447"
-            ],
-            [
-                "kmb",
-                "3B984EDD1277F1A9"
-            ],
-            [
-                "kmb",
-                "47A2AA98F8E20AE2"
-            ],
-            [
-                "kmb",
-                "A056B01075AF64CD"
-            ],
-            [
-                "kmb",
-                "E74202351AF7F37D"
-            ]
-        ],
         "255CE76A95FC1A80": [
             [
                 "ctb",
@@ -698137,6 +697480,40 @@
                 "63E1BB3EDC884B4F"
             ]
         ],
+        "45DD5738BA406D61": [
+            [
+                "kmb",
+                "1AB934EFE0E1470A"
+            ],
+            [
+                "gmb",
+                "20014882"
+            ],
+            [
+                "kmb",
+                "60012869923EEE68"
+            ],
+            [
+                "kmb",
+                "AD1B202B678A3B56"
+            ],
+            [
+                "kmb",
+                "BE5555129B3758C5"
+            ],
+            [
+                "kmb",
+                "FA0F3FFF968619F2"
+            ],
+            [
+                "ctb",
+                "002427"
+            ],
+            [
+                "gmb",
+                "20014889"
+            ]
+        ],
         "45E245505155AFF3": [
             [
                 "kmb",
@@ -710405,6 +709782,10 @@
             [
                 "gmb",
                 "20014882"
+            ],
+            [
+                "kmb",
+                "45DD5738BA406D61"
             ],
             [
                 "kmb",
@@ -733521,14 +732902,6 @@
                 "001803"
             ],
             [
-                "gmb",
-                "20006074"
-            ],
-            [
-                "kmb",
-                "C39037A588387F32"
-            ],
-            [
                 "kmb",
                 "EF5A5CD9C3A038C9"
             ]
@@ -737731,6 +737104,10 @@
             [
                 "ctb",
                 "002430"
+            ],
+            [
+                "kmb",
+                "D28CA51749C67A3D"
             ],
             [
                 "kmb",
@@ -743523,6 +742900,10 @@
             [
                 "gmb",
                 "20014889"
+            ],
+            [
+                "kmb",
+                "45DD5738BA406D61"
             ],
             [
                 "kmb",
@@ -750356,6 +749737,10 @@
             ],
             [
                 "kmb",
+                "45DD5738BA406D61"
+            ],
+            [
+                "kmb",
                 "60012869923EEE68"
             ],
             [
@@ -752699,12 +752084,6 @@
             [
                 "gmb",
                 "20011592"
-            ]
-        ],
-        "C39037A588387F32": [
-            [
-                "kmb",
-                "95FAB1D2AD752ECE"
             ]
         ],
         "C3D18DE248C7C435": [
@@ -758873,6 +758252,20 @@
             [
                 "ctb",
                 "002565"
+            ]
+        ],
+        "D28CA51749C67A3D": [
+            [
+                "ctb",
+                "002430"
+            ],
+            [
+                "kmb",
+                "A056B01075AF64CD"
+            ],
+            [
+                "kmb",
+                "E74202351AF7F37D"
             ]
         ],
         "D28FBFA4FB62E93C": [
@@ -767537,6 +766930,10 @@
             [
                 "kmb",
                 "A056B01075AF64CD"
+            ],
+            [
+                "kmb",
+                "D28CA51749C67A3D"
             ]
         ],
         "E74C9012605BA534": [
@@ -776007,6 +775404,10 @@
             [
                 "gmb",
                 "20014882"
+            ],
+            [
+                "kmb",
+                "45DD5738BA406D61"
             ],
             [
                 "kmb",

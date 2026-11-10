@@ -420678,68 +420678,6 @@
                 ]
             }
         },
-        "PBPN+1+GO PARK+UNIVERSITY STATION": {
-            "bound": {
-                "kmb": "I"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "UNIVERSITY STATION",
-                "zh": "\u5927\u5b78\u7ad9"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "GO PARK",
-                "zh": "\u897f\u6c99 GO PARK"
-            },
-            "route": "PBPN",
-            "seq": 2,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "8B9E121BB71771F4",
-                    "67A59CDA512CF152"
-                ]
-            }
-        },
-        "PBPN+1+UNIVERSITY STATION+GO PARK": {
-            "bound": {
-                "kmb": "O"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "GO PARK",
-                "zh": "\u897f\u6c99 GO PARK"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "UNIVERSITY STATION",
-                "zh": "\u5927\u5b78\u7ad9"
-            },
-            "route": "PBPN",
-            "seq": 2,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "67A59CDA512CF152",
-                    "8B9E121BB71771F4"
-                ]
-            }
-        },
         "R108+1+KAI YIP+CAUSEWAY BAY (VICTORIA PARK)": {
             "bound": {
                 "kmb": "O"
@@ -533408,8 +533346,8 @@
                 "lng": 114.167829
             },
             "name": {
-                "en": "CHINA HONG KONG CITY B/T (YT991)",
-                "zh": "\u4e2d\u6e2f\u57ce\u7e3d\u7ad9 (YT991)"
+                "en": "CHINA HONG KONG CITY (CHINA FERRY TERMINAL) B/T (YT991)",
+                "zh": "\u4e2d\u6e2f\u57ce(\u4e2d\u6e2f\u78bc\u982d)\u7e3d\u7ad9 (YT991)"
             }
         },
         "5774E63B634C0B1E": {
@@ -533738,7 +533676,7 @@
                 "lng": 114.215512
             },
             "name": {
-                "en": "PAK HUNG HOUSE, CHOI WAN ESTATE, SING YIN SECONDAR (WT614)",
+                "en": "PAK HUNG HOUSE, CHOI WAN ESTATE, SING YIN SEC. SCH (WT614)",
                 "zh": "\u5f69\u96f2\u90a8\u767d\u8679\u6a13 \u8056\u8a00\u4e2d\u5b78 (WT614)"
             }
         },
@@ -537960,16 +537898,6 @@
             "name": {
                 "en": "NGAN MOK STREET (ED341)",
                 "zh": "\u9280\u5e55\u8857 (ED341)"
-            }
-        },
-        "67A59CDA512CF152": {
-            "location": {
-                "lat": 22.412599,
-                "lng": 114.211231
-            },
-            "name": {
-                "en": "UNIVERSITY STATION",
-                "zh": "\u5927\u5b78\u7ad9"
             }
         },
         "67A9E4B2A537BADD": {
@@ -551718,8 +551646,8 @@
                 "lng": 114.168089
             },
             "name": {
-                "en": "CHINA HONG KONG CITY B/T (YT990)",
-                "zh": "\u4e2d\u6e2f\u57ce\u7e3d\u7ad9 (YT990)"
+                "en": "CHINA HONG KONG CITY (CHINA FERRY TERMINAL) B/T (YT990)",
+                "zh": "\u4e2d\u6e2f\u57ce(\u4e2d\u6e2f\u78bc\u982d)\u7e3d\u7ad9 (YT990)"
             }
         },
         "9D88EE061FF5E1D0": {
@@ -551928,8 +551856,8 @@
                 "lng": 114.167947
             },
             "name": {
-                "en": "CHINA HONG KONG CITY B/T (YT992)",
-                "zh": "\u4e2d\u6e2f\u57ce\u7e3d\u7ad9 (YT992)"
+                "en": "CHINA HONG KONG CITY (CHINA FERRY TERMINAL) B/T (YT992)",
+                "zh": "\u4e2d\u6e2f\u57ce(\u4e2d\u6e2f\u78bc\u982d)\u7e3d\u7ad9 (YT992)"
             }
         },
         "9DE60F8A475770F4": {
@@ -618189,10 +618117,6 @@
             ],
             [
                 "kmb",
-                "67A59CDA512CF152"
-            ],
-            [
-                "kmb",
                 "9F542D4B6CF41651"
             ],
             [
@@ -645006,10 +644930,6 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
-            ],
-            [
-                "kmb",
-                "67A59CDA512CF152"
             ],
             [
                 "kmb",
@@ -695391,10 +695311,6 @@
             ],
             [
                 "kmb",
-                "67A59CDA512CF152"
-            ],
-            [
-                "kmb",
                 "A4384F66C9DD2BDE"
             ],
             [
@@ -706580,10 +706496,6 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
-            ],
-            [
-                "kmb",
-                "67A59CDA512CF152"
             ]
         ],
         "5498C13EB8685C46": [
@@ -715076,44 +714988,6 @@
             [
                 "kmb",
                 "834CC2324AAFB567"
-            ]
-        ],
-        "67A59CDA512CF152": [
-            [
-                "ctb",
-                "003841"
-            ],
-            [
-                "gmb",
-                "20002275"
-            ],
-            [
-                "kmb",
-                "3E10F323161F4ADB"
-            ],
-            [
-                "kmb",
-                "A4384F66C9DD2BDE"
-            ],
-            [
-                "kmb",
-                "9F542D4B6CF41651"
-            ],
-            [
-                "kmb",
-                "888C8A612C998895"
-            ],
-            [
-                "kmb",
-                "548DB838B4673D93"
-            ],
-            [
-                "kmb",
-                "878A6FDD75689A2D"
-            ],
-            [
-                "kmb",
-                "D4D322BE3E5B2A4B"
             ]
         ],
         "67A9E4B2A537BADD": [
@@ -728670,10 +728544,6 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
-            ],
-            [
-                "kmb",
-                "67A59CDA512CF152"
             ]
         ],
         "878E5C4AF6C4B0D4": [
@@ -729020,10 +728890,6 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
-            ],
-            [
-                "kmb",
-                "67A59CDA512CF152"
             ]
         ],
         "889783C98226115D": [
@@ -738520,10 +738386,6 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
-            ],
-            [
-                "kmb",
-                "67A59CDA512CF152"
             ]
         ],
         "9F5B57C2FE7E786D": [
@@ -740642,10 +740504,6 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
-            ],
-            [
-                "kmb",
-                "67A59CDA512CF152"
             ],
             [
                 "kmb",
@@ -761168,10 +761026,6 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
-            ],
-            [
-                "kmb",
-                "67A59CDA512CF152"
             ]
         ],
         "D4D418BAEAC719B0": [
@@ -770800,10 +770654,6 @@
             [
                 "kmb",
                 "3E10F323161F4ADB"
-            ],
-            [
-                "kmb",
-                "67A59CDA512CF152"
             ]
         ],
         "EC6FDF2670147F12": [

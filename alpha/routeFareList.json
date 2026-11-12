@@ -539464,8 +539464,8 @@
         },
         "6DAB37A3FC9475C3": {
             "location": {
-                "lat": 22.365373,
-                "lng": 114.130073
+                "lat": 22.365735,
+                "lng": 114.13022
             },
             "name": {
                 "en": "LAM WOO MEMORIAL SECONDARY SCHOOL",
@@ -717466,10 +717466,6 @@
             [
                 "ctb",
                 "003468"
-            ],
-            [
-                "kmb",
-                "B596DF51C1BDDB19"
             ]
         ],
         "6DCB4A578EFF1986": [
@@ -748040,12 +748036,6 @@
             [
                 "kmb",
                 "C67CDF76A28A4E0E"
-            ]
-        ],
-        "B596DF51C1BDDB19": [
-            [
-                "kmb",
-                "6DAB37A3FC9475C3"
             ]
         ],
         "B5AF3107F64607ED": [

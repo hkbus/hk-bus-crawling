@@ -62617,7 +62617,6 @@
                     "F57E1173086C7A51",
                     "0840B3F75A7B00BD",
                     "FE4E099AEA040C89",
-                    "C175ACB534E8C15C",
                     "E46A9F0C0CB609F5",
                     "E45CFAB2E6E4C8FE",
                     "AA97FFC49AE957A5",
@@ -62630,77 +62629,8 @@
                     "5996115DCAE8C603",
                     "0BACBE7BF15833EC",
                     "CABB1AAE412C6049",
-                    "3F64427262A691C1"
-                ]
-            }
-        },
-        "213E+1+KOWLOON STATION, HIGH SPEED RAIL STATION+ON YING COURT": {
-            "bound": {
-                "kmb": "I"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "ON YING COURT",
-                "zh": "\u5b89\u6979\u82d1"
-            },
-            "fares": [
-                "8.3",
-                "8.3",
-                "8.3",
-                "8.3",
-                "8.3",
-                "8.3",
-                "8.3",
-                "8.3",
-                "8.3",
-                "8.3",
-                "7.4",
-                "7.4",
-                "3.3",
-                "3.3",
-                "3.3",
-                "3.3",
-                "3.3"
-            ],
-            "faresHoliday": null,
-            "freq": {
-                "287": {
-                    "1735": null,
-                    "1805": null
-                }
-            },
-            "gtfsId": "1000633",
-            "jt": "37",
-            "nlbId": null,
-            "orig": {
-                "en": "KOWLOON STATION, HIGH SPEED RAIL STATION",
-                "zh": "\u4e5d\u9f8d\u7ad9,\u9ad8\u9435\u7ad9"
-            },
-            "route": "213E",
-            "seq": 18,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "FF46CB6182028AC6",
-                    "31072508CEF942C6",
-                    "83EB94899B6BBB4B",
-                    "5F60283656DF3016",
-                    "F57E1173086C7A51",
-                    "0840B3F75A7B00BD",
-                    "FE4E099AEA040C89",
-                    "E46A9F0C0CB609F5",
-                    "E45CFAB2E6E4C8FE",
-                    "AA97FFC49AE957A5",
-                    "BE27F066CF40DF7D",
-                    "ED8812E232F6958A",
-                    "1FBAAE29AF1CA50E",
-                    "466BC4C1908A1A06",
-                    "5996115DCAE8C603",
-                    "0BACBE7BF15833EC",
-                    "CABB1AAE412C6049",
-                    "3F64427262A691C1"
+                    "3F64427262A691C1",
+                    "7B0BAF8C626CDF2D"
                 ]
             }
         },
@@ -62779,11 +62709,34 @@
                 "en": "ANDERSON",
                 "zh": "\u5b89\u9054\u81e3"
             },
-            "fares": null,
+            "fares": [
+                "8.3",
+                "8.3",
+                "8.3",
+                "8.3",
+                "8.3",
+                "8.3",
+                "8.3",
+                "8.3",
+                "8.3",
+                "8.3",
+                "7.4",
+                "7.4",
+                "3.3",
+                "3.3",
+                "3.3",
+                "3.3",
+                "3.3"
+            ],
             "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
+            "freq": {
+                "287": {
+                    "1735": null,
+                    "1805": null
+                }
+            },
+            "gtfsId": "1000633",
+            "jt": "37",
             "nlbId": null,
             "orig": {
                 "en": "KOWLOON STATION",
@@ -62801,7 +62754,6 @@
                     "F57E1173086C7A51",
                     "0840B3F75A7B00BD",
                     "FE4E099AEA040C89",
-                    "C175ACB534E8C15C",
                     "E46A9F0C0CB609F5",
                     "E45CFAB2E6E4C8FE",
                     "AA97FFC49AE957A5",
@@ -62811,7 +62763,8 @@
                     "5996115DCAE8C603",
                     "0BACBE7BF15833EC",
                     "CABB1AAE412C6049",
-                    "3F64427262A691C1"
+                    "3F64427262A691C1",
+                    "7B0BAF8C626CDF2D"
                 ]
             }
         },
@@ -321165,10 +321118,10 @@
                     "4C333C4D4E80902B",
                     "F1A22B170518051B",
                     "3DB9E473F29FCDEE",
-                    "BEFD9F22518EC452",
                     "9F25118F734F288B",
                     "A10A69465DCE5402",
-                    "1A9362BE56274030"
+                    "1A9362BE56274030",
+                    "498836D151ECC5ED"
                 ]
             }
         },
@@ -321359,10 +321312,10 @@
                     "4C333C4D4E80902B",
                     "F1A22B170518051B",
                     "3DB9E473F29FCDEE",
-                    "BEFD9F22518EC452",
                     "9F25118F734F288B",
                     "A10A69465DCE5402",
-                    "1A9362BE56274030"
+                    "1A9362BE56274030",
+                    "498836D151ECC5ED"
                 ]
             }
         },
@@ -631264,12 +631217,6 @@
             [
                 "gmb",
                 "20003082"
-            ]
-        ],
-        "1A9362BE56274030": [
-            [
-                "ctb",
-                "002410"
             ]
         ],
         "1AB934EFE0E1470A": [

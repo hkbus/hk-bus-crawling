@@ -20077,7 +20077,7 @@
                     "08A237AE35DF8A35",
                     "9711BA45457DCA24",
                     "99FB764916B4BA81",
-                    "E293EF47A90B818D",
+                    "78419C6BD5AB7C34",
                     "616738F21326814A",
                     "3A1D9864C04075B2",
                     "153D32217234A0F0",
@@ -20099,7 +20099,7 @@
                     "25DA48631DA10B50",
                     "B6C64CB51157F680",
                     "15CCC3BD5D31F759",
-                    "78419C6BD5AB7C34",
+                    "E293EF47A90B818D",
                     "7F3E5B3E97FA0C9E",
                     "F3EA0A9367773CF5",
                     "D3A622F2C90CF194",
@@ -20331,7 +20331,7 @@
                     "08A237AE35DF8A35",
                     "9711BA45457DCA24",
                     "99FB764916B4BA81",
-                    "E293EF47A90B818D",
+                    "78419C6BD5AB7C34",
                     "616738F21326814A",
                     "3A1D9864C04075B2",
                     "153D32217234A0F0",
@@ -20587,7 +20587,7 @@
                     "08A237AE35DF8A35",
                     "9711BA45457DCA24",
                     "99FB764916B4BA81",
-                    "E293EF47A90B818D",
+                    "78419C6BD5AB7C34",
                     "616738F21326814A",
                     "3A1D9864C04075B2",
                     "153D32217234A0F0",
@@ -20610,7 +20610,7 @@
                     "25DA48631DA10B50",
                     "B6C64CB51157F680",
                     "15CCC3BD5D31F759",
-                    "78419C6BD5AB7C34",
+                    "E293EF47A90B818D",
                     "7F3E5B3E97FA0C9E",
                     "F3EA0A9367773CF5",
                     "D3A622F2C90CF194",
@@ -20699,7 +20699,7 @@
                     "08A237AE35DF8A35",
                     "9711BA45457DCA24",
                     "99FB764916B4BA81",
-                    "E293EF47A90B818D",
+                    "78419C6BD5AB7C34",
                     "616738F21326814A",
                     "3A1D9864C04075B2",
                     "153D32217234A0F0",
@@ -410845,55 +410845,6 @@
                 ]
             }
         },
-        "N64P+1+TAI PO MARKET STATION+NG TUNG CHAI (PAK NGAU SHEK)": {
-            "bound": {
-                "kmb": "O"
-            },
-            "co": [
-                "kmb"
-            ],
-            "dest": {
-                "en": "NG TUNG CHAI (PAK NGAU SHEK)",
-                "zh": "\u68a7\u6850\u5be8 (\u767d\u725b\u77f3)"
-            },
-            "fares": null,
-            "faresHoliday": null,
-            "freq": null,
-            "gtfsId": null,
-            "jt": null,
-            "nlbId": null,
-            "orig": {
-                "en": "TAI PO MARKET STATION",
-                "zh": "\u5927\u57d4\u589f\u7ad9"
-            },
-            "route": "N64P",
-            "seq": 20,
-            "serviceType": "1",
-            "stops": {
-                "kmb": [
-                    "7910B0EBDD33B71B",
-                    "56C003E99C21984A",
-                    "6219234626AC9DD5",
-                    "DA30F5393480B81D",
-                    "6716018C3EE42733",
-                    "1A0BF02F827F6A20",
-                    "CCC4773031BC0FD8",
-                    "2A86FE3FCDB9760B",
-                    "5FCD0D727920EC65",
-                    "0B786699889F0AEB",
-                    "A53F6592C4173B4E",
-                    "A61CDC435D1C6C37",
-                    "B473A39CEDD5069D",
-                    "2A092A3FB143443A",
-                    "BEEF3ECF24FF4F1A",
-                    "A26AAC44AD49B9DB",
-                    "51AFF58670A6BE9B",
-                    "C97D9654FC4427C9",
-                    "42B5697C975C3953",
-                    "B4C010DBFBD55834"
-                ]
-            }
-        },
         "N680+1+CENTRAL (MACAO FERRY)+KAM YING COURT": {
             "bound": {
                 "ctb": "O",
@@ -587859,7 +587810,7 @@
         "001379": [
             [
                 "kmb",
-                "E293EF47A90B818D"
+                "78419C6BD5AB7C34"
             ]
         ],
         "001380": [
@@ -719468,6 +719419,12 @@
                 "50FF703302734DFF"
             ]
         ],
+        "78419C6BD5AB7C34": [
+            [
+                "ctb",
+                "001379"
+            ]
+        ],
         "785985F99EE00AE4": [
             [
                 "ctb",
@@ -763798,12 +763755,6 @@
             [
                 "kmb",
                 "91E946260F8BCBE8"
-            ]
-        ],
-        "E293EF47A90B818D": [
-            [
-                "ctb",
-                "001379"
             ]
         ],
         "E29F5375308D6F5C": [

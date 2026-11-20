@@ -250947,7 +250947,7 @@
                 ]
             }
         },
-        "720+1+Grand Promenade+Central (Macao Ferry \uff0f Wing Wo Street)": {
+        "720+1+Sai Wan Ho (Grand Promenade)+Central (Macao Ferry)": {
             "bound": {
                 "ctb": "O"
             },
@@ -250955,8 +250955,8 @@
                 "ctb"
             ],
             "dest": {
-                "en": "Central (Macao Ferry \uff0f Wing Wo Street)",
-                "zh": "\u4e2d\u74b0 (\u6e2f\u6fb3\u78bc\u982d \uff0f \u6c38\u548c\u8857)"
+                "en": "Central (Macao Ferry)",
+                "zh": "\u4e2d\u74b0 (\u6e2f\u6fb3\u78bc\u982d)"
             },
             "fares": [
                 "8.7",
@@ -251117,8 +251117,8 @@
             "jt": "42",
             "nlbId": null,
             "orig": {
-                "en": "Grand Promenade",
-                "zh": "\u5609\u4ea8\u7063"
+                "en": "Sai Wan Ho (Grand Promenade)",
+                "zh": "\u897f\u7063\u6cb3 (\u5609\u4ea8\u7063)"
             },
             "route": "720",
             "seq": 17,
@@ -434227,8 +434227,8 @@
         },
         "001379": {
             "location": {
-                "lat": 22.286124572091,
-                "lng": 114.21685857053
+                "lat": 22.286112392091,
+                "lng": 114.21692359053
             },
             "name": {
                 "en": "Cityplaza, Taikoo Shing Road",
@@ -457671,8 +457671,8 @@
                 "lng": 114.188533
             },
             "name": {
-                "en": "SHA TIN CENTRAL BUS TERMINUS",
-                "zh": "\u6c99\u7530\u5e02\u4e2d\u5fc3\u5df4\u58eb\u7e3d\u7ad9"
+                "en": "SHATIN CENTRAL BUS TERMINUS",
+                "zh": "\u6c99\u7530\u5e02\u4e2d\u5fc3\u7e3d\u7ad9"
             }
         },
         "04FC6E130D4953F4": {

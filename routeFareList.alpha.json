@@ -176402,7 +176402,7 @@
                 ]
             }
         },
-        "49P+1+SHATIN CENTRAL+TSING YI FERRY": {
+        "49P+1+SHATIN CENTRAL BUS TERMINUS+TSING YI FERRY BUS TERMINUS": {
             "bound": {
                 "kmb": "O"
             },
@@ -176410,8 +176410,8 @@
                 "kmb"
             ],
             "dest": {
-                "en": "TSING YI FERRY",
-                "zh": "\u9752\u8863\u78bc\u982d"
+                "en": "TSING YI FERRY BUS TERMINUS",
+                "zh": "\u9752\u8863\u78bc\u982d\u7e3d\u7ad9"
             },
             "fares": [
                 "10.4",
@@ -176433,8 +176433,8 @@
             "jt": "27",
             "nlbId": null,
             "orig": {
-                "en": "SHATIN CENTRAL",
-                "zh": "\u6c99\u7530\u5dff\u4e2d\u5fc3"
+                "en": "SHATIN CENTRAL BUS TERMINUS",
+                "zh": "\u6c99\u7530\u5e02\u4e2d\u5fc3\u7e3d\u7ad9"
             },
             "route": "49P",
             "seq": 8,

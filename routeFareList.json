@@ -184933,14 +184933,14 @@
             "serviceType": "1",
             "stops": {
                 "lightRail": [
-                    "LR001",
-                    "LR010",
-                    "LR015",
-                    "LR020",
-                    "LR030",
-                    "LR040",
-                    "LR050",
-                    "LR060",
+                    "LR1",
+                    "LR10",
+                    "LR15",
+                    "LR20",
+                    "LR30",
+                    "LR40",
+                    "LR50",
+                    "LR60",
                     "LR295",
                     "LR300",
                     "LR310",
@@ -185176,8 +185176,8 @@
                     "LR212",
                     "LR220",
                     "LR230",
-                    "LR075",
-                    "LR070",
+                    "LR75",
+                    "LR70",
                     "LR295",
                     "LR280",
                     "LR270",
@@ -185185,7 +185185,7 @@
                     "LR260",
                     "LR250",
                     "LR240",
-                    "LR001"
+                    "LR1"
                 ]
             }
         },
@@ -261695,10 +261695,10 @@
                     "LR360",
                     "LR350",
                     "LR100",
-                    "LR090",
-                    "LR080",
-                    "LR075",
-                    "LR070",
+                    "LR90",
+                    "LR80",
+                    "LR75",
+                    "LR70",
                     "LR295",
                     "LR280",
                     "LR270",
@@ -261706,7 +261706,7 @@
                     "LR260",
                     "LR250",
                     "LR240",
-                    "LR001"
+                    "LR1"
                 ]
             }
         },
@@ -582833,126 +582833,6 @@
                 "zh": "\u7f85\u6e56"
             }
         },
-        "LR001": {
-            "location": {
-                "lat": 22.372707100981273,
-                "lng": 113.96711692315985
-            },
-            "name": {
-                "en": "Tuen Mun Ferry Pier",
-                "zh": "\u5c6f\u9580\u78bc\u982d"
-            }
-        },
-        "LR010": {
-            "location": {
-                "lat": 22.37504713594796,
-                "lng": 113.96111277697455
-            },
-            "name": {
-                "en": "Melody Garden",
-                "zh": "\u7f8e\u6a02"
-            }
-        },
-        "LR015": {
-            "location": {
-                "lat": 22.378172414049967,
-                "lng": 113.96166142949328
-            },
-            "name": {
-                "en": "Butterfly",
-                "zh": "\u8774\u8776"
-            }
-        },
-        "LR020": {
-            "location": {
-                "lat": 22.381805000722455,
-                "lng": 113.96342310808737
-            },
-            "name": {
-                "en": "Light Rail Depot",
-                "zh": "\u8f15\u9435\u8eca\u5ee0"
-            }
-        },
-        "LR030": {
-            "location": {
-                "lat": 22.38525669121189,
-                "lng": 113.96498123095571
-            },
-            "name": {
-                "en": "Lung Mun",
-                "zh": "\u9f8d\u9580"
-            }
-        },
-        "LR040": {
-            "location": {
-                "lat": 22.390397615829112,
-                "lng": 113.96696416734129
-            },
-            "name": {
-                "en": "Tsing Shan Tsuen",
-                "zh": "\u9752\u5c71\u6751"
-            }
-        },
-        "LR050": {
-            "location": {
-                "lat": 22.39434450234805,
-                "lng": 113.96740495573783
-            },
-            "name": {
-                "en": "Tsing Wun",
-                "zh": "\u9752\u96f2"
-            }
-        },
-        "LR060": {
-            "location": {
-                "lat": 22.395132081352006,
-                "lng": 113.96889929640191
-            },
-            "name": {
-                "en": "Kin On",
-                "zh": "\u5efa\u5b89"
-            }
-        },
-        "LR070": {
-            "location": {
-                "lat": 22.397377022083642,
-                "lng": 113.97313009664191
-            },
-            "name": {
-                "en": "Ho Tin",
-                "zh": "\u6cb3\u7530"
-            }
-        },
-        "LR075": {
-            "location": {
-                "lat": 22.399933944815604,
-                "lng": 113.97416550232074
-            },
-            "name": {
-                "en": "Choy Yee Bridge",
-                "zh": "\u8521\u610f\u6a4b"
-            }
-        },
-        "LR080": {
-            "location": {
-                "lat": 22.40349409829556,
-                "lng": 113.97588903289837
-            },
-            "name": {
-                "en": "Affluence",
-                "zh": "\u6fa4\u8c50"
-            }
-        },
-        "LR090": {
-            "location": {
-                "lat": 22.40776706208687,
-                "lng": 113.97714545598332
-            },
-            "name": {
-                "en": "Tuen Mun Hospital",
-                "zh": "\u5c6f\u9580\u91ab\u9662"
-            }
-        },
         "LR1": {
             "location": {
                 "lat": 22.372707100981273,
@@ -597008,10 +596888,6 @@
             ],
             [
                 "lightRail",
-                "LR015"
-            ],
-            [
-                "lightRail",
                 "LR15"
             ]
         ],
@@ -597113,10 +596989,6 @@
             [
                 "lrtfeeder",
                 "K52P-D210"
-            ],
-            [
-                "lightRail",
-                "LR020"
             ],
             [
                 "lightRail",
@@ -598352,10 +598224,6 @@
             ],
             [
                 "lightRail",
-                "LR010"
-            ],
-            [
-                "lightRail",
                 "LR10"
             ]
         ],
@@ -598937,10 +598805,6 @@
             [
                 "lrtfeeder",
                 "K52P-D170"
-            ],
-            [
-                "lightRail",
-                "LR001"
             ],
             [
                 "lightRail",
@@ -608960,10 +608824,6 @@
             ],
             [
                 "lightRail",
-                "LR001"
-            ],
-            [
-                "lightRail",
                 "LR1"
             ]
         ],
@@ -617347,10 +617207,6 @@
             [
                 "gmb",
                 "20001378"
-            ],
-            [
-                "lightRail",
-                "LR010"
             ],
             [
                 "lightRail",
@@ -638330,10 +638186,6 @@
             ],
             [
                 "lightRail",
-                "LR001"
-            ],
-            [
-                "lightRail",
                 "LR1"
             ],
             [
@@ -638357,10 +638209,6 @@
             [
                 "lrtfeeder",
                 "506-U020"
-            ],
-            [
-                "lightRail",
-                "LR010"
             ],
             [
                 "lightRail",
@@ -638399,10 +638247,6 @@
             [
                 "lrtfeeder",
                 "K52P-D210"
-            ],
-            [
-                "lightRail",
-                "LR020"
             ],
             [
                 "lightRail",
@@ -646205,10 +646049,6 @@
             [
                 "lrtfeeder",
                 "K52A-D140"
-            ],
-            [
-                "lightRail",
-                "LR015"
             ],
             [
                 "lightRail",
@@ -671490,10 +671330,6 @@
             ],
             [
                 "lightRail",
-                "LR015"
-            ],
-            [
-                "lightRail",
                 "LR15"
             ]
         ],
@@ -671521,10 +671357,6 @@
             [
                 "lrtfeeder",
                 "K52P-D220"
-            ],
-            [
-                "lightRail",
-                "LR030"
             ],
             [
                 "lightRail",
@@ -671660,10 +671492,6 @@
             ],
             [
                 "lightRail",
-                "LR020"
-            ],
-            [
-                "lightRail",
                 "LR20"
             ]
         ],
@@ -671691,10 +671519,6 @@
             [
                 "lrtfeeder",
                 "K52P-D220"
-            ],
-            [
-                "lightRail",
-                "LR030"
             ],
             [
                 "lightRail",
@@ -680100,10 +679924,6 @@
             ],
             [
                 "lightRail",
-                "LR020"
-            ],
-            [
-                "lightRail",
                 "LR20"
             ],
             [
@@ -685273,10 +685093,6 @@
             [
                 "lrtfeeder",
                 "K52P-D170"
-            ],
-            [
-                "lightRail",
-                "LR001"
             ],
             [
                 "lightRail",
@@ -693820,10 +693636,6 @@
             ],
             [
                 "lightRail",
-                "LR020"
-            ],
-            [
-                "lightRail",
                 "LR20"
             ],
             [
@@ -698420,10 +698232,6 @@
             ],
             [
                 "lightRail",
-                "LR001"
-            ],
-            [
-                "lightRail",
                 "LR1"
             ]
         ],
@@ -701498,10 +701306,6 @@
             ],
             [
                 "lightRail",
-                "LR001"
-            ],
-            [
-                "lightRail",
                 "LR1"
             ],
             [
@@ -701580,10 +701384,6 @@
             ],
             [
                 "lightRail",
-                "LR001"
-            ],
-            [
-                "lightRail",
                 "LR1"
             ]
         ],
@@ -701599,10 +701399,6 @@
             [
                 "kmb",
                 "015AD88813C61900"
-            ],
-            [
-                "lightRail",
-                "LR010"
             ],
             [
                 "lightRail",
@@ -701640,10 +701436,6 @@
             ],
             [
                 "lightRail",
-                "LR015"
-            ],
-            [
-                "lightRail",
                 "LR15"
             ]
         ],
@@ -701671,10 +701463,6 @@
             [
                 "lrtfeeder",
                 "K52P-D210"
-            ],
-            [
-                "lightRail",
-                "LR020"
             ],
             [
                 "lightRail",
@@ -701713,10 +701501,6 @@
             [
                 "lrtfeeder",
                 "K52P-D220"
-            ],
-            [
-                "lightRail",
-                "LR030"
             ],
             [
                 "lightRail",
@@ -728344,10 +728128,6 @@
             ],
             [
                 "lightRail",
-                "LR001"
-            ],
-            [
-                "lightRail",
                 "LR1"
             ],
             [
@@ -746572,10 +746352,6 @@
             ],
             [
                 "lightRail",
-                "LR015"
-            ],
-            [
-                "lightRail",
                 "LR15"
             ]
         ],
@@ -752651,10 +752427,6 @@
             [
                 "lrtfeeder",
                 "K52P-D220"
-            ],
-            [
-                "lightRail",
-                "LR030"
             ],
             [
                 "lightRail",
@@ -764814,10 +764586,6 @@
             ],
             [
                 "lightRail",
-                "LR001"
-            ],
-            [
-                "lightRail",
                 "LR1"
             ],
             [
@@ -766756,10 +766524,6 @@
             ],
             [
                 "lightRail",
-                "LR001"
-            ],
-            [
-                "lightRail",
                 "LR1"
             ],
             [
@@ -768613,10 +768377,6 @@
             [
                 "kmb",
                 "E8DB8EA844260912"
-            ],
-            [
-                "lightRail",
-                "LR001"
             ],
             [
                 "lightRail",
@@ -773255,10 +773015,6 @@
             [
                 "lrtfeeder",
                 "K52P-D140"
-            ],
-            [
-                "lightRail",
-                "LR015"
             ],
             [
                 "lightRail",
@@ -780596,10 +780352,6 @@
             ],
             [
                 "lightRail",
-                "LR015"
-            ],
-            [
-                "lightRail",
                 "LR15"
             ]
         ],
@@ -780627,10 +780379,6 @@
             [
                 "lrtfeeder",
                 "K52P-D210"
-            ],
-            [
-                "lightRail",
-                "LR020"
             ],
             [
                 "lightRail",
@@ -780669,10 +780417,6 @@
             [
                 "lrtfeeder",
                 "K52P-D220"
-            ],
-            [
-                "lightRail",
-                "LR030"
             ],
             [
                 "lightRail",
@@ -781013,10 +780757,6 @@
             [
                 "lrtfeeder",
                 "K52P-D170"
-            ],
-            [
-                "lightRail",
-                "LR001"
             ],
             [
                 "lightRail",
@@ -781624,10 +781364,6 @@
             ],
             [
                 "lightRail",
-                "LR015"
-            ],
-            [
-                "lightRail",
                 "LR15"
             ]
         ],
@@ -781655,10 +781391,6 @@
             [
                 "lrtfeeder",
                 "K52P-D210"
-            ],
-            [
-                "lightRail",
-                "LR020"
             ],
             [
                 "lightRail",
@@ -781697,10 +781429,6 @@
             [
                 "lrtfeeder",
                 "K52P-D220"
-            ],
-            [
-                "lightRail",
-                "LR030"
             ],
             [
                 "lightRail",
@@ -782274,10 +782002,6 @@
             ],
             [
                 "lightRail",
-                "LR001"
-            ],
-            [
-                "lightRail",
                 "LR1"
             ],
             [
@@ -782366,10 +782090,6 @@
             ],
             [
                 "lightRail",
-                "LR020"
-            ],
-            [
-                "lightRail",
                 "LR20"
             ],
             [
@@ -782405,10 +782125,6 @@
             [
                 "lrtfeeder",
                 "K52A-D160"
-            ],
-            [
-                "lightRail",
-                "LR030"
             ],
             [
                 "lightRail",
@@ -789451,226 +789167,6 @@
                 "20000234"
             ]
         ],
-        "LR001": [
-            [
-                "ctb",
-                "002040"
-            ],
-            [
-                "ctb",
-                "003194"
-            ],
-            [
-                "gmb",
-                "20001377"
-            ],
-            [
-                "kmb",
-                "2F332E8471F31F27"
-            ],
-            [
-                "kmb",
-                "49713551E95C1DA1"
-            ],
-            [
-                "lrtfeeder",
-                "506-U010"
-            ],
-            [
-                "kmb",
-                "8D6792FF38584BE0"
-            ],
-            [
-                "kmb",
-                "E3E171AEDE35ACDF"
-            ],
-            [
-                "kmb",
-                "E8DB8EA844260912"
-            ],
-            [
-                "kmb",
-                "ED380ED65FFA508C"
-            ],
-            [
-                "lrtfeeder",
-                "K52-nU030"
-            ],
-            [
-                "lrtfeeder",
-                "K52P-D170"
-            ],
-            [
-                "lightRail",
-                "LR1"
-            ]
-        ],
-        "LR010": [
-            [
-                "kmb",
-                "015AD88813C61900"
-            ],
-            [
-                "lightRail",
-                "LR10"
-            ],
-            [
-                "ctb",
-                "002010"
-            ],
-            [
-                "gmb",
-                "20001378"
-            ],
-            [
-                "lrtfeeder",
-                "506-U020"
-            ]
-        ],
-        "LR015": [
-            [
-                "ctb",
-                "001934"
-            ],
-            [
-                "gmb",
-                "20004519"
-            ],
-            [
-                "gmb",
-                "20017046"
-            ],
-            [
-                "lrtfeeder",
-                "506-U030"
-            ],
-            [
-                "kmb",
-                "B88E6F52E2BC2E34"
-            ],
-            [
-                "kmb",
-                "F734736F35F459DC"
-            ],
-            [
-                "lrtfeeder",
-                "K52-nD140"
-            ],
-            [
-                "lrtfeeder",
-                "K52A-D140"
-            ],
-            [
-                "lightRail",
-                "LR15"
-            ]
-        ],
-        "LR020": [
-            [
-                "ctb",
-                "001938"
-            ],
-            [
-                "gmb",
-                "20001379"
-            ],
-            [
-                "gmb",
-                "20017056"
-            ],
-            [
-                "kmb",
-                "23B913EACE0581E4"
-            ],
-            [
-                "kmb",
-                "3FAE59A79C8BCC93"
-            ],
-            [
-                "lrtfeeder",
-                "506-U040"
-            ],
-            [
-                "lrtfeeder",
-                "K52-nD150"
-            ],
-            [
-                "lrtfeeder",
-                "K52A-D150"
-            ],
-            [
-                "lrtfeeder",
-                "K52P-D210"
-            ],
-            [
-                "lightRail",
-                "LR20"
-            ]
-        ],
-        "LR030": [
-            [
-                "gmb",
-                "20017047"
-            ],
-            [
-                "gmb",
-                "20017057"
-            ],
-            [
-                "lrtfeeder",
-                "506-U050"
-            ],
-            [
-                "kmb",
-                "C6D5DEF91CB7B581"
-            ],
-            [
-                "lrtfeeder",
-                "K52-nD160"
-            ],
-            [
-                "lrtfeeder",
-                "K52A-D160"
-            ],
-            [
-                "lrtfeeder",
-                "K52P-D220"
-            ],
-            [
-                "lightRail",
-                "LR30"
-            ]
-        ],
-        "LR040": [
-            [
-                "lightRail",
-                "LR40"
-            ]
-        ],
-        "LR060": [
-            [
-                "lightRail",
-                "LR60"
-            ]
-        ],
-        "LR070": [
-            [
-                "lightRail",
-                "LR70"
-            ]
-        ],
-        "LR080": [
-            [
-                "lightRail",
-                "LR80"
-            ]
-        ],
-        "LR090": [
-            [
-                "lightRail",
-                "LR90"
-            ]
-        ],
         "LR1": [
             [
                 "ctb",
@@ -789719,20 +789215,12 @@
             [
                 "lrtfeeder",
                 "K52P-D170"
-            ],
-            [
-                "lightRail",
-                "LR001"
             ]
         ],
         "LR10": [
             [
                 "kmb",
                 "015AD88813C61900"
-            ],
-            [
-                "lightRail",
-                "LR010"
             ],
             [
                 "ctb",
@@ -789789,10 +789277,6 @@
             [
                 "lrtfeeder",
                 "K52A-D140"
-            ],
-            [
-                "lightRail",
-                "LR015"
             ],
             [
                 "ctb",
@@ -789915,10 +789399,6 @@
             [
                 "lrtfeeder",
                 "K52P-D210"
-            ],
-            [
-                "lightRail",
-                "LR020"
             ],
             [
                 "ctb",
@@ -790273,10 +789753,6 @@
             [
                 "lrtfeeder",
                 "K52P-D220"
-            ],
-            [
-                "lightRail",
-                "LR030"
             ]
         ],
         "LR310": [
@@ -790497,12 +789973,6 @@
             [
                 "gmb",
                 "20018545"
-            ]
-        ],
-        "LR40": [
-            [
-                "lightRail",
-                "LR040"
             ]
         ],
         "LR400": [
@@ -790883,12 +790353,6 @@
                 "20001289"
             ]
         ],
-        "LR60": [
-            [
-                "lightRail",
-                "LR060"
-            ]
-        ],
         "LR600": [
             [
                 "kmb",
@@ -790917,24 +790381,6 @@
             [
                 "gmb",
                 "20002436"
-            ]
-        ],
-        "LR70": [
-            [
-                "lightRail",
-                "LR070"
-            ]
-        ],
-        "LR80": [
-            [
-                "lightRail",
-                "LR080"
-            ]
-        ],
-        "LR90": [
-            [
-                "lightRail",
-                "LR090"
             ]
         ],
         "MKK": [

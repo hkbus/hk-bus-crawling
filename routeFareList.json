@@ -223261,6 +223261,74 @@
                 ]
             }
         },
+        "63R+1+LAM TSUEN WISHING TREE+TAI PO MARKET STATION": {
+            "bound": {
+                "kmb": "I"
+            },
+            "co": [
+                "kmb"
+            ],
+            "dest": {
+                "en": "TAI PO MARKET STATION",
+                "zh": "\u5927\u57d4\u589f\u7ad9"
+            },
+            "fares": null,
+            "faresHoliday": null,
+            "freq": null,
+            "gtfsId": null,
+            "jt": null,
+            "nlbId": null,
+            "orig": {
+                "en": "LAM TSUEN WISHING TREE",
+                "zh": "\u6797\u6751\u8a31\u9858\u6a39"
+            },
+            "route": "63R",
+            "seq": 6,
+            "serviceType": "1",
+            "stops": {
+                "kmb": [
+                    "74A3A3037E047C81",
+                    "BCC83D8C953DC504",
+                    "399EF919E10C7F33",
+                    "512C07C3D131AB5A",
+                    "46604706EE6CC765",
+                    "8581908CE476D2CF"
+                ]
+            }
+        },
+        "63R+1+TAI PO MARKET STATION+LAM TSUEN WISHING TREE": {
+            "bound": {
+                "kmb": "O"
+            },
+            "co": [
+                "kmb"
+            ],
+            "dest": {
+                "en": "LAM TSUEN WISHING TREE",
+                "zh": "\u6797\u6751\u8a31\u9858\u6a39"
+            },
+            "fares": null,
+            "faresHoliday": null,
+            "freq": null,
+            "gtfsId": null,
+            "jt": null,
+            "nlbId": null,
+            "orig": {
+                "en": "TAI PO MARKET STATION",
+                "zh": "\u5927\u57d4\u589f\u7ad9"
+            },
+            "route": "63R",
+            "seq": 4,
+            "serviceType": "1",
+            "stops": {
+                "kmb": [
+                    "8581908CE476D2CF",
+                    "0A8E2BA2F75E472E",
+                    "CCC4773031BC0FD8",
+                    "74A3A3037E047C81"
+                ]
+            }
+        },
         "63S+2+Mei Tin Estate Public Transport Interchange+Mong Kok": {
             "bound": {
                 "gmb": "O"
@@ -538751,6 +538819,16 @@
                 "zh": "\u5927\u6717"
             }
         },
+        "74A3A3037E047C81": {
+            "location": {
+                "lat": 22.457656,
+                "lng": 114.142927
+            },
+            "name": {
+                "en": "LAM TSUEN WISHING TREE",
+                "zh": "\u6797\u6751\u8a31\u9858\u6a39"
+            }
+        },
         "74C0E91D535648A2": {
             "location": {
                 "lat": 22.481498,
@@ -651393,6 +651471,12 @@
                 "90A92A87C0491478"
             ]
         ],
+        "20011097": [
+            [
+                "kmb",
+                "BCC83D8C953DC504"
+            ]
+        ],
         "20011123": [
             [
                 "gmb",
@@ -701831,6 +701915,14 @@
             [
                 "kmb",
                 "DE46A23558FD6CF6"
+            ],
+            [
+                "lrtfeeder",
+                "K12-D020"
+            ],
+            [
+                "lrtfeeder",
+                "K14-D010"
             ]
         ],
         "5134E170C222E516": [
@@ -724494,10 +724586,6 @@
             ],
             [
                 "kmb",
-                "919C2FE90FDCAD6A"
-            ],
-            [
-                "kmb",
                 "94A3E9298FD887C6"
             ],
             [
@@ -729423,10 +729511,6 @@
             [
                 "kmb",
                 "375591F774538709"
-            ],
-            [
-                "kmb",
-                "8581908CE476D2CF"
             ],
             [
                 "kmb",
@@ -747761,6 +747845,12 @@
             [
                 "lrtfeeder",
                 "K65-D150"
+            ]
+        ],
+        "BCC83D8C953DC504": [
+            [
+                "gmb",
+                "20011097"
             ]
         ],
         "BCEEE192EF01C361": [
@@ -776678,6 +776768,10 @@
         "K12-D020": [
             [
                 "kmb",
+                "512C07C3D131AB5A"
+            ],
+            [
+                "kmb",
                 "DE46A23558FD6CF6"
             ],
             [
@@ -776772,6 +776866,10 @@
             ]
         ],
         "K14-D010": [
+            [
+                "kmb",
+                "512C07C3D131AB5A"
+            ],
             [
                 "kmb",
                 "DE46A23558FD6CF6"
